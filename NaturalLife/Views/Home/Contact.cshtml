@@ -1,17 +1,192 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<!-- main banner -->
+<section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="banner-contact">
+    <div class="banner-text">
+        <div class="center-text">
+            <div class="container">
+                <h1>Liên hệ với chúng tôi</h1>
+                <strong class="subtitle">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
+                <!-- breadcrumb -->
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="/home/index">Trang chủ</a></li>
+                        <li><span>liên hệ với chúng tôi</span></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- main container -->
+<main id="main">
+    <!-- main contact information block -->
+    <div class="content-block bg-white">
+        <div class="container">
+            <header class="content-heading">
+                <h2 class="main-heading">LIÊN LẠC</h2>
+                <strong class="main-subtitle">Liên hệ với chúng tôi qua email, điện thoại hoặc thông qua biểu mẫu web của chúng tôi bên dưới.</strong>
+                <div class="seperator"></div>
+            </header>
+            <div class="contact-info row">
+                <div class="col-sm-4">
+                    <span class="tel has-border">
+                        <span class="icon-tel-big"></span>
+                        <a href="tel:123456">097  8577 1234</a>
+                    </span>
+                    <h3>Yêu cầu đặt phòng</h3>
+                    <p>Nếu bạn có nhu cầu đặc phòng hãy liên hệ với chúng tôi qua HOTLINE</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="tel has-border bg-blue">
+                        <span class="icon-fax-big"></span>
+                        <a href="tel:123131313">097  8577 1234</a>
+                    </span>
+                    <h3>Hỗ trợ</h3>
+                    <p>Mọi thắc mắc vui lòng liên hệ với chứng tôi, chúng tôi sẽ hỗ trợ bạn.</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="tel has-border">
+                        <span class="icon-tel"></span>
+                        <a href="tel:123456789">097  8577 1234</a>
+                    </span>
+                    <h3>Phương thức thanh toán</h3>
+                    <p>Nếu bạn có gặp vấn đề gì về thanh toán hãy liên hệ với chúng tôi.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 wow fadeInLeft">
+                    <!-- main contact form -->
+                    <form class="contact-form has-border" id="contact_form" action="#">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="fname">Họ</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="text" class="form-control" id="fname" name="fname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="lname">Tên</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="text" class="form-control" id="lname" name="lname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="con_email">Email</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="email" class="form-control" id="con_email" name="con_email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="con_phone">Số điện thoại</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="text" class="form-control" id="con_phone" name="con_phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="con_country">Địa chỉ</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="text" class="form-control" id="con_country" name="con_country">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <strong class="form-title"><label for="con_message">Nội dung</label></strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <textarea cols="30" rows="10" class="form-control" id="con_message" name="con_message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group btn-holder">
+                                <div class="col-sm-4">&nbsp;</div>
+                                <div class="col-sm-8">
+                                    <div class="input-wrap">
+                                        <input type="submit" id="btn_sent" value="Gửi" class="btn btn-white">
+                                        <p id="error_message"> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-6 map-col-main wow fadeInRight">
+                    <!-- google map  -->
+                    <div class="map-holder">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- partner list -->
+    <article class="partner-block bg-gray">
+        <div class="container">
+            <header class="content-heading">
+                <h2 class="main-heading">ĐỐI TÁC</h2>
+                <span class="main-subtitle">Những người luôn ủng hộ và ủng hộ công việc tốt của chúng tôi</span>
+                <div class="seperator"></div>
+            </header>
+            <div class="partner-list" id="partner-slide">
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company1.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company1.jpg" alt="image description">
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company2.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company2.jpg" alt="image description">
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company3.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company3.jpg" alt="image description">
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company4.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company4.jpg" alt="image description">
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company5.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company5.jpg" alt="image description">
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="#">
+                        <img width="130" src="~/Content/NaturalLife/img/logos/company6.jpg" alt="image description">
+                        <img class="hover" width="130" src="~/Content/NaturalLife/img/logos/company6.jpg" alt="image description">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</main>

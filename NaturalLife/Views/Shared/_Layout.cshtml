@@ -1,44 +1,821 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>Natural Life Dalat</title>
+    <!-- favion -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/NaturalLife/img/favicon.png">
+    <!-- link to font awesome -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/font-awesome/css/font-awesome.css">
+    <!-- link to material icon font -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/material-design-icons/material-icons.css">
+    <!-- link to custom icomoon fonts -->
+    <link rel="stylesheet" type="text/css" href="~/Content/NaturalLife/css/fonts/icomoon/icomoon.css">
+    <!-- link to wow js animation -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/animate/animate.css">
+    <!-- include bootstrap css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/css/bootstrap.css">
+    <!-- include owl css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/owl-carousel/owl.carousel.css">
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/owl-carousel/owl.theme.css">
+    <!-- include main css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/css/main.css">
+    <!-- link to revolution css  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/NaturalLife/js/vendors/revolution/css/settings.css">
+    <script src="~/Content/NaturalLife/js/angularjs.min.js" charset="utf-8"></script>
+    <script src="~/Content/NaturalLife/js/app.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+<body ng-app="app" ng-style="{ overflow: isoverFlowForm ? 'hidden' : '' }">
+    <div class="preloader" id="pageLoad">
+        <div class="holder">
+            <div class="coffee_cup"></div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+    <!-- main wrapper -->
+    <div id="wrapper">
+        <div class="page-wrapper">
+            <!-- main header -->
+            <header id="header" class="white-header">
+                <div class="container-fluid">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="/home/index">
+                            <img class="normal" src="~/Content/NaturalLife/img/logos/Naturallife.png" alt="Natural Life">
+                            <img class="gray-logo" src="~/Content/NaturalLife/img/logos/Naturallife.png" alt="Natural Life">
+                        </a>
+                    </div>
+                    <!-- main navigation -->
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle nav-opener" data-toggle="collapse" data-target="#nav">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- main menu items and drop for mobile -->
+                        <div class="collapse navbar-collapse" id="nav">
+                            <!-- main navbar -->
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="/home/index">Trang chủ <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/home/about">Natural Life<b class="icon-angle-down"></b></a>
+                                </li>
+                                <li><a href="/service/index">Dịch vụ</a></li>
+                                <li class="dropdown has-mega-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hoạt động <b class="icon-angle-down"></b></a>
+                                    <div class="dropdown-menu">
+                                        <div class="drop-wrap">
+                                            <div class="drop-holder">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-01.jpg" height="228" width="350" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">Đi bộ đường dài/Cắm trại</a></strong>
+                                                                <p>Trong quá khứ, chuyến đi thường là một cuộc săn lùng lớn, nhưng ngày nay, safari thường đề cập đến các chuyến đi quan sát và chụp ảnh động vật hoang dã — hoặc đi bộ đường dài và ngắm cảnh.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-02.jpg" height="215" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">Khám phá rửng thiêng</a></strong>
+                                                                <p>Một khách du lịch ba lô tốt sẽ giảm thiểu tác động của chúng đối với môi trường, bao gồm cả những con đường mòn đã được thiết lập, thảm thực vật không gây xáo trộn và mang rác ra ngoài.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-03.jpg" height="215" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">Khám phá TP Đà lạt</a></strong>
+                                                                <p>Các loại tour du lịch thành phố đô thị được coi là đây là một tour du lịch đầy đủ, một phần, hoặc lâu hơn của một di tích lịch sử, hoặc văn hóa hoặc nghệ thuật tại một hoặc nhiều điểm đến du lịch.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-04.jpg" height="215" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">Gia đình vui vẻ</a></strong>
+                                                                <p>Khi bạn đứng trước một cánh đồng rộng lớn, đứng nơi cảnh núi non hùng vĩ, bạn sẽ có một cảm giác thoải mái tự do tự tại, mọi muộn phiền biến đâu mất. Bởi thế nên khi muốn đi du lịch “đổi gió”, giải toả stress, người ta thường chọn những điểm đến tự nhiên hơn là những khu vui chơi nhân tạo đầy đồ công nghệ.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/blog/index">Blog <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="dropdown has-mega-dropdown mega-md">
+                                    <a href="/home/contact">Liên hệ <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="visible-xs visible-sm">
+                                    <a href="/webmaster/login">
+                                        <span class="icon icon-user"></span>
+                                        <span class="text">Đăng nhập</span>
+                                    </a>
+                                </li>
+                                <li class="hidden-xs hidden-sm v-divider">
+                                    <a href="/webmaster/login">
+                                        <span class="icon icon-user"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown hidden-xs hidden-sm last-dropdown v-divider">
+                                    <a href="#"><span class="text">EN</span> <span class="icon-angle-down"></span></a>
+                                    <div class="dropdown-menu dropdown-sm">
+                                        <div class="drop-wrap lang-wrap">
+                                            <div class="lang-row">
+                                                <div class="lang-col">
+                                                    <a href="#">
+                                                        <span class="text">Tiếng Anh</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="lang-row">
+                                                <div class="lang-col">
+                                                    <a href="#">
+                                                        <span class="text">Tiếng Việt</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="visible-md visible-lg nav-visible v-divider"><a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook"><span class="icon icon-search"></span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <!-- form book -->
+                <div id="formBook" class="collapse">
+                    <form class="" action="/home/booking" method="post">
+                        <div class="book-text">
+                            <div class="caption text-center">
+                                <h2>NATURAL LIFE</h2>
+                                <span class="book-wrap">
+                                    <a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" class="book-opener close" data-toggle="collapse" data-target="#formBook">
+                                        <span class="icon-cross"></span>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="center-text">
+                                <div class="trip-form banner-trip-form">
+                                    <fieldset>
+                                        <div class="holder" ng-controller="room">
+                                            <label for="room">Phòng nghỉ dưỡng</label></label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group text text-room trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="Phòng" min="6" name="room">
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
+                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Họ và tên</label>
+                                            <div class="select-holder">
+                                                <div class="input-group text text-bg">
+                                                    <input class="form-control" type="text" placeholder="Họ và tên" min="6" name="fullname">
+                                                    <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Số điện thoại</label>
+                                            <div class="select-holder">
+                                                <div class="input-group text text-phone-bg">
+                                                    <input class="form-control" type="tel" name="phone" placeholder="Số diện thoại" min="9" maxlength="14" required>
+                                                    <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder" ng-controller="adult">
+                                            <label for="adult">Người lớn</label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="Người Lớn" min="6" name="adult">
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
+                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <div class="holder" ng-controller="children">
+                                            <label for="children">Trẻ em</label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="trẻ em" min="6" name="child">
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
+                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label for="vehicle">Phương tiện</label>
+                                            <div class="select-holder">
+                                                <select class="trip trip-banner jcf-hidden" id="vehicle" name="vehicle">
+                                                    <option value="">Phương tiện</option>
+                                                    <option value="XE KHÁCH TỰ TÚC">XE KHÁCH TỰ TÚC</option>
+                                                    <option value="MÁY BAY TỰ TÚC">MÁY BAY TỰ TÚC</option>
+                                                    <option value="LIÊN HỆ CÔNG TY">LIÊN HỆ CÔNG TY</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Ngày tham gia</label>
+                                            <div class="select-holder">
+                                                <div id="datepicker4" class="input-group date picker-solid-bg" data-date-format="yyyy-mm-dd"> <input class="form-control" type="text" name="startdate"> <span class="input-group-addon"><i class="icon-arrow-down"></i></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Ngày kết thúc</label>
+                                            <div class="select-holder">
+                                                <div id="datepicker5" class="input-group date picker-solid-bg" data-date-format="yyyy-mm-dd"> <input class="form-control" type="text" placeholder="Ngày kết thúc" name="enddate"> <span class="input-group-addon"><i class="icon-arrow-down"></i></span></div>
+                                            </div>
+                                        </div>
+                                        <ng-conainter ng-controller="serviceController">
+                                            <!-- Dịch vụ tại khu -->
+                                            <ng-container ng-repeat="item in items">
+                                                <div class="holder mr-b" ng-if="!$last">
+                                                    <label for="service" ng-if="$first">Dịch vụ tại khu</label>
+                                                    <div class="select-holder">
+                                                        <label>
+                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'middle' : ''">
+                                                    <div class="select-holder">
+                                                        <label>
+                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <!-- Mục khác -->
+                                            <div class="holder mr-b" ng-show="!isSelected">
+                                                <div class="select-holder">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- textarea -->
+                                            <div class="holder special-holder mr-b" ng-class="isSelected ? 'middle' : ''" ng-show="isSelected">
+                                                <div class="select-holder">
+                                                    <div class="form-group text text-bg">
+                                                        <label>
+                                                            <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                        </label>
+                                                        <textarea placeholder="Nhập ..." min="6" maxlength="3000" name="comment" class="form-control" id="comment"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="holder special-holder" ng-controller="checkModel">
+                                                <label for="activity">Hoạt động</label>
+                                                <div class="select-holder">
+                                                    <select multiple placeholder="Hoạt động" id="activity" ng-model="multiAction" class="trip trip-banner jcf-hidden" name="activity" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "useCustomScroll": false, "multipleCompactStyle": true}'>
+                                                        <option value="" disabled>Hoạt động</option>
+                                                        <option value="Hoạt động 1">Hoạt động 1</option>
+                                                        <option value="Hoạt động 2">Hoạt động 2</option>
+                                                        <option value="Hoạt động 3">Hoạt động 3</option>
+                                                        <option value="Hoạt động 4">Hoạt động 4</option>
+                                                        <option value="Hoạt động 5">Hoạt động 5</option>
+                                                        <option value="#0">Hoạt động khác</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div ng-bind="multiAction">{{ multiAction | myFormat }}</div>
+                                            <!-- end -->
+                                        </ng-conainter>
+                                        <div class="holder mr-b" ng-class="!isSelected ? 'middle' : ''">
+                                            <input class="btn btn-trip" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook" type="submit" value="ĐĂNG KÝ">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </header>
+            <!-- main banner -->
+            <div class="banner banner-home">
+                <!-- revolution slider starts -->
+                <div id="rev_slider_279_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" style="margin:0px auto;background-color:#474d4b;padding:0px;margin-top:0px;margin-bottom:0px;">
+                    <div id="rev_slider_70_1" class="rev_slider fullscreenabanner" style="display:none;" data-version="5.1.4">
+                        <ul>
+                            <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+                                <!-- main image for revolution slider -->
+                                <img src="~/Content/NaturalLife/img/banner/img-01.jpg" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+
+                                <div class="tp-caption tp-resizeme" id="slide-897-layer-7"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['160','120','-120','-70']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;"
+                                     data-transform_out="opacity:0;s:300;s:300;"
+                                     data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                     data-start="1500"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
+                                    <span class="icon-wildlife"></span>
+                                </div>
+
+                                <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['280','240','10','20']"
+                                     data-fontsize="['48','48','44','28']"
+                                     data-lineheight="['85','85','50','50']"
+                                     data-width="['1200','1000','750','480']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:0px;"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
+                                    KHÁM PHÁ NHỮNG ĐIỀU BẠN CHƯA TỪNG ĐƯỢC BIẾT
+                                </div>
+
+                                <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['340','290','70','70']"
+                                     data-fontsize="['60','60','60','40']"
+                                     data-lineheight="['110','110','100','60']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                     data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
+                                    QUAN NIỆM
+                                </div>
+
+                                <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['150','160','180','150']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                     data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="1250"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
+                                     data-responsive_offset="on">
+                                    <a class="btn btn-banner" href="#">DU LỊCH DƯỠNG TÂM</a>
+                                </div>
+                            </li>
+
+                            <li data-index="rs-81" data-transition="slideoverup" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="The Menu" data-description="">
+                                <!-- main image for revolution slide -->
+                                <img alt="image description" src="~/Content/NaturalLife/img/banner/img-01.jpg" data-lazyload="img/banner/img-02.png" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
+
+                                <div class="tp-caption tp-resizeme" id="slide-897-layer1-7"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['160','120','-120','-70']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;"
+                                     data-transform_out="opacity:0;s:300;s:300;"
+                                     data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                     data-start="1500"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
+                                    <span class="icon-hiking-camping"></span>
+                                </div>
+
+                                <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['280','240','10','20']"
+                                     data-fontsize="['48','48','44','28']"
+                                     data-lineheight="['85','85','50','50']"
+                                     data-width="['1200','1000','750','480']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:0px;"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
+                                    TOUR KHÁM PHÁ
+                                </div>
+
+                                <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['-80','-80','-80','-60']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['330','280','60','60']"
+                                     data-fontsize="['60','60','60','40']"
+                                     data-lineheight="['110','110','100','60']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                     data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 300; font-style: italic; white-space: nowrap; color:">
+                                    năm
+                                </div>
+
+                                <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['50','30','30','20']"
+                                     data-y="['top','top','middle','middle']"
+                                     data-voffset="['330','280','60','60']"
+                                     data-fontsize="['60','60','60','40']"
+                                     data-lineheight="['110','110','100','60']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                     data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
+                                    2018
+                                </div>
+
+                                <div class="tp-caption rev-btn rs-parallaxlevel-10" id="slide-163-layer1-2"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['150','160','180','150']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                     data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="800"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
+                                     data-responsive_offset="on">
+                                    <a class="btn btn-banner" href="#">HI</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-block">
+                    <div class="holder">
+                        <ul>
+                            <li>
+                                <a href="#resort">
+                                    <span class="ico">
+                                        <span class="icon-resort"></span>
+                                    </span>
+                                    <span class="info">Resort</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#tours">
+                                    <span class="ico">
+                                        <span class="icon-tour"></span>
+                                    </span>
+                                    <span class="info">Tour</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#restaurant">
+                                    <span class="ico">
+                                        <span class="icon-restaurant"></span>
+                                    </span>
+                                    <span class="info">Nhà hàng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#rentalService">
+                                    <span class="ico">
+                                        <span class="icon-rental"></span>
+                                    </span>
+                                    <span class="info">Cho thuê dịch vụ</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#activity">
+                                    <span class="ico">
+                                        <span class="icon-entertainment"></span>
+                                    </span>
+                                    <span class="info">Hoạt động</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#special">
+                                    <span class="ico">
+                                        <span class="icon-special"></span>
+                                    </span>
+                                    <span class="info">Đặc biệt</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- main container -->
+        
+            @RenderBody()
+            </div>
+        <!-- main footer -->
+        <footer id="footer">
+            <div class="container">
+                <!-- newsletter form -->
+                <form action="" id="signup" method="post" class="newsletter-form">
+                    <fieldset>
+                        <div class="input-holder">
+                            <input type="email" class="form-control" placeholder="Email Address" name="subscriber_email" id="subscriber_email">
+                            <input type="submit" value="GO">
+                        </div>
+                        <span class="info" id="subscribe_message">To receive news, updates and tour packages via email.</span>
+                    </fieldset>
+                </form>
+                <!-- footer links -->
+                <div class="row footer-holder">
+                    <nav class="col-sm-4 col-lg-2 footer-nav active">
+                        <h3>About Entrada</h3>
+                        <ul class="slide">
+                            <li><a href="#">The Company</a></li>
+                            <li><a href="#">Our Values</a></li>
+                            <li><a href="#">Responsiblity</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Opportunity</a></li>
+                            <li><a href="#">Safety Concerns</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-2 footer-nav">
+                        <h3>Destinations</h3>
+                        <ul class="slide">
+                            <li><a href="#">Dalat</a></li>
+                            <li><a href="#">Nha Trang</a></li>
+                            <li><a href="#">Cam Ranh</a></li>
+                            <li><a href="#">Phu Quoc</a></li>
+                            <li><a href="#">Phan Thiet</a></li>
+                            <li><a href="#">Ho Chi Minh</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-2 footer-nav">
+                        <h3>themes</h3>
+                        <ul class="slide">
+                            <li><a href="#">Hiking and Camping</a></li>
+                            <li><a href="#">Trekking Tours</a></li>
+                            <li><a href="#">Jungle Safaris</a></li>
+                            <li><a href="#">Bungee Jumping</a></li>
+                            <li><a href="#">Natural Life</a></li>
+                            <li><a href="#">Peak Climbing</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-2 footer-nav">
+                        <h3>reservation</h3>
+                        <ul class="slide">
+                            <li><a href="#">Booking Conditions</a></li>
+                            <li><a href="#">My Bookings</a></li>
+                            <li><a href="#">Refund Policy</a></li>
+                            <li><a href="#">Includes &amp; Excludes</a></li>
+                            <li><a href="#">Your Responsibilities</a></li>
+                            <li><a href="#">Order a Brochure</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-2 footer-nav">
+                        <h3>ask Natural Life</h3>
+                        <ul class="slide">
+                            <li><a href="#">Why Natural Life?</a></li>
+                            <li><a href="#">Ask an Expert</a></li>
+                            <li><a href="#">Safety Updates</a></li>
+                            <li><a href="#">We Help When...</a></li>
+                            <li><a href="#">Personal Matters</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-2 footer-nav last">
+                        <h3>contact Natural Life</h3>
+                        <ul class="slide address-block">
+                            <li class="wrap-text"><span class="icon-tel"></span> <a href="tel:0909120408">+84 909 12 04 08</a></li>
+                            <li class="wrap-text"><span class="icon-email"></span> <a href="mailto:info@entrada.com">info@naturallifevn.com</a></li>
+                            <li><span class="icon-home"></span> <address>Sub-zone 151, Đường Ngô Gia Tự, Phường 12, Thành phố Đà Lạt, Tỉnh Lâm Đồng, Việt Nam.</address></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- social wrap -->
+                <ul class="social-wrap">
+                    <li class="facebook">
+                        <a href="#">
+                            <span class="icon-facebook"></span>
+                            <strong class="txt">Like Us</strong>
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a href="#">
+                            <span class="icon-twitter"></span>
+                            <strong class="txt">Follow On</strong>
+                        </a>
+                    </li>
+                    <li class="google-plus">
+                        <a href="#">
+                            <span class="icon-google-plus"></span>
+                            <strong class="txt">+1 On Google</strong>
+                        </a>
+                    </li>
+                    <li class="vimeo">
+                        <a href="#">
+                            <span class="icon-vimeo"></span>
+                            <strong class="txt">Share At</strong>
+                        </a>
+                    </li>
+                    <li class="pin">
+                        <a href="#">
+                            <span class="icon-pin"></span>
+                            <strong class="txt">Pin It</strong>
+                        </a>
+                    </li>
+                    <li class="dribble">
+                        <a href="#">
+                            <span class="icon-dribble"></span>
+                            <strong class="txt">Dribbble</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- copyright -->
+                            <strong class="copyright"><i class="fa fa-copyright"></i> Copyright 2018 - Natural Life Dalat</strong>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="payment-option">
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/visa.png" alt="visa">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/mastercard.png" height="20" width="33" alt="master card">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/paypal.png" height="20" width="72" alt="paypal">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/maestro.png" height="20" width="33" alt="maestro">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/bank-transfer.png" height="20" width="55" alt="bank transfer">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- scroll to top -->
+    <div class="scroll-holder text-center">
+        <a href="javascript:" id="scroll-to-top"><i class="icon-arrow-down"></i></a>
+    </div>
+    <!-- jquery library -->
+    <script src="~/Content/NaturalLife/js/vendors/jquery/jquery-2.1.4.min.js"></script>
+    <!-- external scripts -->
+    <script src="~/Content/NaturalLife/js/vendors/bootstrap/javascripts/bootstrap.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/match-height/jquery.matchHeight.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/wow/wow.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/stellar/jquery.stellar.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/validate/jquery.validate.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/waypoint/waypoints.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jQuery-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/fancybox/jquery.fancybox.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jcf/js/jcf.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jcf/js/jcf.select.js"></script>
+    <script src="~/Content/NaturalLife/js/mailchimp.js"></script>
+    <!-- <script src="js/vendors/retina/retina.min.js"></script> -->
+    <script src="~/Content/NaturalLife/js/vendors/sticky-kit/sticky-kit.js"></script>
+    <script src="~/Content/NaturalLife/js/sticky-kit-init.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/bootstrap-datetimepicker-master/dist/js/bootstrap-datepicker.js"></script>
+    <!-- custom jquery script -->
+    <script src="~/Content/NaturalLife/js/jquery.main.js"></script>
+    <!-- revolution slider plugin -->
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- rs5.0 core files -->
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.tools.min838f.js?rev=5.0"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.revolution.min838f.js?rev=5.0"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <!-- revolutions slider script -->
+    <script src="~/Content/NaturalLife/js/revolution.js"></script>
 </body>
+
 </html>

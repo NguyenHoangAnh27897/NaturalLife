@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hoat7422_hoatuoixanhcomModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="NTL_Booking">
+      <EntityTypeMapping TypeName="hoat7422_hoatuoixanh.comModel.NTL_Booking">
+        <MappingFragment StoreEntitySet="NTL_Booking">
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="VehicleTye" ColumnName="VehicleTye" />
+          <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
+          <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

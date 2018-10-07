@@ -118,3 +118,8 @@ C:\Users\hoang\source\repos\NaturalLife\NaturalLife\obj\Debug\NaturalLife.csproj
 C:\Users\hoang\source\repos\NaturalLife\NaturalLife\obj\Debug\NaturalLife.csproj.CopyComplete
 C:\Users\hoang\source\repos\NaturalLife\NaturalLife\obj\Debug\NaturalLife.dll
 C:\Users\hoang\source\repos\NaturalLife\NaturalLife\obj\Debug\NaturalLife.pdb
+C:\Users\hoang\source\repos\NaturalLife\NaturalLife\bin\GridMvc.dll
+C:\Users\hoang\source\repos\NaturalLife\NaturalLife\bin\PagedList.dll
+C:\Users\hoang\source\repos\NaturalLife\NaturalLife\bin\PagedList.Mvc.dll
+C:\Users\hoang\source\repos\NaturalLife\NaturalLife\bin\PagedList.xml
+C:\Users\hoang\source\repos\NaturalLife\NaturalLife\bin\PagedList.Mvc.xml

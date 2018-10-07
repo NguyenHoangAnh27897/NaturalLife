@@ -45,10 +45,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GridMvc">
+      <HintPath>..\..\MNPOST\MNPOSTWEBSITE\bin\GridMvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\..\MNPOST\MNPOSTWEBSITE\bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\..\MNPOST\MNPOSTWEBSITE\bin\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -195,8 +206,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NaturalLife\ActivityController.cs" />
+    <Compile Include="Controllers\NaturalLife\BlogController.cs" />
+    <Compile Include="Controllers\NaturalLife\ErrorController.cs" />
+    <Compile Include="Controllers\NaturalLife\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NaturalLife\RoomController.cs" />
+    <Compile Include="Controllers\NaturalLife\ServiceController.cs" />
+    <Compile Include="Controllers\WebMaster\BookingController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -204,6 +221,24 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NaturalLife.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NaturalLife.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NaturalLife.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NaturalLife.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NaturalLife.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Booking.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -212,6 +247,264 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\NaturalLife\css\bootstrap.css" />
+    <Content Include="Content\NaturalLife\css\fonts\icomoon\icomoon.css" />
+    <Content Include="Content\NaturalLife\css\icomoon.css" />
+    <Content Include="Content\NaturalLife\css\main.css" />
+    <Content Include="Content\NaturalLife\css\style.svg.css" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.svg" />
+    <Content Include="Content\NaturalLife\icons\svg01.svg" />
+    <Content Include="Content\NaturalLife\icons\svg02.svg" />
+    <Content Include="Content\NaturalLife\icons\svg03.svg" />
+    <Content Include="Content\NaturalLife\img\banner\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-02.png" />
+    <Content Include="Content\NaturalLife\img\banner\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-06.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-07.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-12.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-13.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-14.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-15.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-16.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-17.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-24.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-25.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-26.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-27.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-28.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-29.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-31.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-32.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-33.jpeg" />
+    <Content Include="Content\NaturalLife\img\banner\img-book.jpg" />
+    <Content Include="Content\NaturalLife\img\banner\img-book2.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-03.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-06.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-07.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-08.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\img-09.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-01.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-02.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-03.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-04.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-05.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-06.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-07.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-08.jpg" />
+    <Content Include="Content\NaturalLife\img\blog\thumb-09.jpg" />
+    <Content Include="Content\NaturalLife\img\favicon-16x16.png" />
+    <Content Include="Content\NaturalLife\img\favicon.png" />
+    <Content Include="Content\NaturalLife\img\footer\bank-transfer.png" />
+    <Content Include="Content\NaturalLife\img\footer\footer-pattern.png" />
+    <Content Include="Content\NaturalLife\img\footer\maestro.png" />
+    <Content Include="Content\NaturalLife\img\footer\mastercard.png" />
+    <Content Include="Content\NaturalLife\img\footer\paypal.png" />
+    <Content Include="Content\NaturalLife\img\footer\visa.png" />
+    <Content Include="Content\NaturalLife\img\gallery\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-03.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-06.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-07.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-08.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-09.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-10-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-10.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-11-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-11.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-12-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-12.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-13-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-13.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-14-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-14.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-15-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-15.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-16-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-16.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-17-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-17.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-18-2.jpg" />
+    <Content Include="Content\NaturalLife\img\gallery\img-18.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-03.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-07.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-08.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-09.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-10.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-11.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-12.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-13.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-14.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-15.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-16.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\img-17.jpg" />
+    <Content Include="Content\NaturalLife\img\generic\map.png" />
+    <Content Include="Content\NaturalLife\img\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\intro\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-03.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-06.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-07.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-08.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-09.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-10.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-11.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-12.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-13.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-14.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-15.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-16.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-17.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-18.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-19.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-20.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-21.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-22.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-23.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-24.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-25.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-26.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-27.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-28.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-29.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-30.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-31.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-32.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-33.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-34.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-35.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-36.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-37.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-38.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-39.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-40.jpg" />
+    <Content Include="Content\NaturalLife\img\listing\img-41.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company1.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company2.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company3.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company4.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company5.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\company6.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\customer-logo.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\customer-logo2.jpg" />
+    <Content Include="Content\NaturalLife\img\logos\Naturallife.png" />
+    <Content Include="Content\NaturalLife\img\retina_wood.png" />
+    <Content Include="Content\NaturalLife\img\room\detail-room\de-1.JPG" />
+    <Content Include="Content\NaturalLife\img\room\detail-room\de-2.jpg" />
+    <Content Include="Content\NaturalLife\img\room\detail-room\de-4.JPG" />
+    <Content Include="Content\NaturalLife\img\room\detail-room\de-5.JPG" />
+    <Content Include="Content\NaturalLife\img\room\room-1.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-10.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-11.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-12.JPG" />
+    <Content Include="Content\NaturalLife\img\room\room-2.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-3.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-4.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-5.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-6.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-7.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-8.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-9.jpg" />
+    <Content Include="Content\NaturalLife\img\room\room-zoom.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-01.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-02.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-03.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-04.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-05.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-06.jpg" />
+    <Content Include="Content\NaturalLife\img\thumbs\img-07.jpg" />
+    <Content Include="Content\NaturalLife\js\angularjs.min.js" />
+    <Content Include="Content\NaturalLife\js\app.js" />
+    <Content Include="Content\NaturalLife\js\contact-form.js" />
+    <Content Include="Content\NaturalLife\js\jquery.main.js" />
+    <Content Include="Content\NaturalLife\js\mailchimp.js" />
+    <Content Include="Content\NaturalLife\js\revolution.js" />
+    <Content Include="Content\NaturalLife\js\sticky-kit-init.js" />
+    <Content Include="Content\NaturalLife\js\vendors\animate\animate.css" />
+    <Content Include="Content\NaturalLife\js\vendors\bootstrap-datetimepicker-master\dist\css\bootstrap-datepicker.css" />
+    <Content Include="Content\NaturalLife\js\vendors\bootstrap-datetimepicker-master\dist\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\NaturalLife\js\vendors\bootstrap-datetimepicker-master\dist\js\bootstrap-datepicker.js" />
+    <Content Include="Content\NaturalLife\js\vendors\bootstrap\javascripts\bootstrap.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\counter-up\jquery.counterup.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\blank.gif" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\NaturalLife\js\vendors\fancybox\jquery.fancybox.js" />
+    <Content Include="Content\NaturalLife\js\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\NaturalLife\js\vendors\jcf\js\jcf.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jcf\js\jcf.select.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-mobile\jquery.mobile.custom.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-placeholder\jquery.placeholder.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jQuery-touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_flat_10_000000_40x100.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-icons_222222_256x240.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-icons_228ef1_256x240.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-icons_ef8c08_256x240.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-icons_ffd27a_256x240.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\images\ui-icons_ffffff_256x240.html" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\jquery\jquery-2.1.4.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\match-height\jquery.matchHeight.js" />
+    <Content Include="Content\NaturalLife\js\vendors\material-design-icons\material-icons.css" />
+    <Content Include="Content\NaturalLife\js\vendors\owl-carousel\AjaxLoader.gif" />
+    <Content Include="Content\NaturalLife\js\vendors\owl-carousel\grabbing.png" />
+    <Content Include="Content\NaturalLife\js\vendors\owl-carousel\owl.carousel.css" />
+    <Content Include="Content\NaturalLife\js\vendors\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\owl-carousel\owl.theme.css" />
+    <Content Include="Content\NaturalLife\js\vendors\retina\retina.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\coloredbg.png" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\gridtile.png" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\gridtile_3x3.png" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\gridtile_3x3_white.png" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\gridtile_white.png" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\assets\loader.gif" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\css\closedhand.cur" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\css\openhand.cur" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\css\settings.css" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.actions.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.kenburn.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.layeranimation.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.navigation.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.parallax.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.slideanims.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\extensions\revolution.extension.video.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\jquery.themepunch.revolution.min838f.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\jquery.themepunch.tools.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\revolution\js\jquery.themepunch.tools.min838f.js" />
+    <Content Include="Content\NaturalLife\js\vendors\stellar\jquery.stellar.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\sticky-kit\sticky-kit.js" />
+    <Content Include="Content\NaturalLife\js\vendors\validate\jquery.validate.js" />
+    <Content Include="Content\NaturalLife\js\vendors\waypoint\waypoints.min.js" />
+    <Content Include="Content\NaturalLife\js\vendors\wow\wow.min.js" />
     <Content Include="Content\Webmaster\css\bootstrap.min.css" />
     <Content Include="Content\Webmaster\css\font-awesome.min.css" />
     <Content Include="Content\Webmaster\css\metisMenu.css" />
@@ -617,7 +910,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\webmaster\logoa3.png" />
+    <Content Include="Images\webmaster\icon\if_f-cross_256_282471.png" />
+    <Content Include="Images\webmaster\logo\logoa3.png" />
+    <Content Include="Models\NaturalLife.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NaturalLife.edmx</DependentUpon>
+      <LastGenOutput>NaturalLife.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NaturalLife.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NaturalLife.edmx</DependentUpon>
+      <LastGenOutput>NaturalLife.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -643,6 +947,25 @@
     <Content Include="Content\Webmaster\js\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Content\Webmaster\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Content\Webmaster\js\ckeditor\skins\moono-lisa\readme.md" />
+    <EntityDeploy Include="Models\NaturalLife.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NaturalLife.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NaturalLife.edmx.diagram">
+      <DependentUpon>NaturalLife.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.eot" />
+    <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.ttf" />
+    <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.woff" />
+    <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.woff2" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\NaturalLife\fonts\bootstrap\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.eot" />
+    <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.ttf" />
+    <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -690,6 +1013,18 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\Webmaster\Index.cshtml" />
+    <Content Include="Views\Webmaster\Login.cshtml" />
+    <Content Include="Views\Booking\List.cshtml" />
+    <Content Include="Views\Booking\Detail.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
+    <Content Include="Views\Activity\Detail.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\Detail.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Detail.cshtml" />
+    <Content Include="Views\Error\FourOFour.cshtml" />
+    <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\Room\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -706,6 +1041,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
