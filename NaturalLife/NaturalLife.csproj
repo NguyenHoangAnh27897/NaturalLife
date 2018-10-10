@@ -966,6 +966,7 @@
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.eot" />
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.ttf" />
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

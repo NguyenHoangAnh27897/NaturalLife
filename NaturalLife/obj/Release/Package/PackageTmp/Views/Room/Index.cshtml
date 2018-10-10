@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- main banner -->
+<section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="banner-layout-leftsidebar">
+    <div class="banner-text">
+        <div class="center-text">
+            <div class="container">
+                <h1>VILLA</h1>
+                <strong class="subtitle">Nơi nghỉ dưỡng tuyệt vời!</strong>
+                <!-- breadcrumb -->
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="/home/index">Trang chủ</a></li>
+                        <li><span>VILLA</span></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- main container -->
+<main>
+    <!-- content with sidebar -->
+    <div class="content-with-sidebar common-spacing">
+        <div class="container">
+            <div id="two-columns" class="row">
+                <div id="content" class="col-sm-8 col-md-9" ng-controller="listRoom">
+                    <div class="filter-option filter-box">
+                        <strong class="result-info">179 VILLA</strong>
+                        <div class="layout-holder">
+                            <div class="layout-action">
+                                <a href="#" class="link link-list"><span class="icon-list"></span></a>
+                                <a href="#" class="link link-grid active"><span class="icon-grid"></span></a>
+                            </div>
+                            <div class="select-holder">
+                                <div class="select-col">
+                                    <select class="filter-select sort-select">
+                                        <option value="sort">Sắp xếp</option>
+                                        <option value="sort">Mới</option>
+                                        <option value="sort">Giá (Thấp đến cao)</option>
+                                        <option value="sort">Giá (Cao đến thấp)</option>
+                                        <option value="sort">Phổ biến</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-holder content-sub-holder">
+                        <div class="row db-3-col">
+                            <ng-container ng-repeat="item in items">
+                                <article class="col-md-6 col-lg-4 article has-hover-s1 thumb-full">
+                                    <div class="thumbnail">
+                                        <div class="img-wrap">
+                                            <img src="~/Content/NaturalLife/img/room/room-3.jpg" height="228" width="350" alt="image description">
+                                        </div>
+                                        <h3 class="small-space"><a href="/room/detail">VILLA</a></h3>
+                                        <span class="info">VILLA ALAKATA</span>
+                                        <aside class="meta">
+                                            <span class="country">
+                                                <span class="icon-family"> </span>{{ item + 2 }} Người
+                                            </span>
+                                            <span class="activity">
+                                                <span class="icon-acitivities"> </span>6 Hoạt động
+                                            </span>
+                                        </aside>
+                                        <p>Ngôi nhà hiện đại trang bị đầy đủ tiện nghi cho bạn và người thân.</p>
+                                        <a href="/room/detail" class="btn btn-default">chi tiết</a>
+                                        <footer>
+                                            <span class="price">Giá: <span>2.749.000 VND</span></span>
+                                            <ul class="social-networks">
+                                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                                <li><a href="#"><span class="icon-google-plus"></span></a></li>
+                                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                            </ul>
+                                        </footer>
+                                    </div>
+                                </article>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <nav class="pagination-wrap pagination-solid">
+                        <div class="btn-prev">
+                            <a href="#" aria-label="Previous">
+                                <span class="icon-angle-right"></span>
+                            </a>
+                        </div>
+                        <ul class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li class="active"><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>...</li>
+                            <li><a href="#">7</a></li>
+                        </ul>
+                        <div class="btn-next">
+                            <a href="#" aria-label="Previous">
+                                <span class="icon-angle-right"></span>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+                <!-- sidebar -->
+                <aside id="sidebar" class="col-sm-4 col-md-3 sidebar sidebar-list">
+                    <div class="sidebar-holder">
+                        <header class="heading">
+                            <h3>TÌM KIẾM</h3>
+                        </header>
+                        <!-- accordion filters in sidebar -->
+                        <div class="accordion">
+                            <div class="accordion-group">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" href="#collapse6" aria-expanded="true" aria-controls="collapse6">Loại</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse6" class="panel-collapse collapse in" role="tabpanel" ng-controller="listRoomChk">
+                                    <div class="panel-body">
+                                        <strong class="title">Chọn loại</strong>
+                                        <ul class="side-list check-list">
+                                            <ng-container ng-repeat="item in items">
+                                                <li>
+                                                    <label for="check1" class="custom-checkbox">
+                                                        <input id="check1" type="checkbox">
+                                                        <span class="check-input"></span>
+                                                        <span class="check-label">{{ item }}</span>
+                                                    </label>
+                                                </li>
+                                            </ng-container>
+                                        </ul>
+                                        <!-- <strong class="sub-link"><a href="#">CAST YOUR VOTE</a></strong> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</main>
+
