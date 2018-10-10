@@ -505,6 +505,7 @@
     <Content Include="Content\NaturalLife\js\vendors\validate\jquery.validate.js" />
     <Content Include="Content\NaturalLife\js\vendors\waypoint\waypoints.min.js" />
     <Content Include="Content\NaturalLife\js\vendors\wow\wow.min.js" />
+    <Content Include="Content\NaturalLife\video\naturalLife.mp4" />
     <Content Include="Content\Webmaster\css\bootstrap.min.css" />
     <Content Include="Content\Webmaster\css\font-awesome.min.css" />
     <Content Include="Content\Webmaster\css\metisMenu.css" />
