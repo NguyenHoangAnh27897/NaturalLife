@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IQueryable<NaturalLife.Models.NTL_Slider>
+@{
     ViewBag.Title = "Home Page";
 }
 <!-- main banner -->
@@ -51,7 +52,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
-                        KHÁM PHÁ HÀNH TRÌNH TÌM ĐẾN THIÊN NHIÊN
+                        @Model.FirstOrDefault().Title2
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
@@ -95,7 +96,7 @@
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
                          data-responsive_offset="on">
-                        <a class="btn btn-banner" href="#">DU LỊCH DƯỠNG TÂM</a>
+                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slogan2</a>
                     </div>
                 </li>
 
@@ -143,7 +144,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
-                        TOUR KHÁM PHÁ
+                        @Model.FirstOrDefault().Title
                     </div>
 
                     <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
@@ -210,7 +211,7 @@
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
                          data-responsive_offset="on">
-                        <a class="btn btn-banner" href="#">XIN CHÀO</a>
+                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slogan</a>
                     </div>
                 </li>
             </ul>

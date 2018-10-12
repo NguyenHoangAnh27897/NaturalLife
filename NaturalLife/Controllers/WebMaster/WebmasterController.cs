@@ -47,5 +47,19 @@ namespace NaturalLife.Controllers.WebMaster
               return  RedirectToAction("Login", "Webmaster");
             }
         }
+
+        public ActionResult Logout()
+        {
+            if (Session["Authentication"] != null)
+            {
+                Session["Authentication"] = null;
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Webmaster");
+            }
+           
+        }
     }
 }

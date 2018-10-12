@@ -12,7 +12,8 @@ namespace NaturalLife.Controllers
         natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
         public ActionResult Index()
         {
-            return View();
+            var rs = db.NTL_Slider.Where(s => s.ID == 1);
+            return View(rs);
         }
 
         public ActionResult About()

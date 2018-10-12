@@ -215,6 +215,7 @@
     <Compile Include="Controllers\NaturalLife\ServiceController.cs" />
     <Compile Include="Controllers\WebMaster\BookingController.cs" />
     <Compile Include="Controllers\WebMaster\HomepageController.cs" />
+    <Compile Include="Controllers\WebMaster\RoomMasterController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1071,6 +1072,7 @@
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\Room\Detail.cshtml" />
     <Content Include="Views\Homepage\Edit.cshtml" />
+    <Content Include="Views\RoomMaster\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
