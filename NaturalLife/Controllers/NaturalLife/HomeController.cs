@@ -9,7 +9,7 @@ namespace NaturalLife.Controllers
 {
     public class HomeController : Controller
     {
-        Entities db = new Entities();
+        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
         public ActionResult Index()
         {
             return View();
@@ -88,18 +88,18 @@ namespace NaturalLife.Controllers
                 {
                     active = active.Remove(active.Length - 2);
                 }
-                var book = new NTL_Booking();
+                var book = new NTL_ExtraBooking();
                 book.RoomType = room;
                 book.Fullname = fullname;
                 book.Phone = phone;
                 book.NumberOfAdult = adult;
                 book.NumberOfChild = child;
-                book.VehicleTye = vehicle;
+                book.VehicleType = vehicle;
                 book.StartDate = sDate;
                 book.EndDate = eDate;
                 book.ActivityID = active;
                 book.ServiceID = service;
-                db.NTL_Booking.Add(book);
+                db.NTL_ExtraBooking.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

@@ -11,7 +11,7 @@ namespace NaturalLife.Controllers.WebMaster
 {
     public class BookingController : Controller
     {
-        Entities db = new Entities();
+        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
         // GET: Booking
         public ActionResult List(int? page =1)
         {
@@ -19,7 +19,7 @@ namespace NaturalLife.Controllers.WebMaster
             {
                 int pageSize = 10;
                 int pageNumber = (page ?? 1);
-                var lst = db.NTL_Booking.ToList();
+                var lst = db.NTL_ExtraBooking.ToList();
                 return View(lst.ToPagedList(pageNumber,pageSize));
             }
             else
@@ -45,7 +45,7 @@ namespace NaturalLife.Controllers.WebMaster
             if (Session["Authentication"] != null)
             {
                 int ID = int.Parse(id);
-                var rs = db.NTL_Booking.Find(ID);
+                var rs = db.NTL_ExtraBooking.Find(ID);
                 db.Entry(rs).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
                 return RedirectToAction("List");

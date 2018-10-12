@@ -14,16 +14,14 @@ namespace NaturalLife.Models
     
     public partial class NTL_Booking
     {
-        public int ID { get; set; }
-        public string RoomType { get; set; }
-        public string Fullname { get; set; }
-        public string Phone { get; set; }
+        public string ID { get; set; }
+        public string CustomerID { get; set; }
         public string NumberOfAdult { get; set; }
         public string NumberOfChild { get; set; }
-        public string VehicleTye { get; set; }
+        public Nullable<int> VehicleID { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
-        public string ServiceID { get; set; }
-        public string ActivityID { get; set; }
+        public Nullable<int> DiscountID { get; set; }
+        public Nullable<int> RoomType { get; set; }
     }
 }

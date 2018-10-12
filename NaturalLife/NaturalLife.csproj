@@ -214,6 +214,7 @@
     <Compile Include="Controllers\NaturalLife\RoomController.cs" />
     <Compile Include="Controllers\NaturalLife\ServiceController.cs" />
     <Compile Include="Controllers\WebMaster\BookingController.cs" />
+    <Compile Include="Controllers\WebMaster\HomepageController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +238,48 @@
       <DependentUpon>NaturalLife.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\NTL_Booking.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Booking_Activity.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Booking_Service.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Customer.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_DiscountProgram.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_ExtraBooking.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Inventory.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Room.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_RoomType.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Schedule.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Schedule_Activity.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Schedule_Service.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Service.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Slider.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Vehicle.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -948,13 +991,6 @@
     <Content Include="Content\Webmaster\js\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Content\Webmaster\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Content\Webmaster\js\ckeditor\skins\moono-lisa\readme.md" />
-    <EntityDeploy Include="Models\NaturalLife.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NaturalLife.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\NaturalLife.edmx.diagram">
-      <DependentUpon>NaturalLife.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.eot" />
     <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.ttf" />
     <Content Include="Content\NaturalLife\js\vendors\material-design-icons\MaterialIcons-Regular.woff" />
@@ -967,6 +1003,13 @@
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.eot" />
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.ttf" />
     <Content Include="Content\NaturalLife\fonts\icomoon\icomoon8ce7.woff" />
+    <EntityDeploy Include="Models\NaturalLife.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NaturalLife.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NaturalLife.edmx.diagram">
+      <DependentUpon>NaturalLife.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1027,9 +1070,11 @@
     <Content Include="Views\Error\FourOFour.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\Room\Detail.cshtml" />
+    <Content Include="Views\Homepage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\website\imagehome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -13,10 +13,10 @@ namespace NaturalLife.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class natu0679_NaturalLifeEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public natu0679_NaturalLifeEntities()
+            : base("name=natu0679_NaturalLifeEntities")
         {
         }
     
@@ -26,5 +26,19 @@ namespace NaturalLife.Models
         }
     
         public virtual DbSet<NTL_Booking> NTL_Booking { get; set; }
+        public virtual DbSet<NTL_Booking_Activity> NTL_Booking_Activity { get; set; }
+        public virtual DbSet<NTL_Booking_Service> NTL_Booking_Service { get; set; }
+        public virtual DbSet<NTL_Customer> NTL_Customer { get; set; }
+        public virtual DbSet<NTL_DiscountProgram> NTL_DiscountProgram { get; set; }
+        public virtual DbSet<NTL_Inventory> NTL_Inventory { get; set; }
+        public virtual DbSet<NTL_Room> NTL_Room { get; set; }
+        public virtual DbSet<NTL_Schedule> NTL_Schedule { get; set; }
+        public virtual DbSet<NTL_Schedule_Activity> NTL_Schedule_Activity { get; set; }
+        public virtual DbSet<NTL_Schedule_Service> NTL_Schedule_Service { get; set; }
+        public virtual DbSet<NTL_Service> NTL_Service { get; set; }
+        public virtual DbSet<NTL_Vehicle> NTL_Vehicle { get; set; }
+        public virtual DbSet<NTL_RoomType> NTL_RoomType { get; set; }
+        public virtual DbSet<NTL_ExtraBooking> NTL_ExtraBooking { get; set; }
+        public virtual DbSet<NTL_Slider> NTL_Slider { get; set; }
     }
 }
