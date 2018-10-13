@@ -54,6 +54,13 @@ html {
 	height: 670px;
 }
 
+.testimonial-quote .bg-discount {
+    width: 112px;
+    height: 112px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .default-list,
 .cart-list,
 .top-user-panel,
@@ -1362,8 +1369,10 @@ blockquote.normal {
 .testimonial-holder blockquote .img {
 	border: 2px solid #fff;
 	width: 90px;
+	height: 90px;
 	border-radius: 100%;
 	margin: 0 auto 45px;
+    overflow: hidden;
 }
 
 .testimonial-holder blockquote .img img {
@@ -9104,6 +9113,7 @@ input[type="checkbox"] {
 }
 
 .demo-wrapper.demo-wrapper-0 {
+    position: relative;
 	padding: 0;
 }
 
@@ -9134,8 +9144,10 @@ blockquote .img,
 .blockquote .img {
 	border: 2px solid #fff;
 	width: 90px;
+	height: 90px;
 	border-radius: 100%;
 	margin: 0 auto 45px;
+    overflow: hidden;
 }
 
 blockquote .img img,
@@ -10957,14 +10969,16 @@ blockquote.normal {
 .testimonial-holder blockquote .img {
 	display: inline-block;
 	vertical-align: top;
-	width: 112px;
+	width: 225px;
+    height: 225px;
 	margin: 20px 0 0;
+    overflow: hidden;
 }
 
 .testimonial-holder blockquote .text {
 	display: inline-block;
 	vertical-align: top;
-	width: calc(100% - 150px);
+	width: calc(100% - 250px);
 	padding-left: 55px;
 }
 
@@ -12065,7 +12079,9 @@ blockquote .img,
 	display: inline-block;
 	vertical-align: top;
 	width: 112px;
+	height: 112px;
 	margin: 20px 0 0;
+    overflow: hidden;
 }
 
 blockquote .text,
