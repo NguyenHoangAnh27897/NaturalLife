@@ -95,6 +95,7 @@
           <Property Name="DiscountID" Type="int" />
           <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
           <Property Name="Schedule" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NTL_RoomType">
           <Key>
@@ -102,6 +103,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NTL_Schedule">
           <Key>
@@ -151,6 +153,8 @@
           <Property Name="Icon" Type="nvarchar" MaxLength="50" />
           <Property Name="Icon2" Type="nvarchar" MaxLength="50" />
           <Property Name="Images" Type="nvarchar" MaxLength="200" />
+          <Property Name="SubTitle" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubTitle2" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="NTL_Vehicle">
           <Key>
@@ -254,6 +258,7 @@
           <Property Name="DiscountID" Type="Int32" />
           <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Schedule" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NTL_Schedule">
           <Key>
@@ -321,6 +326,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NTL_ExtraBooking">
           <Key>
@@ -350,6 +356,8 @@
           <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Icon2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -430,6 +438,7 @@
           <EntitySetMapping Name="NTL_Room">
             <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
               <MappingFragment StoreEntitySet="NTL_Room">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -490,6 +499,7 @@
           <EntitySetMapping Name="NTL_RoomType">
             <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_RoomType">
               <MappingFragment StoreEntitySet="NTL_RoomType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="RoomType" ColumnName="RoomType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -515,6 +525,8 @@
           <EntitySetMapping Name="NTL_Slider">
             <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Slider">
               <MappingFragment StoreEntitySet="NTL_Slider">
+                <ScalarProperty Name="SubTitle2" ColumnName="SubTitle2" />
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
                 <ScalarProperty Name="Images" ColumnName="Images" />
                 <ScalarProperty Name="Icon2" ColumnName="Icon2" />
                 <ScalarProperty Name="Icon" ColumnName="Icon" />

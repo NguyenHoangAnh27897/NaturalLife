@@ -75,7 +75,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
-                        QUAN NIỆM
+                        @Model.FirstOrDefault().SubTitle2
                     </div>
 
                     <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2"
@@ -102,7 +102,7 @@
 
                 <li data-index="rs-81" data-transition="slideoverup" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="The Menu" data-description="">
                     <!-- main image for revolution slide -->
-                    <img alt="image description" src="~/Content/NaturalLife/img/banner/img-01.jpg" data-lazyload="img/banner/img-02.png" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
+                    <img alt="image description" src="~/Content/NaturalLife/img/banner/img-04.jpg" data-lazyload="../Content/NaturalLife/img/banner/img-04.jpg" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
 
                     <div class="tp-caption tp-resizeme" id="slide-897-layer1-7"
                          data-x="['center','center','center','center']"
@@ -166,11 +166,11 @@
                          data-splitin="none"
                          data-splitout="none"
                          data-responsive_offset="on"
-                         style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 300; font-style: italic; white-space: nowrap;">
-                        năm 
+                         style="z-index: 8; padding-right: 10px; text-indent: 2.5em; font-weight: 900; font-style: italic; white-space: nowrap; text-align:center">
+                         @Model.FirstOrDefault().SubTitle
                     </div>
 
-                    <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
+                    @*<div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
                          data-x="['center','center','center','center']"
                          data-hoffset="['50','30','30','20']"
                          data-y="['top','top','middle','middle']"
@@ -190,8 +190,8 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
-                        2018
-                    </div>
+                        @Model.FirstOrDefault().SubTitle
+                    </div>*@
 
                     <div class="tp-caption rev-btn rs-parallaxlevel-10" id="slide-163-layer1-2"
                          data-x="['center','center','center','center']"
@@ -212,6 +212,103 @@
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
                          data-responsive_offset="on">
                         <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slogan</a>
+                    </div>
+                </li>
+
+                <li data-index="rs-3" data-transition="slideoverup" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="The Menu" data-description="">
+                    <!-- main image for revolution slide -->
+                    <img alt="image description" src="~/Content/NaturalLife/img/service/ob-thumnail.jpg" data-lazyload="../Content/NaturalLife/img/service/ob-thumnail.jpg" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
+
+                    <div class="tp-caption tp-resizeme" id="slide-897-layer1-7"
+                         data-x="['center','center','center','center']"
+                         data-hoffset="['0','0','0','0']"
+                         data-y="['top','top','middle','middle']"
+                         data-voffset="['160','120','-120','-70']"
+                         data-width="none"
+                         data-height="none"
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;"
+                         data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;"
+                         data-transform_out="opacity:0;s:300;s:300;"
+                         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                         data-start="1500"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-responsive_offset="on"
+                         style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
+                        <span class="icon-camping"></span>
+                    </div>
+
+                    <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
+                         data-x="['center','center','center','center']"
+                         data-hoffset="['0','0','0','0']"
+                         data-y="['top','top','middle','middle']"
+                         data-voffset="['280','240','10','20']"
+                         data-fontsize="['48','48','44','28']"
+                         data-lineheight="['85','85','50','50']"
+                         data-width="['1200','1000','750','480']"
+                         data-height="none"
+                         data-whitespace="normal"
+                         data-transform_idle="o:1;"
+                         data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                         data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                         data-mask_in="x:0px;y:0px;"
+                         data-mask_out="x:inherit;y:inherit;"
+                         data-start="1000"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-responsive_offset="on"
+                         style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff; text-transform: uppercase;">
+                        @*@Model.FirstOrDefault().Title*@
+                        tour ông bà
+                    </div>
+
+                    <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
+                         data-x="['center','center','center','center']"
+                         data-hoffset="['-80','-80','-80','-60']"
+                         data-y="['top','top','middle','middle']"
+                         data-voffset="['330','280','60','60']"
+                         data-fontsize="['60','60','60','40']"
+                         data-lineheight="['110','110','100','60']"
+                         data-width="none"
+                         data-height="none"
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;"
+                         data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;"
+                         data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                         data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                         data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                         data-start="1000"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-responsive_offset="on"
+                         style="z-index: 8; padding-right: 10px; text-indent: 2.5em; font-weight: 900; font-style: italic; white-space: nowrap; text-align:center">
+                        @*@Model.FirstOrDefault().SubTitle*@
+                        Giảm 30%
+                    </div>
+
+                    <div class="tp-caption rev-btn rs-parallaxlevel-10" id="slide-163-layer1-2"
+                         data-x="['center','center','center','center']"
+                         data-hoffset="['0','0','0','0']"
+                         data-y="['middle','middle','middle','middle']"
+                         data-voffset="['150','160','180','150']"
+                         data-width="none"
+                         data-height="none"
+                         data-whitespace="nowrap"
+                         data-transform_idle="o:1;"
+                         data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;"
+                         data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                         data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                         data-mask_out="x:inherit;y:inherit;"
+                         data-start="800"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
+                         data-responsive_offset="on">
+                        <a class="btn btn-banner" href="/service/detail">
+                        @*@Model.FirstOrDefault().Slogan*@
+                            khám phá ngay
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -303,7 +400,7 @@
                                     <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-4.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
                                     </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-5.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
                                     </div>
                                 </div>
@@ -391,7 +488,7 @@
                                             <ul class="dropdown-menu drop-social-share">
                                                 <li><a href="javascript:void(null);" class="facebook" onclick=""> <span class="ico"> <span class="icon-facebook"></span> </span> <span class="text">Share</span> </a></li>
                                                 <li><a href="javascript:void(null);" class="twitter" onclick=""> <span class="ico"> <span class="icon-twitter"></span> </span> <span class="text">Tweet</span> </a></li>
-                                                <li> <a href="javascript:void(null);" class="google" onclick=""></span> </span> <span class="text">+1</span> </a></li>
+                                                <li> <a href="javascript:void(null);" class="google" onclick=""> <span class="text">+1</span> </a></li>
                                                 <li> <a href="javascript:void(null);" class="pin" onclick=""> <span class="ico"> <span class="icon-pin"></span> </span> <span class="text">Pin it</span> </a></li>
                                             </ul>
                                         </li>
@@ -566,10 +663,10 @@
                                     <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-3.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         @*<img width="550" height="358" src="~/Content/NaturalLife/img/camping/camping-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
                                     </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-4.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
                                     </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-5.png) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
                                     </div>
                                 </div>
@@ -812,7 +909,7 @@
                     <article class="col-sm-6 col-md-4 article has-hover-s3">
                         <div class="img-wrap">
                             <a href="#">
-                                <img src="~/Content/NaturalLife/img/listing/img-05.jpg" height="215" width="370" alt="image description">
+                                <img src="~/Content/NaturalLife/img/service/ob.jpg" height="215" width="370" alt="image description">
                             </a>
                             <div class="img-caption text-uppercase">Ông bà tôi</div>
                             <div class="hover-article">

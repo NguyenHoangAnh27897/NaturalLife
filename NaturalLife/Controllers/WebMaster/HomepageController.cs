@@ -26,13 +26,15 @@ namespace NaturalLife.Controllers.WebMaster
         }
 
         [HttpPost]
-        public ActionResult Edit(string title, string title2, string slogan, string slogan2, string icon, string icon2, HttpPostedFileBase[] images)
+        public ActionResult Edit(string title, string title2, string subtitle, string subtitle2, string slogan, string slogan2, string icon, string icon2, HttpPostedFileBase[] images)
         {
             if (Session["Authentication"] != null)
             {
                 var home = db.NTL_Slider.Find(1);
                 home.Title = title;
                 home.Title2 = title2;
+                home.SubTitle = subtitle;
+                home.SubTitle2 = subtitle2;
                 home.Slogan = slogan;
                 home.Slogan2 = slogan2;
                 home.Icon = icon;

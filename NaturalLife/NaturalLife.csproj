@@ -1076,6 +1076,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\NaturalLife\img\service\" />
     <Folder Include="Images\website\imagehome\" />
   </ItemGroup>
   <ItemGroup>

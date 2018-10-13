@@ -1,0 +1,133 @@
+﻿@model IQueryable<NaturalLife.Models.NTL_Slider>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    string[] arrStr;
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa trang chủ</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Chỉnh sửa trang chủ</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/homepage/edit" method="post" enctype="multipart/form-data">
+                                @if (Model.FirstOrDefault().Images != null)
+                                {
+                                    if (Model.FirstOrDefault().Images.Contains(","))
+                                    {
+                                        arrStr = Model.FirstOrDefault().Images.Split(',');
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <div class="row">
+                                                @foreach (var img in arrStr)
+                                                {
+
+                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagehome/@img') center center no-repeat / cover;">
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Images" style="width:100%" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                    </div>
+                                }
+
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="title" value="@Model.FirstOrDefault().Title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="subtitle" value="@Model.FirstOrDefault().SubTitle">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="title2" value="@Model.FirstOrDefault().Title2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="subtitle2" value="@Model.FirstOrDefault().SubTitle2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="slogan" value="@Model.FirstOrDefault().Slogan">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Câu giới thiệu khác (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="slogan2" value="@Model.FirstOrDefault().Slogan2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Icon 1</label>
+                                    <input type="text" class="form-control" placeholder="" name="icon" value="@Model.FirstOrDefault().Icon">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Icon 2</label>
+                                    <input type="text" class="form-control" placeholder="" name="icon2" value="@Model.FirstOrDefault().Icon2">
+                                </div>
+
+                                <button class="btn btn-primaryt">Submit</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+

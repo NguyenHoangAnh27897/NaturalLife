@@ -1,63 +1,70 @@
-﻿@using NaturalLife.Models
-@model LoginViewModel
-@{
-    ViewBag.Title = "Log in";
-}
-
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+﻿<main id="main">
+    <!-- top information area -->
+    <div class="inner-top">
+        <div class="container">
+            <h1 class="inner-main-heading">Đăng nhập</h1>
+            <!-- breadcrumb -->
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="/home/index">Trang chủ</a></li>
+                    <li><span>Đăng nhập</span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="inner-main common-spacing container">
+        <!-- form -->
+        <form class="twocol-form" action="#">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="top-box">
+                        <span class="holder height">ĐĂNG NHẬP</span>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                    <div class="form-holder">
+                        <div class="wrap">
+                            <div class="hold">
+                                <label for="uname">Email</label>
+                                <input type="email" id="uname" class="form-control">
+                            </div>
+                            <div class="hold">
+                                <label for="pass">Mật khẩu</label>
+                                <input type="password" id="pass" class="form-control">
+                            </div>
+                            <div class="btn-hold">
+                                <button type="submit" class="btn btn-default">Đăng nhập</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                <div class="col-md-6">
+                    <div class="top-box">
+                        <span class="holder height">ĐĂNG KÝ</span>
+                    </div>
+                    <div class="form-holder">
+                        <div class="wrap">
+                            <div class="hold">
+                                <label for="name">Họ tên</label>
+                                <input type="text" id="name" class="form-control">
+                            </div>
+                            <div class="hold">
+                                <label for="uname1">Số điện thoại</label>
+                                <input type="text" id="uname1" class="form-control">
+                            </div>
+                            <div class="hold">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="hold">
+                                <label for="reg-pass">Mật khẩu</label>
+                                <input type="password" id="reg-pass" class="form-control">
+                            </div>
+                            <div class="btn-hold">
+                                <button type="submit" class="btn btn-default">Đăng ký</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
+            </div>
+        </form>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</main>

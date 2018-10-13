@@ -74,6 +74,7 @@
     <Property Name="DiscountID" Type="Int32" />
     <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Schedule" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>
@@ -141,6 +142,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_ExtraBooking">
     <Key>
@@ -170,5 +172,7 @@
     <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Icon2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>
