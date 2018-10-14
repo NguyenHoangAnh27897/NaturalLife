@@ -9,13 +9,13 @@ namespace NaturalLife.Controllers.NaturalLife
 {
     public class RoomController : Controller
     {
-        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
+        NaturalLifeEntities db = new NaturalLifeEntities();
         // GET: Room
-        public ActionResult Index(string ID)
+        public ActionResult Index()
         {
-            int id = int.Parse(ID);
-            var lst = db.NTL_Room.Where(s => s.RoomTypeID == id).ToList();
-            return View(lst);
+            //int id = int.Parse(ID);
+            //var lst = db.NTL_Room.Where(s => s.RoomTypeID == id).ToList();
+            return View();
         }
 
         public ActionResult Detail()

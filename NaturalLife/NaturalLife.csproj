@@ -216,6 +216,7 @@
     <Compile Include="Controllers\WebMaster\BookingController.cs" />
     <Compile Include="Controllers\WebMaster\HomepageController.cs" />
     <Compile Include="Controllers\WebMaster\RoomMasterController.cs" />
+    <Compile Include="Controllers\WebMaster\ServiceMasterController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1078,6 +1079,10 @@
     <Content Include="Views\RoomMaster\ListType.cshtml" />
     <Content Include="Views\RoomMaster\AddType.cshtml" />
     <Content Include="Views\RoomMaster\EditType.cshtml" />
+    <Content Include="Views\RoomMaster\Edit.cshtml" />
+    <Content Include="Views\ServiceMaster\List.cshtml" />
+    <Content Include="Views\ServiceMaster\Add.cshtml" />
+    <Content Include="Views\ServiceMaster\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1085,6 +1090,7 @@
     <Folder Include="Images\website\imagehome\" />
     <Folder Include="Images\website\imageroomtype\" />
     <Folder Include="Images\website\imageroom\" />
+    <Folder Include="Images\website\imageservice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

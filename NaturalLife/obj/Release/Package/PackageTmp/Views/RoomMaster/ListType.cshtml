@@ -1,8 +1,8 @@
 ﻿@using PagedList.Mvc;
 @using GridMvc.Html;
-@model PagedList.IPagedList<NaturalLife.Models.NTL_Room>
+@model PagedList.IPagedList<NaturalLife.Models.NTL_RoomType>
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "ListType";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
@@ -30,9 +30,6 @@
                             <div class="title">
                                 <h4>Danh sách Phòng</h4>
                             </div>
-                            <div class="align-self-center">
-                                <a class="btn btn-success" href="/roommaster/add">Thêm</a>
-                            </div>
                         </div>
                         <div class="section-body">
                             <div class="table-responsive">
@@ -40,10 +37,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tên phòng</th>
-                                            <th>Giá</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Miêu tả</th>
+                                            <th>Tên loại phòng</th>
+                                            <th>Nội dung miêu tả</th>
                                             <th>Xoá</th>
                                         </tr>
                                     </thead>
@@ -52,14 +47,12 @@
                                         {
                                             <tr>
                                                 <td>@item.ID</td>
-                                                <td><a href="/roommaster/edit/@item.ID">@item.RoomName</a></td>
-                                                <td>@string.Format("{0:n0}", item.Price)</td>
-                                                <td>@item.Avatar</td>
+                                                <td><a href="/roommaster/edittype/@item.ID">@item.RoomType</a></td>
                                                 @if (item.Description != null)
                                                 {
                                                     if (item.Description.Count() > 25)
                                                     {
-                                                        <td>@Html.Raw(item.Description.Substring(0, 25)) ...</td>
+                                                        <td>@Html.Raw(item.Description.Substring(0, 50)) ...</td>
                                                     }
                                                     else
                                                     {
@@ -70,7 +63,7 @@
                                                 {
                                                     <td></td>
                                                 }
-                                                <td><a href="/roommaster/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
+                                                <td><a href="/roommaster/deletetype/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
                                             </tr>
                                         }
                                     </tbody>
@@ -78,7 +71,7 @@
                                 <div class="pagination-total-pages">
                                     <div class="pagination-style">
                                         <strong style="margin: 12px;"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</strong>
-                                        @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+                                        @Html.PagedListPager(Model, page => Url.Action("ListType", new { page }))
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +82,4 @@
         </div>
     </div>
 </div>
-
-
 

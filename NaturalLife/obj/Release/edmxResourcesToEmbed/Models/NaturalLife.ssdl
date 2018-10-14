@@ -88,12 +88,11 @@
     <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
     <Property Name="Price" Type="int" />
     <Property Name="DiscountID" Type="int" />
-    <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="50" />
     <Property Name="Schedule" Type="int" />
-<<<<<<< HEAD
-=======
     <Property Name="Description" Type="nvarchar(max)" />
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+    <Property Name="Images" Type="nvarchar" MaxLength="200" />
+    <Property Name="RoomTypeID" Type="int" />
   </EntityType>
   <EntityType Name="NTL_RoomType">
     <Key>
@@ -101,10 +100,8 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
-<<<<<<< HEAD
-=======
     <Property Name="Description" Type="nvarchar(max)" />
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+    <Property Name="Images" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>
@@ -141,6 +138,11 @@
     <Property Name="ID" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="ServiceName" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="50" />
+    <Property Name="Images" Type="nvarchar" MaxLength="200" />
+    <Property Name="ServiceType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Price" Type="int" />
+    <Property Name="DiscountID" Type="int" />
   </EntityType>
   <EntityType Name="NTL_Slider">
     <Key>

@@ -1,6 +1,6 @@
-﻿@model IQueryable<NaturalLife.Models.NTL_RoomType>
+﻿@model IQueryable<NaturalLife.Models.NTL_Service>
 @{
-    ViewBag.Title = "EditType";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
     string[] arrStr;
 }
@@ -14,7 +14,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa loại phòng</li>
+                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa phòng</li>
                     </ol>
                 </nav>
             </div>
@@ -28,23 +28,50 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Chỉnh sửa loại phòng</h4>
+                                <h4>Chỉnh sửa phòng</h4>
                             </div>
                         </div>
 
                         <div class="section-body">
-                            <form action="/roommaster/edittype" method="post" enctype="multipart/form-data">
+                            <form action="/servicemaster/edit" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tên loại phòng</label>
-                                    <input type="text" class="form-control" placeholder="" name="typename" value="@Model.FirstOrDefault().RoomType">
+                                    <label for="exampleFormControlInput4">Tên phòng</label>
+                                    <input type="text" class="form-control" placeholder="" name="roomname" value="@Model.FirstOrDefault().ServiceName">
                                     <input type="hidden" name="ID" value="@Model.FirstOrDefault().ID" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
-                                    <textarea name="editor">@Model.FirstOrDefault().Description</textarea>
+                                    <label for="exampleFormControlInput4">Giá</label>
+                                    <input class="form-control input-numeral" placeholder="" name="Price" style="width:25%" @Model.FirstOrDefault().Price>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Danh mục dịch vụ</label>
+                                    <input type="text" class="form-control" placeholder="" name="servicetype" style="width:40%" value="@Model.FirstOrDefault().ServiceType">
+                                </div>
+
+                                @if (Model.FirstOrDefault().Avatar != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 800x600 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatar" accept="image/*" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageroom/@Model.FirstOrDefault().Avatar') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 800x600 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatar" accept="image/*" />
+                                    </div>
+                                }
+
 
                                 @if (Model.FirstOrDefault().Images != null)
                                 {
@@ -59,7 +86,7 @@
                                                 @foreach (var img in arrStr)
                                                 {
 
-                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageroomtype/@img') center center no-repeat / cover;">
+                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageroom/@img') center center no-repeat / cover;">
                                                     </div>
                                                 }
                                             </div>
@@ -87,6 +114,11 @@
                                     </div>
                                 }
 
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea name="editor">@Model.FirstOrDefault().Description</textarea>
+                                </div>
+
                                 <button class="btn btn-primaryt">Lưu</button>
                             </form>
                         </div>
@@ -104,5 +136,6 @@
 <script>
     CKEDITOR.replace('editor');
 </script>
+
 
 

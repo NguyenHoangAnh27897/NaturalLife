@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="natu0679_NaturalLifeModelStoreContainer" CdmEntityContainer="natu0679_NaturalLifeEntities">
+  <EntityContainerMapping StorageEntityContainer="natu0679_NaturalLifeModelStoreContainer" CdmEntityContainer="NaturalLifeEntities">
     <EntitySetMapping Name="NTL_Booking">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Booking">
         <MappingFragment StoreEntitySet="NTL_Booking">
-          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
@@ -13,6 +12,7 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -48,12 +48,29 @@
     <EntitySetMapping Name="NTL_DiscountProgram">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_DiscountProgram">
         <MappingFragment StoreEntitySet="NTL_DiscountProgram">
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
           <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_ExtraBooking">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
+        <MappingFragment StoreEntitySet="NTL_ExtraBooking">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
+          <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -74,16 +91,25 @@
     <EntitySetMapping Name="NTL_Room">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
         <MappingFragment StoreEntitySet="NTL_Room">
-<<<<<<< HEAD
-=======
-          <ScalarProperty Name="Description" ColumnName="Description" />
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="RoomName" ColumnName="RoomName" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_RoomType">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_RoomType">
+        <MappingFragment StoreEntitySet="NTL_RoomType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -124,6 +150,27 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_Slider">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Slider">
+        <MappingFragment StoreEntitySet="NTL_Slider">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Title2" ColumnName="Title2" />
+          <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+          <ScalarProperty Name="Slogan2" ColumnName="Slogan2" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Icon2" ColumnName="Icon2" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="SubTitle2" ColumnName="SubTitle2" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -132,51 +179,6 @@
         <MappingFragment StoreEntitySet="NTL_Vehicle">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NTL_RoomType">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_RoomType">
-        <MappingFragment StoreEntitySet="NTL_RoomType">
-<<<<<<< HEAD
-=======
-          <ScalarProperty Name="Description" ColumnName="Description" />
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
-          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NTL_ExtraBooking">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
-        <MappingFragment StoreEntitySet="NTL_ExtraBooking">
-          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
-          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
-          <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
-          <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
-          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NTL_Slider">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Slider">
-        <MappingFragment StoreEntitySet="NTL_Slider">
-          <ScalarProperty Name="SubTitle2" ColumnName="SubTitle2" />
-          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
-          <ScalarProperty Name="Images" ColumnName="Images" />
-          <ScalarProperty Name="Icon2" ColumnName="Icon2" />
-          <ScalarProperty Name="Icon" ColumnName="Icon" />
-          <ScalarProperty Name="Slogan2" ColumnName="Slogan2" />
-          <ScalarProperty Name="Slogan" ColumnName="Slogan" />
-          <ScalarProperty Name="Title2" ColumnName="Title2" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

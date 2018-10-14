@@ -12,7 +12,7 @@ namespace NaturalLife.Controllers.WebMaster
 {
     public class RoomMasterController : Controller
     {
-        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
+        NaturalLifeEntities db = new NaturalLifeEntities();
         // GET: RoomMaster
         public ActionResult List(int? page =1)
         {
@@ -20,7 +20,7 @@ namespace NaturalLife.Controllers.WebMaster
             {
                 try
                 {
-                    int pageSize = 10;
+                    int pageSize = 7;
                     int pageNumber = (page ?? 1);
                     var lst = db.NTL_Room.ToList();
                     return View(lst.ToPagedList(pageNumber, pageSize));
@@ -48,6 +48,18 @@ namespace NaturalLife.Controllers.WebMaster
             {
                 return RedirectToAction("Login", "Webmaster");
             }
+        }
+
+        //generate new id
+        public static string getGUID()
+        {
+            string rs = "NATURAL";
+            Random rd = new Random();
+            int random = rd.Next(90000);
+            rs += random.ToString() + "_";
+            random = rd.Next(90000);
+            rs += random.ToString();
+            return rs;
         }
 
         [HttpPost]
@@ -93,6 +105,7 @@ namespace NaturalLife.Controllers.WebMaster
                             Images = Images.Remove(Images.Length - 1);
                         }
                         var room = new NTL_Room();
+                        room.ID = getGUID();
                         room.RoomName = roomname;
                         Price = Price.Replace(",", "");
                         var pri = int.Parse(Price);
@@ -106,7 +119,8 @@ namespace NaturalLife.Controllers.WebMaster
                             room.Images = Images;
                         }
                         room.Description = editor;
-                        room.RoomTypeID = int.Parse(roomtype);
+                        int rtype = int.Parse(roomtype);
+                        room.RoomTypeID = rtype;
                         db.NTL_Room.Add(room);
                         db.SaveChanges();
                         return RedirectToAction("List");
@@ -118,6 +132,118 @@ namespace NaturalLife.Controllers.WebMaster
                    
                 }
                 return RedirectToAction("Login", "Webmaster");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Webmaster");
+            }
+        }
+
+        public ActionResult Edit(string ID)
+        {
+            if (Session["Authentication"] != null)
+            {
+                var rs = db.NTL_Room.Where(s => s.ID.Equals(ID));
+                return View(rs);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Webmaster");
+            }
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(string ID, string roomname, string Price, string editor, HttpPostedFileBase[] images, HttpPostedFileBase avatar, string roomtype)
+        {
+            if (Session["Authentication"] != null)
+            {
+                if (images != null)
+                {
+                    try
+                    {
+                        string Avatar = "";
+                        if (avatar != null)
+                        {
+                            if (avatar.ContentLength > 0)
+                            {
+                                var filename = Path.GetFileName(avatar.FileName);
+                                var fname = filename.Replace(" ", "_");
+                                var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
+                                avatar.SaveAs(path);
+                                Avatar += fname;
+                            }
+
+                        }
+                        string Images = "";
+                        foreach (HttpPostedFileBase file in images)
+                        {
+                            if (file != null)
+                            {
+                                if (file.ContentLength > 0)
+                                {
+                                    var filename = Path.GetFileName(file.FileName);
+                                    var fname = filename.Replace(" ", "_");
+                                    var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
+                                    file.SaveAs(path);
+                                    Images += fname + ",";
+                                }
+                            }
+                        }
+                        if (Images != "" && Images.Contains(","))
+                        {
+                            Images = Images.Remove(Images.Length - 1);
+                        }
+                        var room = db.NTL_Room.Find(ID);
+                        room.RoomName = roomname;
+                        Price = Price.Replace(",", "");
+                        var pri = int.Parse(Price);
+                        room.Price = pri;
+                        if (Avatar != "")
+                        {
+                            room.Avatar = Avatar;
+                        }
+                        if (Images != "")
+                        {
+                            room.Images = Images;
+                        }
+                        room.Description = editor;
+                        int rtype = int.Parse(roomtype);
+                        room.RoomTypeID = rtype;
+                        db.Entry(room).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("List");
+                    }
+                    catch (Exception ex)
+                    {
+                        return RedirectToAction("FourOFour", "Error");
+                    }
+
+                }
+                return RedirectToAction("Login", "Webmaster");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Webmaster");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string ID)
+        {
+            if (Session["Authentication"] != null)
+            {
+                try
+                {
+                    var rs = db.NTL_Room.Find(ID);
+                    db.Entry(rs).State = System.Data.Entity.EntityState.Deleted;
+                    db.SaveChanges();
+                    return RedirectToAction("List");
+                }
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
             }
             else
             {

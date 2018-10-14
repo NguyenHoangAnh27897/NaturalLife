@@ -51,6 +51,22 @@
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="NTL_ExtraBooking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="NTL_Inventory">
     <Key>
       <PropertyRef Name="ID" />
@@ -63,6 +79,29 @@
     <Property Name="SoldPrice" Type="Int32" />
     <Property Name="InOutInventory" Type="Int32" />
     <Property Name="Supplier" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="DiscountID" Type="Int32" />
+    <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Schedule" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RoomTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NTL_RoomType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>
@@ -99,55 +138,11 @@
     <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="NTL_Vehicle">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityContainer Name="natu0679_NaturalLifeEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="NTL_Booking" EntityType="Self.NTL_Booking" />
-    <EntitySet Name="NTL_Booking_Activity" EntityType="Self.NTL_Booking_Activity" />
-    <EntitySet Name="NTL_Booking_Service" EntityType="Self.NTL_Booking_Service" />
-    <EntitySet Name="NTL_Customer" EntityType="Self.NTL_Customer" />
-    <EntitySet Name="NTL_DiscountProgram" EntityType="Self.NTL_DiscountProgram" />
-    <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" />
-    <EntitySet Name="NTL_Schedule" EntityType="Self.NTL_Schedule" />
-    <EntitySet Name="NTL_Schedule_Activity" EntityType="Self.NTL_Schedule_Activity" />
-    <EntitySet Name="NTL_Schedule_Service" EntityType="Self.NTL_Schedule_Service" />
-    <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" />
-    <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" />
-    <EntitySet Name="NTL_RoomType" EntityType="natu0679_NaturalLifeModel.NTL_RoomType" />
-    <EntitySet Name="NTL_ExtraBooking" EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" />
-    <EntitySet Name="NTL_Slider" EntityType="natu0679_NaturalLifeModel.NTL_Slider" />
-    <EntitySet Name="NTL_Room" EntityType="natu0679_NaturalLifeModel.NTL_Room" />
-  </EntityContainer>
-  <EntityType Name="NTL_RoomType">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="NTL_ExtraBooking">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="DiscountID" Type="Int32" />
   </EntityType>
   <EntityType Name="NTL_Slider">
     <Key>
@@ -164,18 +159,28 @@
     <Property Name="SubTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="SubTitle2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="NTL_Room">
+  <EntityType Name="NTL_Vehicle">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="DiscountID" Type="Int32" />
-    <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Schedule" Type="Int32" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="RoomTypeID" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityContainer Name="NaturalLifeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NTL_Booking" EntityType="Self.NTL_Booking" />
+    <EntitySet Name="NTL_Booking_Activity" EntityType="Self.NTL_Booking_Activity" />
+    <EntitySet Name="NTL_Booking_Service" EntityType="Self.NTL_Booking_Service" />
+    <EntitySet Name="NTL_Customer" EntityType="Self.NTL_Customer" />
+    <EntitySet Name="NTL_DiscountProgram" EntityType="Self.NTL_DiscountProgram" />
+    <EntitySet Name="NTL_ExtraBooking" EntityType="Self.NTL_ExtraBooking" />
+    <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" />
+    <EntitySet Name="NTL_Room" EntityType="Self.NTL_Room" />
+    <EntitySet Name="NTL_RoomType" EntityType="Self.NTL_RoomType" />
+    <EntitySet Name="NTL_Schedule" EntityType="Self.NTL_Schedule" />
+    <EntitySet Name="NTL_Schedule_Activity" EntityType="Self.NTL_Schedule_Activity" />
+    <EntitySet Name="NTL_Schedule_Service" EntityType="Self.NTL_Schedule_Service" />
+    <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" />
+    <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" />
+    <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" />
+  </EntityContainer>
 </Schema>

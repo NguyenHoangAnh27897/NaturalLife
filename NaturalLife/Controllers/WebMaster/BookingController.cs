@@ -11,7 +11,7 @@ namespace NaturalLife.Controllers.WebMaster
 {
     public class BookingController : Controller
     {
-        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
+        NaturalLifeEntities db = new NaturalLifeEntities();
         // GET: Booking
         public ActionResult List(int? page =1)
         {

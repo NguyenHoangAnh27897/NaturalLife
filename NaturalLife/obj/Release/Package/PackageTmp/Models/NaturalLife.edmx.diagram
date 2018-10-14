@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b86d3b67c53b4522bc12532a7fe2340a" Name="Diagram1">
+      <Diagram DiagramId="b6d1ef6c8d4a4ad783c4ebc98d6703ff" Name="Diagram1">
         <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Booking" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Booking_Activity" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Booking_Service" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Customer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_DiscountProgram" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Inventory" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Room" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule_Activity" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule_Service" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Service" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Vehicle" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_RoomType" Width="1.5" PointX="9.375" PointY="3.75" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" Width="1.5" PointX="9.375" PointY="6.75" />
-        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Slider" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Inventory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Room" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_RoomType" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule_Activity" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Schedule_Service" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Service" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Slider" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="natu0679_NaturalLifeModel.NTL_Vehicle" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

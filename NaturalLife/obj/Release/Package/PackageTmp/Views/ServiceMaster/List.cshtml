@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc;
 @using GridMvc.Html;
-@model PagedList.IPagedList<NaturalLife.Models.NTL_Room>
+@model PagedList.IPagedList<NaturalLife.Models.NTL_Service>
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
@@ -15,7 +15,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Danh sách Phòng</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách Dịch vụ</li>
                     </ol>
                 </nav>
             </div>
@@ -28,10 +28,10 @@
                     <div class="single-table">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Danh sách Phòng</h4>
+                                <h4>Danh sách Dịch vụ</h4>
                             </div>
                             <div class="align-self-center">
-                                <a class="btn btn-success" href="/roommaster/add">Thêm</a>
+                                <a class="btn btn-success" href="/servicemaster/add">Thêm</a>
                             </div>
                         </div>
                         <div class="section-body">
@@ -40,8 +40,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tên phòng</th>
+                                            <th>Tên dịch vụ</th>
                                             <th>Giá</th>
+                                            <th>Loại dịch vụ</th>
                                             <th>Hình ảnh</th>
                                             <th>Miêu tả</th>
                                             <th>Xoá</th>
@@ -52,8 +53,9 @@
                                         {
                                             <tr>
                                                 <td>@item.ID</td>
-                                                <td><a href="/roommaster/edit/@item.ID">@item.RoomName</a></td>
+                                                <td><a href="/servicemaster/edit/@item.ID">@item.ServiceName</a></td>
                                                 <td>@string.Format("{0:n0}", item.Price)</td>
+                                                <td>@item.ServiceType</td>
                                                 <td>@item.Avatar</td>
                                                 @if (item.Description != null)
                                                 {
@@ -70,7 +72,7 @@
                                                 {
                                                     <td></td>
                                                 }
-                                                <td><a href="/roommaster/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
+                                                <td><a href="/servicemaster/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
                                             </tr>
                                         }
                                     </tbody>
@@ -89,6 +91,4 @@
         </div>
     </div>
 </div>
-
-
 

@@ -17,5 +17,10 @@ namespace NaturalLife.Models
         public string ID { get; set; }
         public string ServiceName { get; set; }
         public string Description { get; set; }
+        public string Avatar { get; set; }
+        public string Images { get; set; }
+        public string ServiceType { get; set; }
+        public Nullable<int> Price { get; set; }
+        public Nullable<int> DiscountID { get; set; }
     }
 }

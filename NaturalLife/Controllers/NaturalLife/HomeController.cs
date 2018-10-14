@@ -9,17 +9,25 @@ namespace NaturalLife.Controllers
 {
     public class HomeController : Controller
     {
-        natu0679_NaturalLifeEntities db = new natu0679_NaturalLifeEntities();
+        NaturalLifeEntities db = new NaturalLifeEntities();
         public ActionResult Index()
         {
-            var rs = db.NTL_Slider.Where(s => s.ID == 1);
-            var rt = db.NTL_RoomType.ToList();
-            Data.HomePage hp = new Data.HomePage();
-            hp.RoomType = rt;
-            hp.Slider = rs;
-            List<Data.HomePage> lst = new List<Data.HomePage>();
-            lst.Add(hp);
-            return View(lst);
+            try
+            {
+                var rs = db.NTL_Slider.Where(s => s.ID == 1);
+                var rt = db.NTL_RoomType.ToList();
+                Data.HomePage hp = new Data.HomePage();
+                hp.RoomType = rt;
+                hp.Slider = rs;
+                List<Data.HomePage> lst = new List<Data.HomePage>();
+                lst.Add(hp);
+                return View(lst);
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("FourOFour", "Error");
+            }
+            
         }
 
         public ActionResult About()

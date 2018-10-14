@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
@@ -97,14 +97,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/NaturalLife.dll">
-<<<<<<< HEAD
-      <publishTime>10/13/2018 21:24:05</publishTime>
-=======
-      <publishTime>10/14/2018 01:11:03</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 16:25:46</publishTime>
     </File>
     <File Include="bin/NaturalLife.pdb">
-      <publishTime>10/13/2018 21:24:05</publishTime>
+      <publishTime>10/14/2018 16:25:46</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/18/2018 09:44:54</publishTime>
@@ -2414,7 +2410,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 19:27:06</publishTime>
     </File>
     <File Include="Models/NaturalLife.edmx.diagram">
-      <publishTime>10/12/2018 11:42:31</publishTime>
+      <publishTime>10/14/2018 14:42:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/07/2018 18:51:17</publishTime>
@@ -2519,17 +2515,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/08/2018 03:01:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-<<<<<<< HEAD
-      <publishTime>10/13/2018 11:16:54</publishTime>
+      <publishTime>10/14/2018 12:43:25</publishTime>
     </File>
     <File Include="Views/Homepage/Edit.cshtml">
-      <publishTime>10/12/2018 17:21:21</publishTime>
-=======
-      <publishTime>10/14/2018 00:42:05</publishTime>
-    </File>
-    <File Include="Views/Homepage/Edit.cshtml">
-      <publishTime>10/13/2018 22:07:03</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 14:13:06</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>10/07/2018 18:51:41</publishTime>
@@ -2550,30 +2539,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:51:41</publishTime>
     </File>
     <File Include="Views/Room/Detail.cshtml">
-<<<<<<< HEAD
-      <publishTime>10/11/2018 22:02:21</publishTime>
-=======
-      <publishTime>10/14/2018 00:18:27</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 12:15:31</publishTime>
     </File>
     <File Include="Views/Room/Index.cshtml">
       <publishTime>10/08/2018 04:48:30</publishTime>
     </File>
+    <File Include="Views/RoomMaster/Add.cshtml">
+      <publishTime>10/14/2018 02:21:39</publishTime>
+    </File>
+    <File Include="Views/RoomMaster/AddType.cshtml">
+      <publishTime>10/13/2018 23:44:40</publishTime>
+    </File>
+    <File Include="Views/RoomMaster/Edit.cshtml">
+      <publishTime>10/14/2018 14:12:12</publishTime>
+    </File>
+    <File Include="Views/RoomMaster/EditType.cshtml">
+      <publishTime>10/14/2018 14:12:25</publishTime>
+    </File>
     <File Include="Views/RoomMaster/List.cshtml">
-<<<<<<< HEAD
-      <publishTime>10/12/2018 18:41:29</publishTime>
+      <publishTime>10/14/2018 12:50:00</publishTime>
+    </File>
+    <File Include="Views/RoomMaster/ListType.cshtml">
+      <publishTime>10/14/2018 02:18:22</publishTime>
     </File>
     <File Include="Views/Service/Detail.cshtml">
-      <publishTime>10/11/2018 22:02:07</publishTime>
-=======
-      <publishTime>10/13/2018 22:30:01</publishTime>
-    </File>
-    <File Include="Views/Service/Detail.cshtml">
-      <publishTime>10/14/2018 01:05:44</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 12:15:31</publishTime>
     </File>
     <File Include="Views/Service/Index.cshtml">
       <publishTime>10/08/2018 04:50:56</publishTime>
+    </File>
+    <File Include="Views/ServiceMaster/Add.cshtml">
+      <publishTime>10/14/2018 14:50:34</publishTime>
+    </File>
+    <File Include="Views/ServiceMaster/Edit.cshtml">
+      <publishTime>10/14/2018 14:55:53</publishTime>
+    </File>
+    <File Include="Views/ServiceMaster/List.cshtml">
+      <publishTime>10/14/2018 14:46:53</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/07/2018 18:51:40</publishTime>
@@ -2582,14 +2584,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:51:41</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/14/2018 01:08:39</publishTime>
+      <publishTime>10/14/2018 12:15:31</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMaster.cshtml">
-<<<<<<< HEAD
-      <publishTime>10/12/2018 12:09:36</publishTime>
-=======
-      <publishTime>10/13/2018 22:11:57</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 16:23:23</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/07/2018 18:51:41</publishTime>
@@ -2607,11 +2605,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:50:45</publishTime>
     </File>
     <File Include="Web.config">
-<<<<<<< HEAD
-      <publishTime>10/13/2018 14:11:08</publishTime>
-=======
-      <publishTime>10/14/2018 01:11:06</publishTime>
->>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
+      <publishTime>10/14/2018 14:59:02</publishTime>
     </File>
   </ItemGroup>
 </Project>
