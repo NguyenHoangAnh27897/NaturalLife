@@ -40,33 +40,6 @@
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="NTL_DiscountProgram">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="DiscountPrice" Type="Double" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="NTL_ExtraBooking">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="NTL_Inventory">
     <Key>
       <PropertyRef Name="ID" />
@@ -171,8 +144,6 @@
     <EntitySet Name="NTL_Booking_Activity" EntityType="Self.NTL_Booking_Activity" />
     <EntitySet Name="NTL_Booking_Service" EntityType="Self.NTL_Booking_Service" />
     <EntitySet Name="NTL_Customer" EntityType="Self.NTL_Customer" />
-    <EntitySet Name="NTL_DiscountProgram" EntityType="Self.NTL_DiscountProgram" />
-    <EntitySet Name="NTL_ExtraBooking" EntityType="Self.NTL_ExtraBooking" />
     <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" />
     <EntitySet Name="NTL_Room" EntityType="Self.NTL_Room" />
     <EntitySet Name="NTL_RoomType" EntityType="Self.NTL_RoomType" />
@@ -182,5 +153,34 @@
     <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" />
     <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" />
     <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" />
+    <EntitySet Name="NTL_DiscountProgram" EntityType="natu0679_NaturalLifeModel.NTL_DiscountProgram" />
+    <EntitySet Name="NTL_ExtraBooking" EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" />
   </EntityContainer>
+  <EntityType Name="NTL_DiscountProgram">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiscountPrice" Type="Double" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_ExtraBooking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

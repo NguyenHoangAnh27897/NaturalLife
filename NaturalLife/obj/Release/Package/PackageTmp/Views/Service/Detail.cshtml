@@ -1,7 +1,8 @@
-﻿
+﻿@model IQueryable<NaturalLife.Models.NTL_Service>
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] arrStr;
 }
 
 <!-- main container -->
@@ -12,26 +13,40 @@
             <div class="height col-md-6">
                 <!-- top image slideshow -->
                 <div id="tour-slide">
-                    <div class="slide">
-                        <div class="bg-stretch">
-                            <img src="~/Content/NaturalLife/img/service/ob-5.jpg" alt="image descriprion" height="1104" width="966">
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="bg-stretch">
-                            <img src="~/Content/NaturalLife/img/service/ob-thumnail.jpg" alt="image descriprion" height="1104" width="966">
-                        </div>
-                    </div>
+                    @if (Model.FirstOrDefault().Images != null)
+                    {
+                        if (Model.FirstOrDefault().Images.Contains(","))
+                        {
+                            arrStr = Model.FirstOrDefault().Images.Split(',');
+                            foreach (var item in arrStr)
+                            {
+                                <div class="slide">
+                                    <div class="bg-stretch">
+                                        <img src="~/Images/website/imageservice/@item" alt="image descriprion" height="1104" width="966">
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            <div class="slide">
+                                <div class="bg-stretch">
+                                    <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Images" alt="image descriprion" height="1104" width="966">
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
             <div class="height col-md-6 text-col">
                 <div class="holder">
-                    <h1 class="small-size">ÔNG BÀ TÔI TOUR</h1>
+                    <h1 class="small-size">@Model.FirstOrDefault().ServiceName</h1>
                     <div class="price">
                         Giá <strong>2.795.000 VNĐ</strong>
                     </div>
                     <div class="description">
-                        <p>Hành trình hòa mình với Thiên Nhiên của gia đình tại Natural life Dalat , đi tìm những điều mộc mạc nhất và gần Thiên Nhiên nhất , Thông qua đó để gia đình hiểu nhau hơn, trân trọng cuộc sống gia đình hơn , hiểu sức khỏe của mỗi thành viên trong gia đình cần gì ? Tìm hiểu về thực dưỡng để áp dụng cho bữa ăn hàng ngày của gia đình và giúp chúng ta có một sức khỏe tốt hơn !!!</p>
+                        @Html.Raw(Model.FirstOrDefault().Description)
                     </div>
                     <ul class="reviews-info">
                         <li>
@@ -53,7 +68,7 @@
                         <li>
                             <div class="info-left">
                                 <strong class="title">Kiểu tour</strong>
-                                <span class="value">Ông bà tôi Tour</span>
+                                <span class="value">@Model.FirstOrDefault().ServiceType</span>
                             </div>
                             <div class="info-right">
                                 <ul class="ico-list">

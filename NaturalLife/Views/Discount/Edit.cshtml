@@ -1,0 +1,70 @@
+﻿@model IQueryable<NaturalLife.Models.NTL_DiscountProgram>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Quản lý Chương trình giảm giá</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Thêm Chương trình giảm giá</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/discount/edit" method="post">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tên Chương trình giảm giá</label>
+                                    <input type="text" class="form-control" placeholder="" name="name" value="@Model.FirstOrDefault().ProgramName">
+                                    <input type="hidden" value="@Model.FirstOrDefault().ID" name="ID" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Giá giảm (%)</label>
+                                    <input style="width:20%" type="number" class="form-control" placeholder="" name="discountprice" step="any" value="@Model.FirstOrDefault().DiscountPrice">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea name="editor">@Model.FirstOrDefault().Description</textarea>
+                                </div>
+
+                                <button class="btn btn-primaryt">Lưu</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+

@@ -40,7 +40,7 @@
                                     {
                                         arrStr = Model.FirstOrDefault().Images.Split(',');
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN) (TỐI ĐA 3 HÌNH)</label>
                                             <br />
                                             <input type="file" name="images" accept="image/*" multiple="multiple" />
                                             <div class="row">
@@ -86,6 +86,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="slogan" value="@Model.FirstOrDefault().Slogan">
+                                </div>
+
+                                <hr style="background-color: #ced4da;" />
+
+                                <div class="form-group">
                                     <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
                                     <input type="text" class="form-control" placeholder="" name="title2" value="@Model.FirstOrDefault().Title2">
                                 </div>
@@ -97,13 +104,10 @@
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="slogan" value="@Model.FirstOrDefault().Slogan">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Câu giới thiệu khác (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
                                     <input type="text" class="form-control" placeholder="" name="slogan2" value="@Model.FirstOrDefault().Slogan2">
                                 </div>
+
+                                <hr style="background-color: #ced4da;" />
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Icon 1</label>
@@ -115,7 +119,7 @@
                                     <input type="text" class="form-control" placeholder="" name="icon2" value="@Model.FirstOrDefault().Icon2">
                                 </div>
 
-                                <button class="btn btn-primaryt">Submit</button>
+                                <input class="btn btn-primaryt" type="submit" value="Lưu" />
                             </form>
                         </div>
 
@@ -127,9 +131,14 @@
         </div>
     </div>
 </div>
-<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
-<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
 <script>
-    CKEDITOR.replace('editor');
+    $(function () {
+        $("input[type='submit']").click(function () {
+            var $fileUpload = $("input[type='file']");
+            if (parseInt($fileUpload.get(0).files.length) > 3) {
+                alert("Bạn chỉ được Upload tối đa 3 tấm hình");
+            }
+        });
+    })
 </script>
 

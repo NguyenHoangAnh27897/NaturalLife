@@ -67,24 +67,24 @@ namespace NaturalLife.Controllers.WebMaster
         {
             if (Session["Authentication"] != null)
             {
-                if (images != null)
+                try
                 {
-                    try
+                    string Avatar = "";
+                    if (avatar != null)
                     {
-                        string Avatar = "";
-                        if (avatar != null)
+                        if (avatar.ContentLength > 0)
                         {
-                            if (avatar.ContentLength > 0)
-                            {
-                                var filename = Path.GetFileName(avatar.FileName);
-                                var fname = filename.Replace(" ", "_");
-                                var path = Path.Combine(Server.MapPath("~/Images/website/imageservice"), fname);
-                                avatar.SaveAs(path);
-                                Avatar += fname;
-                            }
-
+                            var filename = Path.GetFileName(avatar.FileName);
+                            var fname = filename.Replace(" ", "_");
+                            var path = Path.Combine(Server.MapPath("~/Images/website/imageservice"), fname);
+                            avatar.SaveAs(path);
+                            Avatar += fname;
                         }
-                        string Images = "";
+
+                    }
+                    string Images = "";
+                    if (images != null)
+                    {
                         foreach (HttpPostedFileBase file in images)
                         {
                             if (file != null)
@@ -103,33 +103,31 @@ namespace NaturalLife.Controllers.WebMaster
                         {
                             Images = Images.Remove(Images.Length - 1);
                         }
-                        var sv = new NTL_Service();
-                        sv.ID = getGUID();
-                        sv.ServiceName = servicename;
-                        Price = Price.Replace(",", "");
-                        var pri = int.Parse(Price);
-                        sv.Price = pri;
-                        if (Avatar != "")
-                        {
-                            sv.Avatar = Avatar;
-                        }
-                        if (Images != "")
-                        {
-                            sv.Images = Images;
-                        }
-                        sv.Description = editor;
-                        sv.ServiceType = servicetype;
-                        db.NTL_Service.Add(sv);
-                        db.SaveChanges();
-                        return RedirectToAction("List");
                     }
-                    catch (Exception ex)
+                    var sv = new NTL_Service();
+                    sv.ID = getGUID();
+                    sv.ServiceName = servicename;
+                    Price = Price.Replace(",", "");
+                    var pri = int.Parse(Price);
+                    sv.Price = pri;
+                    if (Avatar != "")
                     {
-                        return RedirectToAction("FourOFour", "Error");
+                        sv.Avatar = Avatar;
                     }
-
+                    if (Images != "")
+                    {
+                        sv.Images = Images;
+                    }
+                    sv.Description = editor;
+                    sv.ServiceType = servicetype;
+                    db.NTL_Service.Add(sv);
+                    db.SaveChanges();
+                    return RedirectToAction("List");
                 }
-                return RedirectToAction("Login", "Webmaster");
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
             }
             else
             {
@@ -152,28 +150,28 @@ namespace NaturalLife.Controllers.WebMaster
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edits(string ID,string servicename, string Price, string editor, HttpPostedFileBase[] images, HttpPostedFileBase avatar, string servicetype)
+        public ActionResult Edit(string ID, string servicename, string Price, string editor, HttpPostedFileBase[] images, HttpPostedFileBase avatar, string servicetype)
         {
             if (Session["Authentication"] != null)
             {
-                if (images != null)
+                try
                 {
-                    try
+                    string Avatar = "";
+                    if (avatar != null)
                     {
-                        string Avatar = "";
-                        if (avatar != null)
+                        if (avatar.ContentLength > 0)
                         {
-                            if (avatar.ContentLength > 0)
-                            {
-                                var filename = Path.GetFileName(avatar.FileName);
-                                var fname = filename.Replace(" ", "_");
-                                var path = Path.Combine(Server.MapPath("~/Images/website/imageservice"), fname);
-                                avatar.SaveAs(path);
-                                Avatar += fname;
-                            }
-
+                            var filename = Path.GetFileName(avatar.FileName);
+                            var fname = filename.Replace(" ", "_");
+                            var path = Path.Combine(Server.MapPath("~/Images/website/imageservice"), fname);
+                            avatar.SaveAs(path);
+                            Avatar += fname;
                         }
-                        string Images = "";
+
+                    }
+                    string Images = "";
+                    if (images != null)
+                    {
                         foreach (HttpPostedFileBase file in images)
                         {
                             if (file != null)
@@ -192,32 +190,30 @@ namespace NaturalLife.Controllers.WebMaster
                         {
                             Images = Images.Remove(Images.Length - 1);
                         }
-                        var sv = db.NTL_Service.Find(ID);
-                        sv.ServiceName = servicename;
-                        Price = Price.Replace(",", "");
-                        var pri = int.Parse(Price);
-                        sv.Price = pri;
-                        if (Avatar != "")
-                        {
-                            sv.Avatar = Avatar;
-                        }
-                        if (Images != "")
-                        {
-                            sv.Images = Images;
-                        }
-                        sv.Description = editor;
-                        sv.ServiceType = servicetype;
-                        db.Entry(sv).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("List");
                     }
-                    catch (Exception ex)
+                    var sv = db.NTL_Service.Find(ID);
+                    sv.ServiceName = servicename;
+                    Price = Price.Replace(",", "");
+                    var pri = int.Parse(Price);
+                    sv.Price = pri;
+                    if (Avatar != "")
                     {
-                        return RedirectToAction("FourOFour", "Error");
+                        sv.Avatar = Avatar;
                     }
-
+                    if (Images != "")
+                    {
+                        sv.Images = Images;
+                    }
+                    sv.Description = editor;
+                    sv.ServiceType = servicetype;
+                    db.Entry(sv).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("List");
                 }
-                return RedirectToAction("Login", "Webmaster");
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
             }
             else
             {

@@ -45,35 +45,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NTL_DiscountProgram">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_DiscountProgram">
-        <MappingFragment StoreEntitySet="NTL_DiscountProgram">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
-          <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NTL_ExtraBooking">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
-        <MappingFragment StoreEntitySet="NTL_ExtraBooking">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
-          <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
-          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="NTL_Inventory">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Inventory">
         <MappingFragment StoreEntitySet="NTL_Inventory">
@@ -179,6 +150,35 @@
         <MappingFragment StoreEntitySet="NTL_Vehicle">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_DiscountProgram">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_DiscountProgram">
+        <MappingFragment StoreEntitySet="NTL_DiscountProgram">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_ExtraBooking">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
+        <MappingFragment StoreEntitySet="NTL_ExtraBooking">
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
+          <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

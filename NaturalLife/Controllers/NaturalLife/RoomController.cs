@@ -11,11 +11,19 @@ namespace NaturalLife.Controllers.NaturalLife
     {
         NaturalLifeEntities db = new NaturalLifeEntities();
         // GET: Room
-        public ActionResult Index()
+        public ActionResult Index(string ID)
         {
-            //int id = int.Parse(ID);
-            //var lst = db.NTL_Room.Where(s => s.RoomTypeID == id).ToList();
-            return View();
+            try
+            {
+                int id = int.Parse(ID);
+                var lst = db.NTL_Room.Where(s => s.RoomTypeID == id).ToList();
+                return View(lst);
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("FourOFour", "Error");
+            }
+           
         }
 
         public ActionResult Detail()

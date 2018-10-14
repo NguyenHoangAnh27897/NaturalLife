@@ -16,9 +16,13 @@ namespace NaturalLife.Controllers
             {
                 var rs = db.NTL_Slider.Where(s => s.ID == 1);
                 var rt = db.NTL_RoomType.ToList();
+                var sv = db.NTL_Service.ToList();
+                var disc = db.NTL_DiscountProgram.ToList();
                 Data.HomePage hp = new Data.HomePage();
                 hp.RoomType = rt;
                 hp.Slider = rs;
+                hp.Service = sv;
+                hp.Discount = disc;
                 List<Data.HomePage> lst = new List<Data.HomePage>();
                 lst.Add(hp);
                 return View(lst);
@@ -45,7 +49,7 @@ namespace NaturalLife.Controllers
         }
 
         [HttpPost]
-        public ActionResult Booking(string room,string fullname, string phone, string adult, string child, string vehicle, string startdate, string enddate, string[] activity, string comment= "",string option1 = "", string option2 = "", string option3 ="", string option4 = "", string option5 = "", string option6 = "", string option7 = "", string option8 = "", string option9 = "")
+        public ActionResult Booking(string room,string fullname, string phone, string adult, string child, string vehicle, string startdate, string enddate, string act1 = "", string act2 = "", string act3 = "", string act4 = "", string act5 = "", string comment= "",string option1 = "", string option2 = "", string option3 ="", string option4 = "", string option5 = "", string option6 = "", string option7 = "", string option8 = "", string option9 = "")
         {
             try
             {
@@ -95,11 +99,27 @@ namespace NaturalLife.Controllers
                 DateTime eDate = DateTime.ParseExact(enddate, "yyyy-MM-dd",
                                       System.Globalization.CultureInfo.InvariantCulture);
                 string active = "";
-                for (int i = 0; i < activity.Length; i++)
+                if (act1 != "")
                 {
-                    active += activity[i] + ", ";
+                    active += act1 + ", ";
                 }
-                if(active != "")
+                if (act2 != "")
+                {
+                    active += act2 + ", ";
+                }
+                if (act3 != "")
+                {
+                    active += act3 + ", ";
+                }
+                if (act4 != "")
+                {
+                    active += act4 + ", ";
+                }
+                if (act5 != "")
+                {
+                    active += act5 + ", ";
+                }
+                if (active != "")
                 {
                     active = active.Remove(active.Length - 2);
                 }

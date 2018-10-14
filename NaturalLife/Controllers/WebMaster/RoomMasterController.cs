@@ -14,7 +14,7 @@ namespace NaturalLife.Controllers.WebMaster
     {
         NaturalLifeEntities db = new NaturalLifeEntities();
         // GET: RoomMaster
-        public ActionResult List(int? page =1)
+        public ActionResult List(int? page = 1)
         {
             if (Session["Authentication"] != null)
             {
@@ -24,17 +24,18 @@ namespace NaturalLife.Controllers.WebMaster
                     int pageNumber = (page ?? 1);
                     var lst = db.NTL_Room.ToList();
                     return View(lst.ToPagedList(pageNumber, pageSize));
-                }catch(Exception ex)
-                {
-                    return RedirectToAction("FourOFour","Error");
                 }
-              
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
+
             }
             else
             {
                 return RedirectToAction("Login", "Webmaster");
             }
-           
+
         }
 
         public ActionResult Add()
@@ -68,24 +69,24 @@ namespace NaturalLife.Controllers.WebMaster
         {
             if (Session["Authentication"] != null)
             {
-                if (images != null)
+                try
                 {
-                    try
+                    string Avatar = "";
+                    if (avatar != null)
                     {
-                        string Avatar = "";
-                        if (avatar != null)
+                        if (avatar.ContentLength > 0)
                         {
-                            if (avatar.ContentLength > 0)
-                            {
-                                var filename = Path.GetFileName(avatar.FileName);
-                                var fname = filename.Replace(" ", "_");
-                                var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
-                                avatar.SaveAs(path);
-                                Avatar += fname;
-                            }
-
+                            var filename = Path.GetFileName(avatar.FileName);
+                            var fname = filename.Replace(" ", "_");
+                            var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
+                            avatar.SaveAs(path);
+                            Avatar += fname;
                         }
-                        string Images = "";
+
+                    }
+                    string Images = "";
+                    if (images != null)
+                    {
                         foreach (HttpPostedFileBase file in images)
                         {
                             if (file != null)
@@ -104,34 +105,34 @@ namespace NaturalLife.Controllers.WebMaster
                         {
                             Images = Images.Remove(Images.Length - 1);
                         }
-                        var room = new NTL_Room();
-                        room.ID = getGUID();
-                        room.RoomName = roomname;
-                        Price = Price.Replace(",", "");
-                        var pri = int.Parse(Price);
-                        room.Price = pri;
-                        if (Avatar != "")
-                        {
-                            room.Avatar = Avatar;
-                        }
-                        if (Images != "")
-                        {
-                            room.Images = Images;
-                        }
-                        room.Description = editor;
-                        int rtype = int.Parse(roomtype);
-                        room.RoomTypeID = rtype;
-                        db.NTL_Room.Add(room);
-                        db.SaveChanges();
-                        return RedirectToAction("List");
                     }
-                    catch(Exception ex)
+
+                    var room = new NTL_Room();
+                    room.ID = getGUID();
+                    room.RoomName = roomname;
+                    Price = Price.Replace(",", "");
+                    var pri = int.Parse(Price);
+                    room.Price = pri;
+                    if (Avatar != "")
                     {
-                        return RedirectToAction("FourOFour", "Error");
+                        room.Avatar = Avatar;
                     }
-                   
+                    if (Images != "")
+                    {
+                        room.Images = Images;
+                    }
+                    room.Description = editor;
+                    int rtype = int.Parse(roomtype);
+                    room.RoomTypeID = rtype;
+                    db.NTL_Room.Add(room);
+                    db.SaveChanges();
+                    return RedirectToAction("List");
                 }
-                return RedirectToAction("Login", "Webmaster");
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
+
             }
             else
             {
@@ -158,24 +159,24 @@ namespace NaturalLife.Controllers.WebMaster
         {
             if (Session["Authentication"] != null)
             {
-                if (images != null)
+                try
                 {
-                    try
+                    string Avatar = "";
+                    if (avatar != null)
                     {
-                        string Avatar = "";
-                        if (avatar != null)
+                        if (avatar.ContentLength > 0)
                         {
-                            if (avatar.ContentLength > 0)
-                            {
-                                var filename = Path.GetFileName(avatar.FileName);
-                                var fname = filename.Replace(" ", "_");
-                                var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
-                                avatar.SaveAs(path);
-                                Avatar += fname;
-                            }
-
+                            var filename = Path.GetFileName(avatar.FileName);
+                            var fname = filename.Replace(" ", "_");
+                            var path = Path.Combine(Server.MapPath("~/Images/website/imageroom"), fname);
+                            avatar.SaveAs(path);
+                            Avatar += fname;
                         }
-                        string Images = "";
+
+                    }
+                    string Images = "";
+                    if (images != null)
+                    {
                         foreach (HttpPostedFileBase file in images)
                         {
                             if (file != null)
@@ -194,33 +195,31 @@ namespace NaturalLife.Controllers.WebMaster
                         {
                             Images = Images.Remove(Images.Length - 1);
                         }
-                        var room = db.NTL_Room.Find(ID);
-                        room.RoomName = roomname;
-                        Price = Price.Replace(",", "");
-                        var pri = int.Parse(Price);
-                        room.Price = pri;
-                        if (Avatar != "")
-                        {
-                            room.Avatar = Avatar;
-                        }
-                        if (Images != "")
-                        {
-                            room.Images = Images;
-                        }
-                        room.Description = editor;
-                        int rtype = int.Parse(roomtype);
-                        room.RoomTypeID = rtype;
-                        db.Entry(room).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("List");
                     }
-                    catch (Exception ex)
+                    var room = db.NTL_Room.Find(ID);
+                    room.RoomName = roomname;
+                    Price = Price.Replace(",", "");
+                    var pri = int.Parse(Price);
+                    room.Price = pri;
+                    if (Avatar != "")
                     {
-                        return RedirectToAction("FourOFour", "Error");
+                        room.Avatar = Avatar;
                     }
-
+                    if (Images != "")
+                    {
+                        room.Images = Images;
+                    }
+                    room.Description = editor;
+                    int rtype = int.Parse(roomtype);
+                    room.RoomTypeID = rtype;
+                    db.Entry(room).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("List");
                 }
-                return RedirectToAction("Login", "Webmaster");
+                catch (Exception ex)
+                {
+                    return RedirectToAction("FourOFour", "Error");
+                }
             }
             else
             {
@@ -296,23 +295,26 @@ namespace NaturalLife.Controllers.WebMaster
                 try
                 {
                     string Images = "";
-                    foreach (HttpPostedFileBase file in images)
+                    if (images != null)
                     {
-                        if (file != null)
+                        foreach (HttpPostedFileBase file in images)
                         {
-                            if (file.ContentLength > 0)
+                            if (file != null)
                             {
-                                var filename = Path.GetFileName(file.FileName);
-                                var fname = filename.Replace(" ", "_");
-                                var path = Path.Combine(Server.MapPath("~/Images/website/imageroomtype"), fname);
-                                file.SaveAs(path);
-                                Images += fname + ",";
+                                if (file.ContentLength > 0)
+                                {
+                                    var filename = Path.GetFileName(file.FileName);
+                                    var fname = filename.Replace(" ", "_");
+                                    var path = Path.Combine(Server.MapPath("~/Images/website/imageroomtype"), fname);
+                                    file.SaveAs(path);
+                                    Images += fname + ",";
+                                }
                             }
                         }
-                    }
-                    if (Images != "" && Images.Contains(","))
-                    {
-                        Images = Images.Remove(Images.Length - 1);
+                        if (Images != "" && Images.Contains(","))
+                        {
+                            Images = Images.Remove(Images.Length - 1);
+                        }
                     }
                     var type = new NTL_RoomType();
                     type.RoomType = typename;
@@ -325,7 +327,7 @@ namespace NaturalLife.Controllers.WebMaster
                     db.SaveChanges();
                     return RedirectToAction("ListType");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return RedirectToAction("FourOFour", "Error");
                 }
@@ -357,23 +359,26 @@ namespace NaturalLife.Controllers.WebMaster
             if (Session["Authentication"] != null)
             {
                 string Images = "";
-                foreach (HttpPostedFileBase file in images)
+                if (images != null)
                 {
-                    if (file != null)
+                    foreach (HttpPostedFileBase file in images)
                     {
-                        if (file.ContentLength > 0)
+                        if (file != null)
                         {
-                            var filename = Path.GetFileName(file.FileName);
-                            var fname = filename.Replace(" ", "_");
-                            var path = Path.Combine(Server.MapPath("~/Images/website/imageroomtype"), fname);
-                            file.SaveAs(path);
-                            Images += fname + ",";
+                            if (file.ContentLength > 0)
+                            {
+                                var filename = Path.GetFileName(file.FileName);
+                                var fname = filename.Replace(" ", "_");
+                                var path = Path.Combine(Server.MapPath("~/Images/website/imageroomtype"), fname);
+                                file.SaveAs(path);
+                                Images += fname + ",";
+                            }
                         }
                     }
-                }
-                if (Images != "" && Images.Contains(","))
-                {
-                    Images = Images.Remove(Images.Length - 1);
+                    if (Images != "" && Images.Contains(","))
+                    {
+                        Images = Images.Remove(Images.Length - 1);
+                    }
                 }
                 int id = int.Parse(ID);
                 var type = db.NTL_RoomType.Find(id);

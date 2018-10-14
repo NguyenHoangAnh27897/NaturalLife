@@ -32,24 +32,27 @@ namespace NaturalLife.Controllers.WebMaster
             if (Session["Authentication"] != null)
             {
                 string Images = "";
-                foreach (HttpPostedFileBase file in images)
+                if(images != null)
                 {
-                    if (file != null)
+                    foreach (HttpPostedFileBase file in images)
                     {
-                        if (file.ContentLength > 0)
+                        if (file != null)
                         {
-                            var filename = Path.GetFileName(file.FileName);
-                            var fname = filename.Replace(" ", "_");
-                            var path = Path.Combine(Server.MapPath("~/Images/website/imagehome"), fname);
-                            file.SaveAs(path);
-                            Images += fname + ",";
+                            if (file.ContentLength > 0)
+                            {
+                                var filename = Path.GetFileName(file.FileName);
+                                var fname = filename.Replace(" ", "_");
+                                var path = Path.Combine(Server.MapPath("~/Images/website/imagehome"), fname);
+                                file.SaveAs(path);
+                                Images += fname + ",";
+                            }
                         }
                     }
-                }
-                if (Images != "" && Images.Contains(","))
-                {
-                    Images = Images.Remove(Images.Length - 1);
-                }
+                    if (Images != "" && Images.Contains(","))
+                    {
+                        Images = Images.Remove(Images.Length - 1);
+                    }
+                }           
                 var home = db.NTL_Slider.Find(1);
                 home.Title = title;
                 home.Title2 = title2;

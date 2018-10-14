@@ -12,6 +12,8 @@ namespace NaturalLife.Models
         {
             public List<NTL_RoomType> RoomType { get; set; }
             public IQueryable<NTL_Slider> Slider { get; set; }
+            public List<NTL_Service> Service { get; set; }
+            public List<NTL_DiscountProgram> Discount { get; set; }
 
         }
     }

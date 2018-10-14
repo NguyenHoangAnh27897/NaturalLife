@@ -1281,7 +1281,7 @@ blockquote.normal {
 
 .trip-iop {
     overflow-y: auto;
-    max-height: 620px;
+    max-height: 550px;
 }
 
 ::-webkit-scrollbar-track
@@ -4635,7 +4635,11 @@ a.thumbnail img {
 	color: #dd4b39;
 }
 
-.social-networks a.pin:hover {
+.social-networks a.youtube:hover {
+	color: #cb2027;
+}
+
+.social-networks a.instagram:hover {
 	color: #cb2027;
 }
 
@@ -8185,7 +8189,9 @@ input[type="checkbox"] {
 }
 
 .social-wrap [class^='icon-'],
-.social-wrap [class*=' icon-'] {
+.social-wrap [class*=' icon-'],
+.social-wrap [class^='fa-'],
+.social-wrap [class*=' fa-'] {
 	font-size: 32px;
 	margin-left: 1px;
 	display: block;
@@ -9934,7 +9940,9 @@ h4,
 }
 
 .social-wrap [class^='icon-'],
-.social-wrap [class*=' icon-'] {
+.social-wrap [class*=' icon-'],
+.social-wrap [class^='fa-'],
+.social-wrap [class*=' fa-'] {
 	font-size: 40px;
 }
 
@@ -10550,6 +10558,10 @@ table.table.table-align-right th:last-child {
 	vertical-align: middle;
 }
 
+#formBook .trip-form .holder.top {
+	vertical-align: top;
+}
+
 .comment-form {
 	padding: 60px 0 0;
 }
@@ -10699,7 +10711,9 @@ table.table.table-align-right th:last-child {
 }
 
 .social-wrap [class^='icon-'],
-.social-wrap [class*=' icon-'] {
+.social-wrap [class*=' icon-'],
+.social-wrap [class^='fa-'],
+.social-wrap [class*=' fa-'] {
 	font-size: 54px;
 }
 
@@ -10969,16 +10983,17 @@ blockquote.normal {
 .testimonial-holder blockquote .img {
 	display: inline-block;
 	vertical-align: top;
-	width: 225px;
+	width: 410px;
     height: 225px;
 	margin: 20px 0 0;
+    border-radius: unset;
     overflow: hidden;
 }
 
 .testimonial-holder blockquote .text {
 	display: inline-block;
 	vertical-align: top;
-	width: calc(100% - 250px);
+	width: calc(100% - 420px);
 	padding-left: 55px;
 }
 

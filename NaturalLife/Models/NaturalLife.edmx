@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="natu0679_NaturalLifeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="natu0679_NaturalLifeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="NTL_Booking">
           <Key>
             <PropertyRef Name="ID" />
@@ -49,7 +49,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProgramName" Type="nvarchar" MaxLength="100" />
           <Property Name="DiscountPrice" Type="float" />
           <Property Name="StartDate" Type="date" />
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoomType" Type="nvarchar" MaxLength="50" />
           <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
@@ -188,8 +188,7 @@
           <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
           <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="natu0679_NaturalLifeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -232,33 +231,6 @@
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="NTL_DiscountProgram">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DiscountPrice" Type="Double" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="NTL_ExtraBooking">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NTL_Inventory">
           <Key>
@@ -364,8 +336,6 @@
           <EntitySet Name="NTL_Booking_Activity" EntityType="Self.NTL_Booking_Activity" />
           <EntitySet Name="NTL_Booking_Service" EntityType="Self.NTL_Booking_Service" />
           <EntitySet Name="NTL_Customer" EntityType="Self.NTL_Customer" />
-          <EntitySet Name="NTL_DiscountProgram" EntityType="Self.NTL_DiscountProgram" />
-          <EntitySet Name="NTL_ExtraBooking" EntityType="Self.NTL_ExtraBooking" />
           <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" />
           <EntitySet Name="NTL_Room" EntityType="Self.NTL_Room" />
           <EntitySet Name="NTL_RoomType" EntityType="Self.NTL_RoomType" />
@@ -375,7 +345,36 @@
           <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" />
           <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" />
           <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" />
+          <EntitySet Name="NTL_DiscountProgram" EntityType="natu0679_NaturalLifeModel.NTL_DiscountProgram" />
+          <EntitySet Name="NTL_ExtraBooking" EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" />
         </EntityContainer>
+        <EntityType Name="NTL_DiscountProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountPrice" Type="Double" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NTL_ExtraBooking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfAdult" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfChild" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -423,35 +422,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NTL_DiscountProgram">
-            <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_DiscountProgram">
-              <MappingFragment StoreEntitySet="NTL_DiscountProgram">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
-                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NTL_ExtraBooking">
-            <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
-              <MappingFragment StoreEntitySet="NTL_ExtraBooking">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
-                <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
-                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -560,6 +530,35 @@
               <MappingFragment StoreEntitySet="NTL_Vehicle">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NTL_DiscountProgram">
+            <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_DiscountProgram">
+              <MappingFragment StoreEntitySet="NTL_DiscountProgram">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NTL_ExtraBooking">
+            <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_ExtraBooking">
+              <MappingFragment StoreEntitySet="NTL_ExtraBooking">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="NumberOfChild" ColumnName="NumberOfChild" />
+                <ScalarProperty Name="NumberOfAdult" ColumnName="NumberOfAdult" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
