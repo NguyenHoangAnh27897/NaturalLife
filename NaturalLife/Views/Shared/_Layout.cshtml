@@ -138,12 +138,13 @@
                                         <span class="text">Đăng nhập</span>
                                     </a>
                                 </li>
-                                <li class="hidden-xs hidden-sm v-divider">
+                                @*v-divider*@
+                                <li class="hidden-xs hidden-sm">
                                     <a href="#">
                                         <span class="icon icon-user"></span>
                                     </a>
                                 </li>
-                                <li class="dropdown hidden-xs hidden-sm last-dropdown v-divider">
+                                <li class="dropdown hidden-xs hidden-sm last-dropdown">
                                     <a href="#"><span class="text">EN</span> <span class="icon-angle-down"></span></a>
                                     <div class="dropdown-menu dropdown-sm">
                                         <div class="drop-wrap lang-wrap">
@@ -164,7 +165,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="visible-md visible-lg nav-visible v-divider"><a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook"><span class="icon icon-search"></span></a></li>
+                                <li class="visible-md visible-lg nav-visible"><a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook"><span class="icon icon-search"></span></a></li>
                             </ul>
                         </div>
                     </nav>
@@ -324,23 +325,65 @@
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
-                                            <div class="holder special-holder" ng-controller="checkModel">
-                                                <label for="activity">Hoạt động</label>
-                                                <div class="select-holder">
-                                                    <select multiple placeholder="Hoạt động" id="activity" ng-model="multiAction" class="trip trip-banner jcf-hidden" name="activity" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "useCustomScroll": false, "multipleCompactStyle": true}'>
-                                                        <option value="" disabled>Hoạt động</option>
-                                                        <option value="Hoạt động 1">Hoạt động 1</option>
-                                                        <option value="Hoạt động 2">Hoạt động 2</option>
-                                                        <option value="Hoạt động 3">Hoạt động 3</option>
-                                                        <option value="Hoạt động 4">Hoạt động 4</option>
-                                                        <option value="Hoạt động 5">Hoạt động 5</option>
-                                                        <option value="#0">Hoạt động khác</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div ng-bind="multiAction">{{ multiAction | myFormat }}</div>
+                                            @*<div class="holder special-holder" ng-controller="checkModel">
+                                        <label for="activity">Hoạt động</label>
+                                        <div class="select-holder">
+                                            <select multiple placeholder="Hoạt động" id="activity" ng-model="multiAction" class="trip trip-banner jcf-hidden" name="activity" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "useCustomScroll": false, "multipleCompactStyle": true}'>
+                                                <option value="" disabled>Hoạt động</option>
+                                                <option value="Hoạt động 1">Hoạt động 1</option>
+                                                <option value="Hoạt động 2">Hoạt động 2</option>
+                                                <option value="Hoạt động 3">Hoạt động 3</option>
+                                                <option value="Hoạt động 4">Hoạt động 4</option>
+                                                <option value="Hoạt động 5">Hoạt động 5</option>
+                                                <option value="#0">Hoạt động khác</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div ng-bind="multiAction">{{ multiAction | myFormat }}</div>*@
                                             <!-- end -->
                                         </ng-conainter>
+                                        <ng-container ng-controller="activityController">
+                                            <!-- Hoạt động -->
+                                            <ng-container ng-repeat="item in items">
+                                                <div class="holder mr-b" ng-if="!$last">
+                                                    <label for="service" ng-if="$first">Hoạt động</label>
+                                                    <div class="select-holder">
+                                                        <label>
+                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'top' : ''">
+                                                    <div class="select-holder">
+                                                        <label>
+                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <!-- Mục khác -->
+                                            <div class="holder mr-b" ng-show="!isSelected">
+                                                <div class="select-holder">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- textarea -->
+                                            <div class="holder" ng-class="isSelected ? 'top' : ''" ng-show="isSelected">
+                                                <div class="select-holder">
+                                                    <div class="form-group text text-bg">
+                                                        <label>
+                                                            <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                        </label>
+                                                        <label>
+                                                            Liên hệ: <a href="tel:09092331" class="text-danger">+84 909 12 04 08</a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </ng-container>
                                         <div class="holder mr-b" ng-class="!isSelected ? 'middle' : ''">
                                             <input class="btn btn-trip" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook" type="submit" value="ĐĂNG KÝ">
                                         </div>
@@ -363,27 +406,26 @@
                 <form action="" id="signup" method="post" class="newsletter-form">
                     <fieldset>
                         <div class="input-holder">
-                            <input type="email" class="form-control" placeholder="Email Address" name="subscriber_email" id="subscriber_email">
-                            <input type="submit" value="GO">
+                            <input type="email" class="form-control" placeholder="Địa chỉ Email" name="subscriber_email" id="subscriber_email">
+                            <input type="submit" value="GỬI">
                         </div>
-                        <span class="info" id="subscribe_message">To receive news, updates and tour packages via email.</span>
+                        <span class="info" id="subscribe_message">Để nhận tin tức, cập nhật và các gói du lịch qua email.</span>
                     </fieldset>
                 </form>
                 <!-- footer links -->
                 <div class="row footer-holder">
-                    <nav class="col-sm-4 col-lg-2 footer-nav active">
-                        <h3>About Entrada</h3>
+                    <nav class="col-sm-4 col-lg-3 footer-nav active">
+                        <h3>Natural Life Dalat</h3>
                         <ul class="slide">
-                            <li><a href="#">The Company</a></li>
-                            <li><a href="#">Our Values</a></li>
-                            <li><a href="#">Responsiblity</a></li>
-                            <li><a href="#">Our Mission</a></li>
-                            <li><a href="#">Opportunity</a></li>
-                            <li><a href="#">Safety Concerns</a></li>
+                            <li><a href="#">Giá trị của chúng tôi</a></li>
+                            <li><a href="#">Trách nhiệm</a></li>
+                            <li><a href="#">Nhiệm vụ của chúng tôi</a></li>
+                            <li><a href="#">Cơ hội</a></li>
+                            <li><a href="#">Mối quan tâm về an toàn</a></li>
                         </ul>
                     </nav>
-                    <nav class="col-sm-4 col-lg-2 footer-nav">
-                        <h3>Destinations</h3>
+                    <nav class="col-sm-4 col-lg-3 footer-nav">
+                        <h3>Địa điểm</h3>
                         <ul class="slide">
                             <li><a href="#">Dalat</a></li>
                             <li><a href="#">Nha Trang</a></li>
@@ -393,44 +435,21 @@
                             <li><a href="#">Ho Chi Minh</a></li>
                         </ul>
                     </nav>
-                    <nav class="col-sm-4 col-lg-2 footer-nav">
-                        <h3>themes</h3>
+                    <nav class="col-sm-4 col-lg-3 footer-nav">
+                        <h3>Các câu hỏi về Natural Life</h3>
                         <ul class="slide">
-                            <li><a href="#">Hiking and Camping</a></li>
-                            <li><a href="#">Trekking Tours</a></li>
-                            <li><a href="#">Jungle Safaris</a></li>
-                            <li><a href="#">Bungee Jumping</a></li>
-                            <li><a href="#">Natural Life</a></li>
-                            <li><a href="#">Peak Climbing</a></li>
+                            <li><a href="#">Tại sao bạn nên chọn Natural Life?</a></li>
+                            <li><a href="#">Hỏi chuyên gia</a></li>
+                            <li><a href="#">Chúng tôi giúp khi ...</a></li>
+                            <li><a href="#">Những vấn đề cá nhân</a></li>
                         </ul>
                     </nav>
-                    <nav class="col-sm-4 col-lg-2 footer-nav">
-                        <h3>reservation</h3>
-                        <ul class="slide">
-                            <li><a href="#">Booking Conditions</a></li>
-                            <li><a href="#">My Bookings</a></li>
-                            <li><a href="#">Refund Policy</a></li>
-                            <li><a href="#">Includes &amp; Excludes</a></li>
-                            <li><a href="#">Your Responsibilities</a></li>
-                            <li><a href="#">Order a Brochure</a></li>
-                        </ul>
-                    </nav>
-                    <nav class="col-sm-4 col-lg-2 footer-nav">
-                        <h3>ask Natural Life</h3>
-                        <ul class="slide">
-                            <li><a href="#">Why Natural Life?</a></li>
-                            <li><a href="#">Ask an Expert</a></li>
-                            <li><a href="#">Safety Updates</a></li>
-                            <li><a href="#">We Help When...</a></li>
-                            <li><a href="#">Personal Matters</a></li>
-                        </ul>
-                    </nav>
-                    <nav class="col-sm-4 col-lg-2 footer-nav last">
-                        <h3>contact Natural Life</h3>
+                    <nav class="col-sm-4 col-lg-3 footer-nav last">
+                        <h3>Liên hệ với Natural Life</h3>
                         <ul class="slide address-block">
                             <li class="wrap-text"><span class="icon-tel"></span> <a href="tel:0909120408">+84 909 12 04 08</a></li>
                             <li class="wrap-text"><span class="icon-email"></span> <a href="mailto:info@entrada.com">info@naturallifevn.com</a></li>
-                            <li><span class="icon-home"></span> <address>Sub-zone 151, Đường Ngô Gia Tự, Phường 12, Thành phố Đà Lạt, Tỉnh Lâm Đồng, Việt Nam.</address></li>
+                            <li><span class="icon-home"></span> <address>Tiểu khu 151, Đường Ngô Gia Tự, Phường 12, Thành phố Đà Lạt, Tỉnh Lâm Đồng, Việt Nam.</address></li>
                         </ul>
                     </nav>
                 </div>
@@ -448,28 +467,18 @@
                             <strong class="txt">Follow On</strong>
                         </a>
                     </li>
-                    <li class="google-plus">
+                    <li class="youtube">
                         <a href="#">
-                            <span class="icon-google-plus"></span>
-                            <strong class="txt">+1 On Google</strong>
-                        </a>
-                    </li>
-                    <li class="vimeo">
-                        <a href="#">
-                            <span class="icon-vimeo"></span>
+                            @*<span class="icon-youtube"></span>*@
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
                             <strong class="txt">Share At</strong>
                         </a>
                     </li>
-                    <li class="pin">
+                    <li class="instagram">
                         <a href="#">
-                            <span class="icon-pin"></span>
-                            <strong class="txt">Pin It</strong>
-                        </a>
-                    </li>
-                    <li class="dribble">
-                        <a href="#">
-                            <span class="icon-dribble"></span>
-                            <strong class="txt">Dribbble</strong>
+                            @*<span class="fa-instagram"></span>*@
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <strong class="txt">Share At</strong>
                         </a>
                     </li>
                 </ul>
