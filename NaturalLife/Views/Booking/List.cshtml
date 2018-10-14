@@ -1,6 +1,6 @@
 ﻿@using PagedList.Mvc;
 @using GridMvc.Html;
-@model PagedList.IPagedList<NaturalLife.Models.NTL_Booking>
+@model PagedList.IPagedList<NaturalLife.Models.NTL_ExtraBooking>
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
@@ -60,7 +60,7 @@
                                             <td>@item.RoomType</td>
                                             <td>@item.NumberOfAdult</td>
                                             <td>@item.NumberOfChild</td>
-                                            <td>@item.VehicleTye</td>
+                                            <td>@item.VehicleType</td>
                                             <td>@item.StartDate</td>
                                             <td>@item.EndDate</td>
                                             <td>@item.ServiceID</td>
