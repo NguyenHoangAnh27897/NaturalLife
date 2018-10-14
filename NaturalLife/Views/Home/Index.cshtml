@@ -1,6 +1,7 @@
-﻿@model IQueryable<NaturalLife.Models.NTL_Slider>
+﻿@model IEnumerable<NaturalLife.Models.Data.HomePage>
 @{
     ViewBag.Title = "Home Page";
+    string[] arrStr;
 }
 <!-- main banner -->
 <div class="banner banner-home">
@@ -52,7 +53,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
-                        @Model.FirstOrDefault().Title2
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title2
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
@@ -75,7 +76,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
-                        QUAN NIỆM
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle2
                     </div>
 
                     <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2"
@@ -96,7 +97,7 @@
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
                          data-responsive_offset="on">
-                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slogan2</a>
+                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slider.FirstOrDefault().Slogan2</a>
                     </div>
                 </li>
 
@@ -144,7 +145,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
-                        @Model.FirstOrDefault().Title
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title
                     </div>
 
                     <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
@@ -166,11 +167,11 @@
                          data-splitin="none"
                          data-splitout="none"
                          data-responsive_offset="on"
-                         style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 300; font-style: italic; white-space: nowrap;">
-                        năm 
+                         style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; font-style: italic; white-space: nowrap; text-align:center">
+                         @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle
                     </div>
 
-                    <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
+                    @*<div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
                          data-x="['center','center','center','center']"
                          data-hoffset="['50','30','30','20']"
                          data-y="['top','top','middle','middle']"
@@ -190,8 +191,8 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: 900; white-space: nowrap;">
-                        2018
-                    </div>
+                        @Model.FirstOrDefault().SubTitle
+                    </div>*@
 
                     <div class="tp-caption rev-btn rs-parallaxlevel-10" id="slide-163-layer1-2"
                          data-x="['center','center','center','center']"
@@ -211,7 +212,7 @@
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
                          data-responsive_offset="on">
-                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slogan</a>
+                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slider.FirstOrDefault().Slogan</a>
                     </div>
                 </li>
             </ul>
@@ -288,34 +289,38 @@
                         <div class="img-wrap">
                             <div class="demo-wrapper single-item demo-wrapper-0">
                                 <div id="common-slide">
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-2.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-3.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-4.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/villa/villa-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
+                                    @if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Images != null)
+                                    {
+                                        if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Images.Contains(","))
+                                        {
+                                            arrStr = Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Images.Split(',');
+                                            foreach (var item in arrStr)
+                                            {
+                                                <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@item) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                    @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                                </div>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Images) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                            </div>
+                                        }
+
+                                    }
+
                                 </div>
                             </div>
                         </div>
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">Villa Natural Life Dalat </a></h3>
+                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s=>s.ID == 1).RoomType Natural Life Đà Lạt </a></h3>
                                     <!-- <div class="info-day">11 Ngày</div> -->
                                 </header>
-                                <p itemprop="description">Nằm trên ngọn đồi số 5 của khu Natural life Đà lạt, Được thiết kế theo tiêu chuẩn châu âu nội thất sang trong da phần được làm bằng gỗ có hệ thống lò sưởi theo kiểu truyền thống. có các balcon để ngắm nhìn toàn cảnh đồi thông.</p>
+                                <p itemprop="description">@Html.Raw(Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Description)</p>
                                 <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
                                     <div class="star-rating">
                                         <input class="product_rating" type="hidden" value="5">
@@ -402,7 +407,7 @@
                             <aside class="info-aside">
                                 <span class="price">
                                     <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <span itemprop="price">VILLA</span>
+                                        <span itemprop="price">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).RoomType</span>
                                     </span>
                                 </span>
                                 <div class="activity-level">
@@ -419,34 +424,37 @@
                         <div class="img-wrap">
                             <div class="demo-wrapper single-item demo-wrapper-0">
                                 <div id="bungalow-slide">
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/bungalow/bungalow-0.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/bungalow/bungalow-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-2.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/bungalow/bungalow-2.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-3.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/bungalow/bungalow-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/bungalow/bungalow-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
+                                    @if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Images != null)
+                                    {
+                                        if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Images.Contains(","))
+                                        {
+                                            arrStr = Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Images.Split(',');
+                                            foreach (var item in arrStr)
+                                            {
+                                                <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@item) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                    @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                                </div>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Images) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                            </div>
+                                        }
+
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">Bungalow Natural Life Dalat</a></h3>
+                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).RoomType Natural Life Đà Lạt</a></h3>
                                     <!-- <div class="info-day">11 Ngày</div> -->
                                 </header>
-                                <p itemprop="description">Nằm trên triền dốc từ đồi số 5 đến đồi số 3, nằm len lỏi giữa rừng thông vô cùng độc đáo với lối kiến truc tinh tế giao thoa với sự mộc mạc đem lại cho du khách không gian thoải mái vẫn đầy đủ tiện nghi.</p>
+                                <p itemprop="description">@Html.Raw(@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Description)</p>
                                 <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
                                     <div class="star-rating">
                                         <input class="product_rating" type="hidden" value="5">
@@ -537,7 +545,7 @@
                             <aside class="info-aside">
                                 <span class="price">
                                     <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <span itemprop="price">BUNGALOW</span>
+                                        <span itemprop="price">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).RoomType</span>
                                     </span>
                                 </span>
                                 <div class="activity-level">
@@ -554,34 +562,37 @@
                         <div class="img-wrap">
                             <div class="demo-wrapper single-item demo-wrapper-0">
                                 <div id="camping-slide">
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/camping/camping-0.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/camping/camping-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-2.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/camping/camping-2.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-3.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/camping/camping-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
-                                    <div style="width: 550px; height: 220px; background: #474d4b url(/Content/NaturalLife/img/camping/camping-1.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                        @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-3.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
-                                    </div>
+                                    @if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Images != null)
+                                    {
+                                        if (Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Images.Contains(","))
+                                        {
+                                            arrStr = Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Images.Split(',');
+                                            foreach (var item in arrStr)
+                                            {
+                                                <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@item) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                    @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                                </div>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <div style="width: 550px; height: 220px; background: #474d4b url(/Images/website/imageroomtype/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Images) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+                                                @*<img width="550" height="358" src="~/Content/NaturalLife/img/room/room-1.jpg" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">*@
+                                            </div>
+                                        }
+
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">Camping</a></h3>
+                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).RoomType Natural Life Đà Lạt</a></h3>
                                     <!-- <div class="info-day">18 Ngày</div> -->
                                 </header>
-                                <p itemprop="description">Được thiết kế theo dạng cánh bướm hướng ra thung lũng với 24m2 dành cho 6 đến 8 người, các lểu được liên kết tạo nên 1 không gian vô cùng độc đáo, do sự kết hợp giữa chất liệu vãi và gỗ thông chủ đạo.</p>
+                                <p itemprop="description">@Html.Raw(@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Description)</p>
                                 <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
                                     <div class="star-rating">
                                         <input class="product_rating" type="hidden" value="5">
@@ -668,7 +679,7 @@
                             <aside class="info-aside">
                                 <span class="price">
                                     <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-                                        <span itemprop="price">CAMPING</span>
+                                        <span itemprop="price">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).RoomType</span>
                                     </span>
                                 </span>
                                 <div class="activity-level">

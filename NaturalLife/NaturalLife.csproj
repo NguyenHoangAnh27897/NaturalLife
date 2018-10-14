@@ -221,6 +221,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NaturalLife.Context.cs">
@@ -1073,10 +1074,16 @@
     <Content Include="Views\Room\Detail.cshtml" />
     <Content Include="Views\Homepage\Edit.cshtml" />
     <Content Include="Views\RoomMaster\List.cshtml" />
+    <Content Include="Views\RoomMaster\Add.cshtml" />
+    <Content Include="Views\RoomMaster\ListType.cshtml" />
+    <Content Include="Views\RoomMaster\AddType.cshtml" />
+    <Content Include="Views\RoomMaster\EditType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\website\imagehome\" />
+    <Folder Include="Images\website\imageroomtype\" />
+    <Folder Include="Images\website\imageroom\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

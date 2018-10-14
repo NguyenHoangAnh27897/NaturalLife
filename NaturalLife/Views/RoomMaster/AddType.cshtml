@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "AddType";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Thêm loại phòng</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Thêm loại phòng</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/roommaster/addtype" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tên loại phòng</label>
+                                    <input type="text" class="form-control" placeholder="" name="typename">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea name="editor"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1280x763 HOẶC LỚN HƠN)</label>
+                                    <br />
+                                    <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                </div>
+
+                                <button class="btn btn-primaryt">Lưu</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+
+
+

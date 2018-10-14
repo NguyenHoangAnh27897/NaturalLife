@@ -1,0 +1,85 @@
+﻿@using PagedList.Mvc;
+@using GridMvc.Html;
+@model PagedList.IPagedList<NaturalLife.Models.NTL_RoomType>
+@{
+    ViewBag.Title = "ListType";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách Phòng</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start table basic -->
+        <div class="basic-table">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="single-table">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Danh sách Phòng</h4>
+                            </div>
+                        </div>
+                        <div class="section-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover progress-table text-white text-center" border="0" style="border-width:0px;border-style:None;border-collapse:collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tên loại phòng</th>
+                                            <th>Nội dung miêu tả</th>
+                                            <th>Xoá</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.ID</td>
+                                                <td><a href="/roommaster/edittype/@item.ID">@item.RoomType</a></td>
+                                                @if (item.Description != null)
+                                                {
+                                                    if (item.Description.Count() > 25)
+                                                    {
+                                                        <td>@Html.Raw(item.Description.Substring(0, 50)) ...</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@Html.Raw(item.Description)</td>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                                <td><a href="/roommaster/deletetype/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="pagination-total-pages">
+                                    <div class="pagination-style">
+                                        <strong style="margin: 12px;"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</strong>
+                                        @Html.PagedListPager(Model, page => Url.Action("ListType", new { page }))
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -14,7 +14,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa Slider</li>
+                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa trang chủ</li>
                     </ol>
                 </nav>
             </div>
@@ -28,7 +28,7 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thay đổi Slider</h4>
+                                <h4>Chỉnh sửa trang chủ</h4>
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                                     {
                                         arrStr = Model.FirstOrDefault().Images.Split(',');
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Hình ảnh (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
                                             <br />
                                             <input type="file" name="images" accept="image/*" multiple="multiple" />
                                             <div class="row">
@@ -56,7 +56,7 @@
                                     else
                                     {
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Hình ảnh (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
                                             <br />
                                             <input type="file" name="images" accept="image/*" multiple="multiple" />
                                             <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Images" style="width:100%" />
@@ -66,21 +66,30 @@
                                 else
                                 {
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">Hình ảnh (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
                                         <br />
                                         <input type="file" name="images" accept="image/*" multiple="multiple" />
                                     </div>
                                 }
 
-
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
                                     <input type="text" class="form-control" placeholder="" name="title" value="@Model.FirstOrDefault().Title">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="subtitle" value="@Model.FirstOrDefault().SubTitle">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
                                     <input type="text" class="form-control" placeholder="" name="title2" value="@Model.FirstOrDefault().Title2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" placeholder="" name="subtitle2" value="@Model.FirstOrDefault().SubTitle2">
                                 </div>
 
                                 <div class="form-group">

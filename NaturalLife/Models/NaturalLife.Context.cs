@@ -31,7 +31,6 @@ namespace NaturalLife.Models
         public virtual DbSet<NTL_Customer> NTL_Customer { get; set; }
         public virtual DbSet<NTL_DiscountProgram> NTL_DiscountProgram { get; set; }
         public virtual DbSet<NTL_Inventory> NTL_Inventory { get; set; }
-        public virtual DbSet<NTL_Room> NTL_Room { get; set; }
         public virtual DbSet<NTL_Schedule> NTL_Schedule { get; set; }
         public virtual DbSet<NTL_Schedule_Activity> NTL_Schedule_Activity { get; set; }
         public virtual DbSet<NTL_Schedule_Service> NTL_Schedule_Service { get; set; }
@@ -40,5 +39,6 @@ namespace NaturalLife.Models
         public virtual DbSet<NTL_RoomType> NTL_RoomType { get; set; }
         public virtual DbSet<NTL_ExtraBooking> NTL_ExtraBooking { get; set; }
         public virtual DbSet<NTL_Slider> NTL_Slider { get; set; }
+        public virtual DbSet<NTL_Room> NTL_Room { get; set; }
     }
 }

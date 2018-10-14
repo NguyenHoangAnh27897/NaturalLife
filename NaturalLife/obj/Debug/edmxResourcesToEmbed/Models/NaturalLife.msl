@@ -71,18 +71,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NTL_Room">
-      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
-        <MappingFragment StoreEntitySet="NTL_Room">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
-          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="NTL_Schedule">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Schedule">
         <MappingFragment StoreEntitySet="NTL_Schedule">
@@ -134,6 +122,8 @@
     <EntitySetMapping Name="NTL_RoomType">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_RoomType">
         <MappingFragment StoreEntitySet="NTL_RoomType">
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="RoomType" ColumnName="RoomType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
@@ -159,6 +149,8 @@
     <EntitySetMapping Name="NTL_Slider">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Slider">
         <MappingFragment StoreEntitySet="NTL_Slider">
+          <ScalarProperty Name="SubTitle2" ColumnName="SubTitle2" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
           <ScalarProperty Name="Images" ColumnName="Images" />
           <ScalarProperty Name="Icon2" ColumnName="Icon2" />
           <ScalarProperty Name="Icon" ColumnName="Icon" />
@@ -166,6 +158,21 @@
           <ScalarProperty Name="Slogan" ColumnName="Slogan" />
           <ScalarProperty Name="Title2" ColumnName="Title2" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NTL_Room">
+      <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
+        <MappingFragment StoreEntitySet="NTL_Room">
+          <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -575,90 +575,118 @@
 
     // Owl Carousel Carousels
     $("#partner-slide") // Partner Block Carousel
-        .owlCarousel({
-            items: 6,
-            slideSpeed: 300,
-            itemsTablet: [768, 3],
-            itemsMobile: [480, 1],
-            autoPlay: 3000,
-            touchDrag: false,
-            pagination: false,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        items: 6,
+        slideSpeed: 300,
+        itemsTablet: [768, 3],
+        itemsMobile: [480, 1],
+        autoPlay: 3000,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     $("#testimonial-home-slide") // Testimonial Home Carousel
-        .owlCarousel({
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            touchDrag: false,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        mouseDrag: false
+    });
     $("#tour-slide") // Tour Detail Carousel
-        .owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            touchDrag: false,
-            pagination: false,
-            mouseDrag: false
-        });
-
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     $("#common-slide") // Common Carousel
-        .owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            touchDrag: false,
-            pagination: false,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     $("#camping-slide") // Common Carousel
-        .owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            touchDrag: false,
-            pagination: false,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     $("#bungalow-slide") // Common Carousel
-        .owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true,
-            touchDrag: false,
-            pagination: false,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     $("#common-multiple-slide") // Common Carousel Multiple
-        .owlCarousel({
-            items: 3,
-            slideSpeed: 300,
-            itemsTablet: [768, 2],
-            itemsMobile: [480, 1],
-            autoPlay: 3000,
-            touchDrag: false,
-            pagination: true,
-            mouseDrag: false
-        });
+    .owlCarousel({
+        items: 3,
+        slideSpeed: 300,
+        itemsTablet: [768, 2],
+        itemsMobile: [480, 1],
+        autoPlay: 3000,
+        touchDrag: false,
+        pagination: true,
+        mouseDrag: false
+    });
 
     $("#common-multiple-slide-v1") // Common Carousel Multiple
-        .owlCarousel({
-            items: 3,
-            slideSpeed: 300,
-            itemsTablet: [768, 2],
-            itemsMobile: [480, 1],
-            autoPlay: false,
-            touchDrag: false,
-            pagination: false,
-            navigation: true,
-            mouseDrag: false
-        });
-
+    .owlCarousel({
+        items: 3,
+        slideSpeed: 300,
+        itemsTablet: [768, 2],
+        itemsMobile: [480, 1],
+        autoPlay: false,
+        touchDrag: false,
+        pagination: false,
+        navigation: true,
+        mouseDrag: false
+    });
+    $("#special-slide1") // Slide special Carousel
+   .owlCarousel({
+       navigation: true,
+       slideSpeed: 300,
+       paginationSpeed: 400,
+       singleItem: true,
+       touchDrag: false,
+       pagination: false,
+       mouseDrag: false
+   });
+    $("#special-slide2") // Slide special Carousel
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
+    $("#special-slide3") // Slide special Carousel
+    .owlCarousel({
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        touchDrag: false,
+        pagination: false,
+        mouseDrag: false
+    });
     //JCF - $ Custom Form
     jcf.setOptions('Select', {
         wrapNative: false,

@@ -1,0 +1,105 @@
+﻿@model IQueryable<NaturalLife.Models.NTL_RoomType>
+@{
+    ViewBag.Title = "EditType";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    string[] arrStr;
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa loại phòng</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Chỉnh sửa loại phòng</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/roommaster/edittype" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tên loại phòng</label>
+                                    <input type="text" class="form-control" placeholder="" name="typename" value="@Model.FirstOrDefault().RoomType">
+                                    <input type="hidden" name="ID" value="@Model.FirstOrDefault().ID" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea name="editor">@Model.FirstOrDefault().Description</textarea>
+                                </div>
+
+                                @if (Model.FirstOrDefault().Images != null)
+                                {
+                                    if (Model.FirstOrDefault().Images.Contains(","))
+                                    {
+                                        arrStr = Model.FirstOrDefault().Images.Split(',');
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1280x763 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <div class="row">
+                                                @foreach (var img in arrStr)
+                                                {
+
+                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageroomtype/@img') center center no-repeat / cover;">
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1280x763 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <img src="~/Images/website/imageroomtype/@Model.FirstOrDefault().Images" style="width:100%" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1280x763 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                    </div>
+                                }
+
+                                <button class="btn btn-primaryt">Lưu</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+
+

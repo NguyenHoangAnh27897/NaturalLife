@@ -88,8 +88,11 @@
     <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
     <Property Name="Price" Type="int" />
     <Property Name="DiscountID" Type="int" />
-    <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="50" />
     <Property Name="Schedule" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Images" Type="nvarchar" MaxLength="200" />
+    <Property Name="RoomTypeID" Type="int" />
   </EntityType>
   <EntityType Name="NTL_RoomType">
     <Key>
@@ -97,6 +100,8 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Images" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>
@@ -146,6 +151,8 @@
     <Property Name="Icon" Type="nvarchar" MaxLength="50" />
     <Property Name="Icon2" Type="nvarchar" MaxLength="50" />
     <Property Name="Images" Type="nvarchar" MaxLength="200" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="20" />
+    <Property Name="SubTitle2" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="NTL_Vehicle">
     <Key>

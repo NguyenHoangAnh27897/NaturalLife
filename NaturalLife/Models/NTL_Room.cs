@@ -20,5 +20,8 @@ namespace NaturalLife.Models
         public Nullable<int> DiscountID { get; set; }
         public string Avatar { get; set; }
         public Nullable<int> Schedule { get; set; }
+        public string Description { get; set; }
+        public string Images { get; set; }
+        public Nullable<int> RoomTypeID { get; set; }
     }
 }

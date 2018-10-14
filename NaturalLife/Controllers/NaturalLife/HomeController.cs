@@ -13,7 +13,13 @@ namespace NaturalLife.Controllers
         public ActionResult Index()
         {
             var rs = db.NTL_Slider.Where(s => s.ID == 1);
-            return View(rs);
+            var rt = db.NTL_RoomType.ToList();
+            Data.HomePage hp = new Data.HomePage();
+            hp.RoomType = rt;
+            hp.Slider = rs;
+            List<Data.HomePage> lst = new List<Data.HomePage>();
+            lst.Add(hp);
+            return View(lst);
         }
 
         public ActionResult About()
