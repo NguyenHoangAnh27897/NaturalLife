@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +31,25 @@ namespace NaturalLife.Controllers.WebMaster
         {
             if (Session["Authentication"] != null)
             {
+                string Images = "";
+                foreach (HttpPostedFileBase file in images)
+                {
+                    if (file != null)
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            var filename = Path.GetFileName(file.FileName);
+                            var fname = filename.Replace(" ", "_");
+                            var path = Path.Combine(Server.MapPath("~/Images/website/imagehome"), fname);
+                            file.SaveAs(path);
+                            Images += fname + ",";
+                        }
+                    }
+                }
+                if (Images != "" && Images.Contains(","))
+                {
+                    Images = Images.Remove(Images.Length - 1);
+                }
                 var home = db.NTL_Slider.Find(1);
                 home.Title = title;
                 home.Title2 = title2;
@@ -39,6 +59,10 @@ namespace NaturalLife.Controllers.WebMaster
                 home.Slogan2 = slogan2;
                 home.Icon = icon;
                 home.Icon2 = icon2;
+                if (Images != "")
+                {
+                    home.Images = Images;
+                }
                 db.Entry(home).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Edit");

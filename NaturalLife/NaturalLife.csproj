@@ -216,6 +216,7 @@
     <Compile Include="Controllers\WebMaster\BookingController.cs" />
     <Compile Include="Controllers\WebMaster\HomepageController.cs" />
     <Compile Include="Controllers\WebMaster\RoomMasterController.cs" />
+    <Compile Include="Controllers\WebMaster\ServiceDetailController.cs" />
     <Compile Include="Controllers\WebMaster\ServiceMasterController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1083,6 +1084,7 @@
     <Content Include="Views\ServiceMaster\List.cshtml" />
     <Content Include="Views\ServiceMaster\Add.cshtml" />
     <Content Include="Views\ServiceMaster\Edit.cshtml" />
+    <Content Include="Views\ServiceDetail\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
