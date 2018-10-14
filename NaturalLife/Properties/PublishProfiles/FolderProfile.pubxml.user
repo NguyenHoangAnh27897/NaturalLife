@@ -91,13 +91,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/13/2018 16:28:28</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
-      <publishTime>10/10/2018 17:12:30</publishTime>
+      <publishTime>02/13/2018 16:28:30</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/NaturalLife.dll">
+<<<<<<< HEAD
       <publishTime>10/13/2018 21:24:05</publishTime>
+=======
+      <publishTime>10/14/2018 01:11:03</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
     <File Include="bin/NaturalLife.pdb">
       <publishTime>10/13/2018 21:24:05</publishTime>
@@ -253,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>10/10/2018 17:12:30</publishTime>
+      <publishTime>07/19/2017 10:01:30</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>02/01/2018 12:20:56</publishTime>
@@ -2515,10 +2519,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/08/2018 03:01:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
+<<<<<<< HEAD
       <publishTime>10/13/2018 11:16:54</publishTime>
     </File>
     <File Include="Views/Homepage/Edit.cshtml">
       <publishTime>10/12/2018 17:21:21</publishTime>
+=======
+      <publishTime>10/14/2018 00:42:05</publishTime>
+    </File>
+    <File Include="Views/Homepage/Edit.cshtml">
+      <publishTime>10/13/2018 22:07:03</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>10/07/2018 18:51:41</publishTime>
@@ -2539,16 +2550,27 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:51:41</publishTime>
     </File>
     <File Include="Views/Room/Detail.cshtml">
+<<<<<<< HEAD
       <publishTime>10/11/2018 22:02:21</publishTime>
+=======
+      <publishTime>10/14/2018 00:18:27</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
     <File Include="Views/Room/Index.cshtml">
       <publishTime>10/08/2018 04:48:30</publishTime>
     </File>
     <File Include="Views/RoomMaster/List.cshtml">
+<<<<<<< HEAD
       <publishTime>10/12/2018 18:41:29</publishTime>
     </File>
     <File Include="Views/Service/Detail.cshtml">
       <publishTime>10/11/2018 22:02:07</publishTime>
+=======
+      <publishTime>10/13/2018 22:30:01</publishTime>
+    </File>
+    <File Include="Views/Service/Detail.cshtml">
+      <publishTime>10/14/2018 01:05:44</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
     <File Include="Views/Service/Index.cshtml">
       <publishTime>10/08/2018 04:50:56</publishTime>
@@ -2560,10 +2582,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:51:41</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/10/2018 19:35:55</publishTime>
+      <publishTime>10/14/2018 01:08:39</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutMaster.cshtml">
+<<<<<<< HEAD
       <publishTime>10/12/2018 12:09:36</publishTime>
+=======
+      <publishTime>10/13/2018 22:11:57</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/07/2018 18:51:41</publishTime>
@@ -2581,7 +2607,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2018 18:50:45</publishTime>
     </File>
     <File Include="Web.config">
+<<<<<<< HEAD
       <publishTime>10/13/2018 14:11:08</publishTime>
+=======
+      <publishTime>10/14/2018 01:11:06</publishTime>
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
     </File>
   </ItemGroup>
 </Project>

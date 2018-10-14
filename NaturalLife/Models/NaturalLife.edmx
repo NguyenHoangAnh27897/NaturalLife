@@ -250,7 +250,7 @@
           <Property Name="SoldPrice" Type="Int32" />
           <Property Name="InOutInventory" Type="Int32" />
           <Property Name="Supplier" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
+        </EntityType>    
         <EntityType Name="NTL_Schedule">
           <Key>
             <PropertyRef Name="ID" />
@@ -438,6 +438,19 @@
                 <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
                 <ScalarProperty Name="InOutInventory" ColumnName="InOutInventory" />
                 <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NTL_Room">
+            <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
+              <MappingFragment StoreEntitySet="NTL_Room">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

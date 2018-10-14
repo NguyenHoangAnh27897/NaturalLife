@@ -90,6 +90,10 @@
     <Property Name="DiscountID" Type="int" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
     <Property Name="Schedule" Type="int" />
+<<<<<<< HEAD
+=======
+    <Property Name="Description" Type="nvarchar(max)" />
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
   </EntityType>
   <EntityType Name="NTL_RoomType">
     <Key>
@@ -97,6 +101,10 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
+<<<<<<< HEAD
+=======
+    <Property Name="Description" Type="nvarchar(max)" />
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>

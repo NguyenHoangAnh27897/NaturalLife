@@ -74,6 +74,10 @@
     <EntitySetMapping Name="NTL_Room">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_Room">
         <MappingFragment StoreEntitySet="NTL_Room">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="Description" ColumnName="Description" />
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="RoomName" ColumnName="RoomName" />
           <ScalarProperty Name="Price" ColumnName="Price" />
@@ -134,6 +138,10 @@
     <EntitySetMapping Name="NTL_RoomType">
       <EntityTypeMapping TypeName="natu0679_NaturalLifeModel.NTL_RoomType">
         <MappingFragment StoreEntitySet="NTL_RoomType">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="Description" ColumnName="Description" />
+>>>>>>> 83e2f008a2abbcf1d38a382c5f2d4c6f05fc4157
           <ScalarProperty Name="RoomType" ColumnName="RoomType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
