@@ -1,17 +1,22 @@
 ﻿@model IEnumerable<NaturalLife.Models.Data.HomePage>
+    @using NaturalLife.Models
 @{
     ViewBag.Title = "Home Page";
     string[] arrStr;
+    int count = 0;
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var rs = db.NTL_Video.Where(s => s.ID == 1);
 }
+
 <!-- main banner -->
 <div class="banner banner-home">
     <!-- revolution slider starts -->
     <div id="rev_slider_279_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" style="margin:0px auto;background-color:#474d4b;padding:0px;margin-top:0px;margin-bottom:0px;">
         <div id="rev_slider_70_1" class="rev_slider fullscreenabanner" style="display:none;" data-version="5.1.4">
             <ul>
-                <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+                <li class="slider-color-schema-dark" data-index="rs-2" data-transition="slideoververtical" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
                     <!-- main image for revolution slider -->
-                    <img src="~/Content/NaturalLife/img/banner/img-01.jpg" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+                    <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Slider.FirstOrDefault().Image1" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
 
                     <div class="tp-caption tp-resizeme" id="slide-897-layer-7"
                          data-x="['center','center','center','center']"
@@ -30,7 +35,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
-                        <span class="icon-wildlife"></span>
+                        <span class="@Model.FirstOrDefault().Slider.FirstOrDefault().Icon"></span>
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
@@ -53,7 +58,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff">
-                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title2
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10"
@@ -76,7 +81,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 5px; font-weight: bold; white-space: nowrap;">
-                        @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle2
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle
                     </div>
 
                     <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2"
@@ -96,14 +101,17 @@
                          data-splitin="none"
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
-                         data-responsive_offset="on">
-                        <a class="btn btn-banner" href="#">@Model.FirstOrDefault().Slider.FirstOrDefault().Slogan2</a>
+                         data-responsive_offset="on" style="z-index: 5">
+                        <a class="btn btn-banner" href="/sliderdetail/index">@Model.FirstOrDefault().Slider.FirstOrDefault().Slogan</a>
                     </div>
+
+                    <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;overflow: hidden;background: black;opacity: .5;z-index: 4;"></div>
+
                 </li>
 
                 <li data-index="rs-163" data-transition="slideoververtical" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1500" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Intro" data-description="">
                     <!-- main image for revolution slider -->
-                    <img src="~/Content/NaturalLife/img/villa/0.jpg" data-lazyload="/Content/NaturalLife/img/villa/0.jpg" alt="image" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                    <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Slider.FirstOrDefault().Image2" alt="image" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10" id="slide-163-layer-1"
                          data-x="['left','left','left','center']"
@@ -125,7 +133,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 6; letter-spacing: 0; font-weight: 100; text-transform: uppercase; white-space: nowrap; color: #ffffff;">
-                        TOURS, DU LỊCH &amp;
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title2
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-10" id="slide-163-layer-3"
@@ -148,7 +156,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 8px; text-indent: 0; font-style: italic; font-weight: 900; white-space: nowrap; color: #b0a377;">
-                        KHÁM PHÁ
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle2
                     </div>
 
                     <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-0" id="slide-163-layer-4"
@@ -171,13 +179,14 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 5; letter-spacing: 0; font-weight: 300; font-style: italic; color: #ffffff">
-                        <a class="btn btn-banner" href="#">KHÁM PHÁ NGAY</a>
+                        <a class="btn btn-banner" href="/sliderdetail/index">@Model.FirstOrDefault().Slider.FirstOrDefault().Slogan2</a>
                     </div>
+                    <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;overflow: hidden;background: black;opacity: .5;z-index: 4;"></div>
                 </li>
 
                 <li data-index="rs-3" data-transition="slideoverup" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="The Menu" data-description="">
                     <!-- main image for revolution slide -->
-                    <img alt="image description" src="~/Content/NaturalLife/img/service/ob-thumnail.jpg" data-lazyload="../Content/NaturalLife/img/service/ob-thumnail.jpg" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
+                    <img alt="image description" src="~/Images/website/imagehome/@Model.FirstOrDefault().Slider.FirstOrDefault().Image3" data-bgposition="right center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
 
                     <div class="tp-caption tp-resizeme" id="slide-897-layer1-7"
                          data-x="['center','center','center','center']"
@@ -196,7 +205,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 9; white-space: nowrap; font-size: 60px; line-height: 100px;text-align:center;">
-                        <span class="icon-camping"></span>
+                        <span class="@Model.FirstOrDefault().Slider.FirstOrDefault().Icon3"></span>
                     </div>
 
                     <div class="tp-caption banner-heading-sub tp-resizeme rs-parallaxlevel-0"
@@ -219,8 +228,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 7; letter-spacing: 0; font-weight: 100; text-align: center; color: #ffffff; text-transform: uppercase;">
-                        @*@Model.FirstOrDefault().Title*@
-                        tour ông bà
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().Title3
                     </div>
 
                     <div class="tp-caption tp-resizeme banner-heading-sub rs-parallaxlevel-10"
@@ -243,8 +251,7 @@
                          data-splitout="none"
                          data-responsive_offset="on"
                          style="z-index: 8; padding-right: 10px; text-indent: 2.5em; font-weight: 900; font-style: italic; white-space: nowrap; text-align:center">
-                        @*@Model.FirstOrDefault().SubTitle*@
-                        Giảm 30%
+                        @Model.FirstOrDefault().Slider.FirstOrDefault().SubTitle3
                     </div>
 
                     <div class="tp-caption rev-btn rs-parallaxlevel-10" id="slide-163-layer1-2"
@@ -264,12 +271,12 @@
                          data-splitin="none"
                          data-splitout="none"
                          data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
-                         data-responsive_offset="on">
-                        <a class="btn btn-banner" href="/service/detail">
-                        @*@Model.FirstOrDefault().Slogan*@
-                            khám phá ngay
+                         data-responsive_offset="on" style="z-index: 5;">
+                        <a class="btn btn-banner" href="/sliderdetail/index">
+                            @Model.FirstOrDefault().Slider.FirstOrDefault().Slogan3
                         </a>
                     </div>
+                    <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;overflow: hidden;background: black;opacity: .5;z-index: 4;"></div>
                 </li>
             </ul>
         </div>
@@ -372,80 +379,26 @@
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s=>s.ID == 1).RoomType Natural Life Đà Lạt </a></h3>
+                                    <h3><a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).ID" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).RoomType Natural Life Đà Lạt </a></h3>
                                     <!-- <div class="info-day">11 Ngày</div> -->
                                 </header>
                                 <p itemprop="description">@Html.Raw(Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Description)</p>
-                                <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
-                                    <div class="star-rating">
-                                        <input class="product_rating" type="hidden" value="5">
-                                        <div class="product_rateYo jq-ry-container" readonly="readonly" style="width: 83px;">
-                                            <div class="jq-ry-group-wrapper">
-                                                <div class="jq-ry-normal-group jq-ry-group">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                                <div class="jq-ry-rated-group jq-ry-group" style="width: 100%;">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="info-rate" itemprop="reviewCount">2 Đánh giá</div>
-                                </div>
                                 <footer class="info-footer">
                                     <ul class="ico-list">
                                         <li class="pop-opener">
-                                            <span class="icon-family"></span>
-                                            <div class="popup">Family</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Icon01"></span>
+                                            @*<div class="popup">Family</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-food-wine"></span>
-                                            <div class="popup">Food-wine</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Icon02"></span>
+                                            @*<div class="popup">Food-wine</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-urban"></span>
-                                            <div class="popup">Urban</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).Icon03"></span>
+                                            @*<div class="popup">Urban</div>*@
                                         </li>
                                     </ul>
-                                    <ul class="ico-action">
+                                    @*<ul class="ico-action">
                                         <li class="dropdown">
                                             <a class="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span class="icon-share"></span></a>
                                             <ul class="dropdown-menu drop-social-share">
@@ -456,7 +409,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="javascript:void(null);" onclick="save_wishlist(1715);" id="wishlistId_1715"><span class="icon-favs"></span></a></li>
-                                    </ul>
+                                    </ul>*@
                                 </footer>
                             </div>
                             <aside class="info-aside">
@@ -466,8 +419,8 @@
                                     </span>
                                 </span>
                                 <div class="activity-level">
-                                    <div class="ico"> <span class="icon-level7"></span></div>
-                                    <span class="text">Extreme</span>
+                                    <div class="ico"> <span class="icon-step"></span></div>
+                                    <span class="text">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).RoomType</span>
                                 </div>
                                 <a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 1).ID" class="btn btn-default" itemprop="url">Khám Phá Ngay</a>
                             </aside>
@@ -506,84 +459,30 @@
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).RoomType Natural Life Đà Lạt</a></h3>
+                                    <h3><a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).ID" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).RoomType Natural Life Đà Lạt</a></h3>
                                     <!-- <div class="info-day">11 Ngày</div> -->
                                 </header>
                                 <p itemprop="description">@Html.Raw(@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Description)</p>
-                                <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
-                                    <div class="star-rating">
-                                        <input class="product_rating" type="hidden" value="5">
-                                        <div class="product_rateYo jq-ry-container" readonly="readonly" style="width: 83px;">
-                                            <div class="jq-ry-group-wrapper">
-                                                <div class="jq-ry-normal-group jq-ry-group">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                                <div class="jq-ry-rated-group jq-ry-group" style="width: 100%;">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="info-rate" itemprop="reviewCount">2 Đánh giá</div>
-                                </div>
                                 <footer class="info-footer">
                                     <ul class="ico-list">
-                                        <li class="pop-opener">
+                                        @*<li class="pop-opener">
                                             <span class="icon-backpacking"></span>
                                             <div class="popup">Backpacking</div>
+                                        </li>*@
+                                        <li class="pop-opener">
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Icon01"></span>
+                                            @*<div class="popup">Family</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-family"></span>
-                                            <div class="popup">Family</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Icon02"></span>
+                                            @*<div class="popup">Food-wine</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-food-wine"></span>
-                                            <div class="popup">Food-wine</div>
-                                        </li>
-                                        <li class="pop-opener">
-                                            <span class="icon-urban"></span>
-                                            <div class="popup">Urban</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).Icon03"></span>
+                                            @*<div class="popup">Urban</div>*@
                                         </li>
                                     </ul>
-                                    <ul class="ico-action">
+                                    @*<ul class="ico-action">
                                         <li class="dropdown">
                                             <a class="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span class="icon-share"></span></a>
                                             <ul class="dropdown-menu drop-social-share">
@@ -594,7 +493,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="javascript:void(null);" onclick="save_wishlist(627);" id="wishlistId_627"><span class="icon-favs"></span></a></li>
-                                    </ul>
+                                    </ul>*@
                                 </footer>
                             </div>
                             <aside class="info-aside">
@@ -604,8 +503,8 @@
                                     </span>
                                 </span>
                                 <div class="activity-level">
-                                    <div class="ico"> <span class="icon-level7"></span></div>
-                                    <span class="text">Extreme</span>
+                                    <div class="ico"> <span class="icon-fish-jumping"></span></div>
+                                    <span class="text">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).RoomType</span>
                                 </div>
                                 <a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 2).ID" class="btn btn-default" itemprop="url">Khám phá ngay</a>
                             </aside>
@@ -644,80 +543,26 @@
                         <div class="description">
                             <div class="col-left">
                                 <header class="heading">
-                                    <h3><a href="#" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).RoomType Natural Life Đà Lạt</a></h3>
+                                    <h3><a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).ID" itemprop="name">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).RoomType Natural Life Đà Lạt</a></h3>
                                     <!-- <div class="info-day">18 Ngày</div> -->
                                 </header>
                                 <p itemprop="description">@Html.Raw(@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Description)</p>
-                                <div class="reviews-holder" itemprop="aggregateRating" itemscope="" itemtype="#">
-                                    <div class="star-rating">
-                                        <input class="product_rating" type="hidden" value="5">
-                                        <div class="product_rateYo jq-ry-container" readonly="readonly" style="width: 83px;">
-                                            <div class="jq-ry-group-wrapper">
-                                                <div class="jq-ry-normal-group jq-ry-group">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="gray" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                                <div class="jq-ry-rated-group jq-ry-group" style="width: 100%;">
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                    <!--?xml version="1.0" encoding="utf-8"?-->
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#f39c12" style="margin-left: 2px;">
-                                                    <polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon>
-				                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="info-rate" itemprop="reviewCount">2 Đánh giá</div>
-                                </div>
                                 <footer class="info-footer">
                                     <ul class="ico-list">
                                         <li class="pop-opener">
-                                            <span class="icon-europe"></span>
-                                            <div class="popup">Europe</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Icon01"></span>
+                                            @*<div class="popup">Europe</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-mountain"></span>
-                                            <div class="popup">Mountain</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Icon02"></span>
+                                            @*<div class="popup">Mountain</div>*@
                                         </li>
                                         <li class="pop-opener">
-                                            <span class="icon-mountain-biking"></span>
-                                            <div class="popup">Mountain-biking</div>
+                                            <span class="@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).Icon03"></span>
+                                            @*<div class="popup">Mountain-biking</div>*@
                                         </li>
                                     </ul>
-                                    <ul class="ico-action">
+                                    @*<ul class="ico-action">
                                         <li class="dropdown">
                                             <a class="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span class="icon-share"></span></a>
                                             <ul class="dropdown-menu drop-social-share">
@@ -728,7 +573,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="javascript:void(null);" onclick="save_wishlist(623);" id="wishlistId_623"><span class="icon-favs"></span></a></li>
-                                    </ul>
+                                    </ul>*@
                                 </footer>
                             </div>
                             <aside class="info-aside">
@@ -738,8 +583,8 @@
                                     </span>
                                 </span>
                                 <div class="activity-level">
-                                    <div class="ico"> <span class="icon-level7"></span></div>
-                                    <span class="text">Extreme</span>
+                                    <div class="ico"> <span class="icon-duration"></span></div>
+                                    <span class="text">@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).RoomType</span>
                                 </div>
                                 <a href="/room/index/@Model.FirstOrDefault().RoomType.FirstOrDefault(s => s.ID == 3).ID" class="btn btn-default" itemprop="url">Khám phá ngay</a>
                             </aside>
@@ -761,185 +606,34 @@
                 <div class="row db-3-col">
                     @foreach (var item in Model.FirstOrDefault().Service)
                     {
-                    <article class="col-sm-6 col-md-4 article has-hover-s3">
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="~/Images/website/imageservice/@item.Avatar" height="215" width="370" alt="image description">
-                            </a>
-                            <div class="img-caption text-uppercase">@item.ServiceType</div>
-                            <div class="hover-article">
-                                <div class="star-rating">
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span class="disable"><span class="icon-star"></span></span>
-                                </div>
-                                <div class="icons">
-                                    <a href="#"><span class="icon-heart"></span></a>
-                                    <a href="#"><span class="icon-reply"></span></a>
-                                </div>
-                                <div class="info-footer">
-                                    <span class="price">từ<span>@string.Format("{0:n0}", item.Price)</span></span>
-                                    <a href="/service/detail/@item.ID" class="link-more">Khám phá ngay</a>
+                        <article class="col-sm-6 col-md-4 article has-hover-s3">
+                            <div class="img-wrap">
+                                <a href="#">
+                                    <img src="~/Images/website/imageservice/@item.Avatar" height="215" width="370" alt="image description">
+                                </a>
+                                <div class="img-caption text-uppercase">@item.ServiceType</div>
+                                <div class="hover-article">
+                                    <div class="icons">
+                                        @*<a href="#"><span class="icon-heart"></span></a>*@
+                                        <a href="/service/detail/@item.ID"><span class="icon-reply"></span></a>
+                                    </div>
+                                    <div class="info-footer">
+                                        <span class="price">từ<span>@string.Format("{0:n0}", item.Price)</span></span>
+                                        <a href="/service/detail/@item.ID" class="link-more">Khám phá ngay</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <h3><a href="/service/detail/@item.ID">@item.ServiceName</a></h3>
-                        @if (item.Description.Length > 50)
-                        {
-                            @Html.Raw(item.Description.Substring(0, 50))
-                        }
-                        else
-                        {
-                            @Html.Raw(item.Description)
-                        }
-                    </article>
+                            <h3><a href="/service/detail/@item.ID">@item.ServiceName</a></h3>
+                            @if (item.Description.Length > 50)
+                            {
+                                @Html.Raw(item.Description.Substring(0, 50))
+                            }
+                            else
+                            {
+                                @Html.Raw(item.Description)
+                            }
+                        </article>
                     }
-
-                    @*<article class="col-sm-6 col-md-4 article has-hover-s3">
-            <div class="img-wrap">
-                <a href="#">
-                    <img src="~/Content/NaturalLife/img/listing/img-02.jpg" height="215" width="370" alt="image description">
-                </a>
-                <div class="img-caption text-uppercase">Tour Gia đình</div>
-                <div class="hover-article">
-                    <div class="star-rating">
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span class="disable"><span class="icon-star"></span></span>
-                    </div>
-                    <div class="icons">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-reply"></span></a>
-                    </div>
-                    <div class="info-footer">
-                        <span class="price">từ<span>2.749.000 VNĐ</span></span>
-                        <a href="/service/detail" class="link-more">Khám phá ngay</a>
-                    </div>
-                </div>
-            </div>
-            <h3><a href="/service/detail">Hành trình tìm về thiên nhiên</a></h3>
-            <p>
-                hành trình hòa
-                mình với Thiên Nhiên của gia đình
-                tại Natural life Đà Lạt , đi tìm những
-                điều mộc mạc nhất và gần Thiên Nhiên nhất ...
-            </p>
-        </article>
-        <article class="col-sm-6 col-md-4 article has-hover-s3">
-            <div class="img-wrap">
-                <a href="#">
-                    <img src="~/Content/NaturalLife/img/listing/img-03.jpg" height="215" width="370" alt="image description">
-                </a>
-                <div class="img-caption text-uppercase">Tour Công tác</div>
-                <div class="hover-article">
-                    <div class="star-rating">
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span class="disable"><span class="icon-star"></span></span>
-                    </div>
-                    <div class="icons">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-reply"></span></a>
-                    </div>
-                    <div class="info-footer">
-                        <span class="price">từ<span>2.749.000 VNĐ</span></span>
-                        <a href="/service/detail" class="link-more">Khám phá ngay</a>
-                    </div>
-                </div>
-            </div>
-            <h3><a href="/service/detail">Khởi nguồn sáng tạo</a></h3>
-            <p>Làm việc; nghỉ dưỡng; hội nghị; ăn uống. Khởi nguồn sáng tạo cho doanh nhân, nhạc sĩ ...</p>
-        </article>*@
-                    @*<article class="col-sm-6 col-md-4 article has-hover-s3">
-            <div class="img-wrap">
-                <a href="#">
-                    <img src="~/Content/NaturalLife/img/listing/img-04.jpg" height="215" width="370" alt="image description">
-                </a>
-                <div class="img-caption text-uppercase">Tour Đặc biệt</div>
-                <div class="hover-article">
-                    <div class="star-rating">
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span class="disable"><span class="icon-star"></span></span>
-                    </div>
-                    <div class="icons">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-reply"></span></a>
-                    </div>
-                    <div class="info-footer">
-                        <span class="price">từ<span>2.749.000 VNĐ</span></span>
-                        <a href="/service/detail" class="link-more">Khám phá ngay</a>
-                    </div>
-                </div>
-            </div>
-            <h3><a href="#">Dưỡng tâm</a></h3>
-            <p>Dịch vụ phòng như thế nào, biệt thự dưỡng tâm. Ăn: thực phẩm dưỡng sinh; có bác sĩ chỉ định; chế độ đặc biệt được thiết lập sẵn, yoga( hằng ngày); đọc sách; chơi cờ ...</p>
-        </article>*@
-                    @*<article class="col-sm-6 col-md-4 article has-hover-s3">
-            <div class="img-wrap">
-                <a href="#">
-                    <img src="~/Content/NaturalLife/img/service/ob.jpg" height="215" width="370" alt="image description">
-                </a>
-                <div class="img-caption text-uppercase">Ông bà tôi</div>
-                <div class="hover-article">
-                    <div class="star-rating">
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span class="disable"><span class="icon-star"></span></span>
-                    </div>
-                    <div class="icons">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-reply"></span></a>
-                    </div>
-                    <div class="info-footer">
-                        <span class="price">từ<span>2.749.000 VNĐ</span></span>
-                        <a href="/service/detail" class="link-more">Khám phá ngay</a>
-                    </div>
-                </div>
-            </div>
-            <h3><a href="/service/detail">Thuở ban đầu ấy</a></h3>
-            <p>
-                Ngàn mối lương duyên kết nối Đà Lạt với con người khiến nơi đây trở
-                thành địa danh nổi tiếng không thể bỏ qua. Tour Đà Lạt xưa là một nỗ lực ...
-            </p>
-        </article>*@
-                    @*<article class="col-sm-6 col-md-4 article has-hover-s3">
-            <div class="img-wrap">
-                <a href="#">
-                    <img src="~/Content/NaturalLife/img/listing/img-06.jpg" height="215" width="370" alt="image description">
-                </a>
-                <div class="img-caption text-uppercase">Tuổi học trò</div>
-                <div class="hover-article">
-                    <div class="star-rating">
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span><span class="icon-star"></span></span>
-                        <span class="disable"><span class="icon-star"></span></span>
-                    </div>
-                    <div class="icons">
-                        <a href="#"><span class="icon-heart"></span></a>
-                        <a href="#"><span class="icon-reply"></span></a>
-                    </div>
-                    <div class="info-footer">
-                        <span class="price">từ<span>2.749.000 VNĐ</span></span>
-                        <a href="/service/detail" class="link-more">Khám phá ngay</a>
-                    </div>
-                </div>
-            </div>
-            <h3><a href="#">Giáo dục, khám giá thiên nhiên</a></h3>
-            <p>Tour dành cho sinh viên thực tập, ra trường thích khám phá, trẻ em của khách hàng tham gia tour dưỡng tâm. Có người hướng dẫn tham gia các hoạt động...</p>
-        </article>*@
                 </div>
             </div>
         </div>
@@ -984,12 +678,12 @@
     <aside id="restaurant" class="real-natural">
         <div class="video-natural container">
             <video poster="~/Content/NaturalLife/img/logos/Naturallife.png" muted loop autoplay>
-              <source src="~/Content/NaturalLife/video/naturalLife.mp4" type="video/mp4">
-              <source src="~/Content/NaturalLife/video/naturalLife.ogg" type="video/ogg">
-              Your browser does not support the video tag.
-            </video> 
+                <source src="~/Video/@rs.FirstOrDefault().Video" type="video/mp4">
+                <source src="~/Content/NaturalLife/video/naturalLife.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
             @*<iframe id="video_testimonials" width="100%" height="600px" src="https://www.youtube.com/watch?v=Wddo7YAuBLU"
-                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>*@
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>*@
         </div>
         <div class="container-fluid video-slider">
 
@@ -999,42 +693,42 @@
                 </div>
 
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
+                <ol class="carousel-indicators hidden-xs hidden-sm">
                     <li data-target="#slideHills" data-slide-to="0" class="active"></li>
                     <li data-target="#slideHills" data-slide-to="1"></li>
                     <li data-target="#slideHills" data-slide-to="2"></li>
                 </ol>
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner">
+                <div class="carousel-inner hidden-xs">
 
 
                     <div class="item active">
                         <div class="item-hills text-center">
-                            <p>Natural Life Đà Lạt toạ lạc trên một ngọn đồi cách Hồ Than Thở 02km và cách trung tâm Đà Lạt gần 7km về hướng đi Nha Trang, các bạn sẽ được đắm mình trong một không gian riêng biệt yên tĩnh, buổi sáng có thể nhâm nhi tách cà phê nóng trên đồi thông và lắng nghe hơi thở của thiên nhiên trong lành trong tiết trời se lạnh.</p>
+                            <p>@rs.FirstOrDefault().Description01</p>
                         </div>
-                        <div class="caption text-center">
-                            <h3>BIỆT THỰ NGHỈ DƯỠNG ĐÀ LẠT</h3>
-                            <p>Natural Life Đà Lạt</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="item-hills text-center">
-                            <p>Natural Life Đà Lạt sẽ mang đến cho bạn những hoạt động ngoài trời rất tuyệt vời, bạn có thể dạo bộ quanh đồi thông rộng 35ha, ngắm nhìn núi rừng trùng điệp dưới áng mây trôi lững lờ, lắng nghe tiếng thông thì thầm trong gió, hoặc tựa lưng vào gốc thông, ngồi bệt dưới bãi cỏ xanh rì gậm nhấm quyển sách mà bạn ưa thích.</p>
-                        </div>
-                        <div class="caption text-center">
-                            <h3>BIỆT THỰ NGHỈ DƯỠNG ĐÀ LẠT</h3>
-                            <p>Natural Life Đà Lạt</p>
+                        <div class="caption text-center hidden-xs hidden-sm">
+                            <h3>@rs.FirstOrDefault().Title01</h3>
+                            <p>@rs.FirstOrDefault().SubTitle01</p>
                         </div>
                     </div>
 
                     <div class="item">
                         <div class="item-hills text-center">
-                            <p>Những căn biệt thự của Natural Life Đà Lạt mang phong cách Châu âu, được trang trí nền nã, nhẹ nhàng, từ những mãnh gỗ rừng thiên nhiên tưởng chừng đã vứt bỏ, nhưng được tận dụng bố trí xinh xắn trên vách tường, làm đèn phòng ngủ thật lạ lẫm đến dễ thương.Đêm về, quanh chân đồi sáng rực hàng ngàn ngọn nến ẩn mình.</p>
+                            <p>@rs.FirstOrDefault().Description02</p>
                         </div>
-                        <div class="caption text-center">
-                            <h3>BIỆT THỰ NGHỈ DƯỠNG ĐÀ LẠT</h3>
-                            <p>Natural Life Đà Lạt</p>
+                        <div class="caption text-center hidden-xs hidden-sm">
+                            <h3>@rs.FirstOrDefault().Title02</h3>
+                            <p>@rs.FirstOrDefault().SubTitle02</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-hills text-center">
+                            <p>@rs.FirstOrDefault().Description03</p>
+                        </div>
+                        <div class="caption text-center hidden-xs hidden-sm">
+                            <h3>@rs.FirstOrDefault().Title03</h3>
+                            <p>@rs.FirstOrDefault().SubTitle03</p>
                         </div>
                     </div>
 
@@ -1058,13 +752,13 @@
             <div id="rentalService" class="row same-height">
                 <div class="col-md-6 image height">
                     <div class="bg-stretch">
-                        <img src="~/Content/NaturalLife/img/img-01.jpg" height="627" width="960" alt="image description">
+                        <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Main.FirstOrDefault().Image01" height="627" width="960" alt="image description">
                     </div>
                 </div>
                 <div class="col-md-6 text-block height">
                     <div class="centered">
-                        <h2 class="intro-heading">Dịch vụ</h2>
-                        <p class="intro">Đặc biệt, các bạn sẽ được tham quan, ngắm nhìn nhiều ruộng bắp cải, súp lơ xanh rì có hình dạng của những đoá hồng xanh khổng lồ, và trải nghiệm cảm giác không Resort nào có, được 1 ngày làm nông dân, khi chính tay gặt hái những nông sản như khoai tây, bắp cải, súp lơ, xà lách xanh nõn và tự chế biến các món ăn thu hoạch từ vườn rau, với không gian bếp tiện nghi, sạch sẽ riêng biệt. Thích nhất là những quả dâu chín mọng thơm ngát chờ đón bàn tay của các bạn...</p>
+                        <h2 class="intro-heading">@Model.FirstOrDefault().Main.FirstOrDefault().Title01</h2>
+                        @Html.Raw(Model.FirstOrDefault().Main.FirstOrDefault().Content01)
                         <a href="/service/index" class="btn btn-primary btn-lg">Khám phá ngay</a>
                     </div>
                 </div>
@@ -1072,13 +766,13 @@
             <div id="activities" class="row same-height">
                 <div class="col-md-6 image height">
                     <div class="bg-stretch">
-                        <img src="~/Content/NaturalLife/img/img-02.jpg" height="627" width="960" alt="image description">
+                        <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Main.FirstOrDefault().Image02" height="627" width="960" alt="image description">
                     </div>
                 </div>
                 <div class="col-md-6 text-block height">
                     <div class="centered">
-                        <h2 class="intro-heading">Hoạt động</h2>
-                        <p class="intro">Natural Life Đà Lạt sẽ mang đến cho bạn những hoạt động ngoài trời rất tuyệt vời, bạn có thể dạo bộ quanh đồi thông rộng 35ha, ngắm nhìn núi rừng trùng điệp dưới áng mây trôi lững lờ, lắng nghe tiếng thông thì thầm trong gió, hoặc tựa lưng vào gốc thông, ngồi bệt dưới bãi cỏ xanh rì gậm nhấm quyển sách mà bạn ưa thích.</p>
+                        <h2 class="intro-heading">@Model.FirstOrDefault().Main.FirstOrDefault().Title02</h2>
+                        @Html.Raw(Model.FirstOrDefault().Main.FirstOrDefault().Content02)
                         <a href="/activity/index" class="btn btn-primary btn-lg">Khám phá ngay</a>
                     </div>
                 </div>
@@ -1116,63 +810,51 @@
         </div>
     </aside>
     <!-- testimonial block -->
-    <div id="special" class="testimonial-holder parallax" data-stellar-background-ratio="0.25" id="testimonial-home-page">
+    <div id="special" class="parallax" data-stellar-background-ratio="0.25" id="testimonial-home-page">
         <div class="container">
             <div id="testimonial-home-slide">
-                @foreach (var item in Model.FirstOrDefault().Discount)
-                {
-                    <div class="slide">
-                        <blockquote class="testimonial-quote">
-                            <div class="img">
-                                <div class="demo-wrapper single-item demo-wrapper-0">
-                                    <div id="special-slide1">
-                                        <div style="height: 220px; background: #f8f8f8 url(/Content/NaturalLife/img/villa/special-0.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
+
+                <div id="special-event" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+
+                        @foreach (var item in Model.FirstOrDefault().Discount)
+                        {
+                            <div class="item @(count++ > 0 ? null : "active")">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-5">
+                                        <div style="height: calc(200px + 15em); background: #f8f8f8 url(/Images/website/imagediscount/@item.Images) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
                                         </div>
                                     </div>
+                                    <div class="testimonial-holder col-sm-7">
+                                        <blockquote>
+                                            <div class="text-gen">
+                                                <cite>@item.ProgramName <span class="text-discount">(Giảm giá 30%)</span></cite> 
+                                                @Html.Raw(item.Description)
+                                                <span class="text-box">
+                                                    <a href="/discountdetail/index/@item.ID" class="text-white">Xem thêm >></a>
+                                                </span>
+                                            </div>
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="text">
-                                <p style="position: absolute;top: .5em;right: 7em;z-index: 112;background: #ce2724 url(/Content/NaturalLife/img/bg-discount.png) center;-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-family: 'icomoon';font-weight: 900;width: 70px;height: 70px;border: 2px solid;border-radius: 50%;">Giảm<br>@item.DiscountPrice%</p>
-                                <cite>@item.ProgramName</cite>
-                                @Html.Raw(item.Description)
-                            </div>
-                        </blockquote>
+                        }
+
                     </div>
-                }
-                @*<div class="slide">
-                    <blockquote class="testimonial-quote">
-                        <div class="img">
-                            <div class="demo-wrapper single-item demo-wrapper-0">
-                                <div id="special-slide2">
-                                    <div style="height: 220px; background: #f8f8f8 url(/Content/NaturalLife/img/villa/villa-5.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <p style="position: absolute;top: .5em;right: 7em;z-index: 112;background: #ce2724 url(/Content/NaturalLife/img/bg-discount.png) center;-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-family: 'icomoon';font-weight: 900;width: 70px;height: 70px;border: 2px solid;border-radius: 50%;">Giảm<br>30%</p>
-                            <cite>CHÂN ĐỒI MỘNG MƠ</cite>
-                            <p>Đêm về, quanh chân đồi sáng rực hàng ngàn ngọn nến ẩn mình, lấp ló giữa những rặng thông xanh, được tỏa ra từ những vườn hoa thật lãng mạn, quyến rủ đến khó cưỡng.”</p>
-                        </div>
-                    </blockquote>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#special-event" data-slide="prev">
+                        <i style="font-size: 16px;" class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Trở về</span>
+                    </a>
+                    <a class="right carousel-control" href="#special-event" data-slide="next">
+                        <i style="font-size: 16px;" class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Tiếp theo</span>
+                    </a>
                 </div>
-                <div class="slide">
-                    <blockquote class="testimonial-quote">
-                        <div class="img">
-                            <div class="demo-wrapper single-item demo-wrapper-0">
-                                <div id="special-slide3">
-                                    <div style="height: 220px; background: #f8f8f8 url(/Content/NaturalLife/img/villa/special-2.jpg) center no-repeat / cover;" class="attachment-550x358 size-550x358 wp-post-image" alt="" itemprop="image">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text">
-                            <p style="position: absolute;top: .5em;right: 7em;z-index: 112;background: #ce2724 url(/Content/NaturalLife/img/bg-discount.png) center;-webkit-background-clip: text;-webkit-text-fill-color: transparent;font-family: 'icomoon';font-weight: 900;width: 70px;height: 70px;border: 2px solid;border-radius: 50%;">Giảm<br>30%</p>
-                            <cite>THIÊN NHIÊN</cite>
-                            <p>Đặc biệt, các bạn sẽ được tham quan, ngắm nhìn nhiều ruộng bắp cải, súp lơ xanh rì có hình dạng của những đoá hồng xanh khổng lồ.”</p>
-                        </div>
-                    </blockquote>
-                </div>*@
+
             </div>
         </div>
     </div>

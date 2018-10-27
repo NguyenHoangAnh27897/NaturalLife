@@ -1,7 +1,9 @@
-﻿
+﻿@using NaturalLife.Models
 @{
     ViewBag.Title = "AddType";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var ic = db.NTL_Icon.ToList();
 }
 
 <div class="main-wrapper">
@@ -50,6 +52,53 @@
                                     <input type="file" name="images" accept="image/*" multiple="multiple" />
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput4">Icon thứ nhất</label>
+                                            <select name='icon1' class='form-control' style="width:25%" id="icon1">
+                                                @foreach (var item in ic)
+                                                {
+                                                    <option value="@item.Value">@item.Name</option>
+                                                }
+
+                                            </select>
+                                            <br />
+                                            <span class="icon-cart-add" style="font-size:50px" id="span1"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput4">Icon thứ hai</label>
+                                            <select name='icon2' class='form-control' style="width:25%" id="icon2">
+                                                @foreach (var item in ic)
+                                                {
+                                                    <option value="@item.Value">@item.Name</option>
+                                                }
+
+                                            </select>
+                                            <br />
+                                            <span class="icon-cart-add" style="font-size:50px" id="span2"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput4">Icon thứ ba</label>
+                                            <select name='icon3' class='form-control' style="width:25%" id="icon3">
+                                                @foreach (var item in ic)
+                                                {
+                                                    <option value="@item.Value">@item.Name</option>
+                                                }
+
+                                            </select>
+                                            <br />
+                                            <span class="icon-cart-add" style="font-size:50px" id="span3"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button class="btn btn-primaryt">Lưu</button>
                             </form>
                         </div>
@@ -66,6 +115,25 @@
 <script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
 <script>
     CKEDITOR.replace('editor');
+
+    var selectedScheme1 = 'icon-cart-add';
+
+    $('#icon1').change(function () {
+        $('#span1').removeClass(selectedScheme1).addClass($(this).val());
+        selectedScheme1 = $(this).val();
+    });
+    var selectedScheme2 = 'icon-cart-add';
+
+    $('#icon2').change(function () {
+        $('#span2').removeClass(selectedScheme2).addClass($(this).val());
+        selectedScheme2 = $(this).val();
+    });
+    var selectedScheme3 = 'icon-cart-add';
+
+    $('#icon3').change(function () {
+        $('#span3').removeClass(selectedScheme3).addClass($(this).val());
+        selectedScheme3 = $(this).val();
+    });
 </script>
 
 

@@ -1,5 +1,7 @@
-﻿@model IEnumerable<NaturalLife.Models.NTL_Room>
-    @using NaturalLife.Models
+﻿@using PagedList.Mvc;
+@using GridMvc.Html;
+@model PagedList.IPagedList<NaturalLife.Models.NTL_Room>
+@using NaturalLife.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,16 +13,17 @@
 <section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="banner-layout-leftsidebar">
     <div class="banner-text">
         <div class="center-text">
-            <div class="container">
-                <h1>VILLA</h1>
-                <strong class="subtitle">Nơi nghỉ dưỡng tuyệt vời!</strong>
+            <div class="container hidden-md hidden-lg">
+                <br />
+                <h1 class="text-center">VILLA</h1>
+                <strong class="subtitle text-center">Nơi nghỉ dưỡng tuyệt vời!</strong>
                 <!-- breadcrumb -->
-                <nav class="breadcrumbs">
+                @*<nav class="breadcrumbs">
                     <ul>
                         <li><a href="/home/index">Trang chủ</a></li>
                         <li><span>VILLA</span></li>
                     </ul>
-                </nav>
+                </nav>*@
             </div>
         </div>
     </div>
@@ -30,6 +33,11 @@
     <!-- content with sidebar -->
     <div class="content-with-sidebar common-spacing">
         <div class="container">
+            <header class="content-heading hidden-xs hidden-md">
+                <h2 class="main-heading">VILLA</h2>
+                <strong class="main-subtitle">Nơi nghỉ dưỡng tuyệt vời!</strong>
+                <div class="seperator"></div>
+            </header>
             <div id="two-columns" class="row">
                 <div id="content" class="col-sm-8 col-md-9" ng-controller="listRoom">
                     <div class="filter-option filter-box">
@@ -52,8 +60,49 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-holder content-sub-holder">
-                        <div class="row db-3-col">
+                    <div class="content-holder content-sub-holder tab-content">
+                        <div id="villa" class="row db-3-col tab-pane fade in active">
+                            @foreach (var item in Model)
+                            {
+                                <article class="col-md-6 col-lg-4 article has-hover-s1 thumb-full">
+                                    <div class="thumbnail">
+                                        <div class="img-wrap">
+                                            <img src="~/Images/website/imageroom/@item.Avatar" style="height:228px" width="350" alt="image description">
+                                        </div>
+                                        <h3 class="small-space"><a href="/room/detail/@item.ID">@rs.Where(s => s.ID == item.RoomTypeID).FirstOrDefault().RoomType</a></h3>
+                                        <span class="info">@item.RoomName</span>
+                                        @*<aside class="meta">
+                                            <span class="country">
+                                                <span class="icon-family"> </span>3 Người
+                                            </span>
+                                            <span class="activity">
+                                                <span class="icon-acitivities"> </span>6 Hoạt động
+                                            </span>
+                                        </aside>*@
+                                        @if (item.Description.Length > 25)
+                                        {
+                                            Html.Raw(item.Description.Substring(0, 25));
+                                        }
+                                        else
+                                        {
+                                            Html.Raw(item.Description);
+                                        }
+                                        <a href="/room/detail/@item.ID" class="btn btn-default">Chi tiết</a>
+                                        <footer>
+                                            <span class="price">Giá: <span>@string.Format("{0:n0}", item.Price)</span></span>
+                                            <ul class="social-networks">
+                                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                                <li><a href="#"><span class="icon-google-plus"></span></a></li>
+                                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                            </ul>
+                                        </footer>
+                                    </div>
+                                </article>
+                            }
+
+                        </div>
+                        <div id="bungalow" class="row db-3-col tab-pane fade">
                             @foreach (var item in Model)
                             {
                                 <article class="col-md-6 col-lg-4 article has-hover-s1 thumb-full">
@@ -61,24 +110,66 @@
                                         <div class="img-wrap">
                                             <img src="~/Images/website/imageroom/@item.Avatar" height="228" width="350" alt="image description">
                                         </div>
-                                        <h3 class="small-space"><a href="/room/detail">@rs.Where(s=>s.ID == item.RoomTypeID).FirstOrDefault().RoomType</a></h3>
+                                        <h3 class="small-space"><a href="/room/detail/@item.ID">@rs.Where(s => s.ID == item.RoomTypeID).FirstOrDefault().RoomType</a></h3>
                                         <span class="info">@item.RoomName</span>
-                                        <aside class="meta">
+                                        @*<aside class="meta">
                                             <span class="country">
                                                 <span class="icon-family"> </span>3 Người
                                             </span>
                                             <span class="activity">
                                                 <span class="icon-acitivities"> </span>6 Hoạt động
                                             </span>
-                                        </aside>
-                                        @if(item.Description.Length > 25)
+                                        </aside>*@
+                                        @if (item.Description.Length > 25)
                                         {
                                             Html.Raw(item.Description.Substring(0, 25));
-                                        }else
+                                        }
+                                        else
                                         {
                                             Html.Raw(item.Description);
                                         }
-                                        <a href="/room/detail" class="btn btn-default">Chi tiết</a>
+                                        <a href="/room/detail/@item.ID" class="btn btn-default">Chi tiết</a>
+                                        <footer>
+                                            <span class="price">Giá: <span>@string.Format("{0:n0}", item.Price)</span></span>
+                                            <ul class="social-networks">
+                                                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                                                <li><a href="#"><span class="icon-google-plus"></span></a></li>
+                                                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                                            </ul>
+                                        </footer>
+                                    </div>
+                                </article>
+                            }
+
+                        </div>
+                        <div id="camping" class="row db-3-col tab-pane fade">
+                            @foreach (var item in Model)
+                            {
+                                <article class="col-md-6 col-lg-4 article has-hover-s1 thumb-full">
+                                    <div class="thumbnail">
+                                        <div class="img-wrap">
+                                            <img src="~/Images/website/imageroom/@item.Avatar" height="228" width="350" alt="image description">
+                                        </div>
+                                        <h3 class="small-space"><a href="/room/detail/@item.ID">@rs.Where(s => s.ID == item.RoomTypeID).FirstOrDefault().RoomType</a></h3>
+                                        <span class="info">@item.RoomName</span>
+                                        @*<aside class="meta">
+                                            <span class="country">
+                                                <span class="icon-family"> </span>3 Người
+                                            </span>
+                                            <span class="activity">
+                                                <span class="icon-acitivities"> </span>6 Hoạt động
+                                            </span>
+                                        </aside>*@
+                                        @if (item.Description.Length > 25)
+                                        {
+                                            Html.Raw(item.Description.Substring(0, 25));
+                                        }
+                                        else
+                                        {
+                                            Html.Raw(item.Description);
+                                        }
+                                        <a href="/room/detail/@item.ID" class="btn btn-default">Chi tiết</a>
                                         <footer>
                                             <span class="price">Giá: <span>@string.Format("{0:n0}", item.Price)</span></span>
                                             <ul class="social-networks">
@@ -95,25 +186,8 @@
                         </div>
                     </div>
                     <nav class="pagination-wrap pagination-solid">
-                        <div class="btn-prev">
-                            <a href="#" aria-label="Previous">
-                                <span class="icon-angle-right"></span>
-                            </a>
-                        </div>
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="active"><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>...</li>
-                            <li><a href="#">7</a></li>
-                        </ul>
-                        <div class="btn-next">
-                            <a href="#" aria-label="Previous">
-                                <span class="icon-angle-right"></span>
-                            </a>
-                        </div>
+                        <strong style="margin: 12px;"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</strong>
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                     </nav>
                 </div>
                 <!-- sidebar -->
@@ -130,19 +204,25 @@
                                         <a role="button" data-toggle="collapse" href="#collapse6" aria-expanded="true" aria-controls="collapse6">Loại</a>
                                     </h4>
                                 </div>
-                                <div id="collapse6" class="panel-collapse collapse in" role="tabpanel" ng-controller="listRoomChk">
+                                <div id="collapse6" class="panel-collapse collapse in" role="tabpanel">
                                     <div class="panel-body">
                                         <strong class="title">Chọn loại</strong>
-                                        <ul class="side-list check-list">
-                                            <ng-container ng-repeat="item in items">
-                                                <li>
-                                                    <label for="check1" class="custom-checkbox">
-                                                        <input id="check1" type="checkbox">
-                                                        <span class="check-input"></span>
-                                                        <span class="check-label">{{ item }}</span>
-                                                    </label>
-                                                </li>
-                                            </ng-container>
+                                        <ul class="side-list check-list nav nav-tabs">
+                                            <li class="li-tab active">
+                                                <a data-toggle="tab" href="#villa">
+                                                    VILLA
+                                                </a>
+                                            </li>
+                                            <li class="li-tab">
+                                                <a data-toggle="tab" href="#bungalow">
+                                                    BUNGALOW
+                                                </a>
+                                            </li>
+                                            <li class="li-tab">
+                                                <a data-toggle="tab" href="#camping">
+                                                    CAMPING
+                                                </a>
+                                            </li>
                                         </ul>
                                         <!-- <strong class="sub-link"><a href="#">CAST YOUR VOTE</a></strong> -->
                                     </div>

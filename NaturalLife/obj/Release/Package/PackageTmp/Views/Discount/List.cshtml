@@ -42,6 +42,7 @@
                                             <th>ID</th>
                                             <th>Chương trình giảm giá</th>
                                             <th>Giá giảm (%)</th>
+                                            <th></th>
                                             @*<th></th>*@
                                             <th>Xoá</th>
                                         </tr>
@@ -49,13 +50,14 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>@item.ID</td>
-                                                <td><a href="/discount/edit/@item.ID">@item.ProgramName</a></td>
-                                                <td>@item.DiscountPrice</td>
-                                                @*<td><a href="/discount/choose/@item.ID">Chọn sản phẩm</a></td>*@
-                                                <td><a href="/discount/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
-                                            </tr>
+                                        <tr>
+                                            <td>@item.ID</td>
+                                            <td><a href="/discount/edit/@item.ID">@item.ProgramName</a></td>
+                                            <td>@item.DiscountPrice</td>
+                                            <td><a href="/discount/choose/@item.ID">Chọn</a></td>
+                                            @*<td><a href="/discount/deletechoose/@item.ID">Xoá</a></td>*@
+                                            <td><a href="/discount/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

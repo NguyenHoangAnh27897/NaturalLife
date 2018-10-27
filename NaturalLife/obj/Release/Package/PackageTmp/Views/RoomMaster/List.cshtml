@@ -44,34 +44,36 @@
                                             <th>Giá</th>
                                             <th>Hình ảnh</th>
                                             <th>Miêu tả</th>
+                                            <th>Thông tin</th>
                                             <th>Xoá</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>@item.ID</td>
-                                                <td><a href="/roommaster/edit/@item.ID">@item.RoomName</a></td>
-                                                <td>@string.Format("{0:n0}", item.Price)</td>
-                                                <td>@item.Avatar</td>
-                                                @if (item.Description != null)
+                                        <tr>
+                                            <td>@item.ID</td>
+                                            <td><a href="/roommaster/edit/@item.ID">@item.RoomName</a></td>
+                                            <td>@string.Format("{0:n0}", item.Price)</td>
+                                            <td>@item.Avatar</td>
+                                            @if (item.Description != null)
+                                            {
+                                                if (item.Description.Count() > 25)
                                                 {
-                                                    if (item.Description.Count() > 25)
-                                                    {
-                                                        <td>@Html.Raw(item.Description.Substring(0, 25)) ...</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td>@Html.Raw(item.Description)</td>
-                                                    }
+                                                    <td>@Html.Raw(item.Description.Substring(0, 25)) ...</td>
                                                 }
                                                 else
                                                 {
-                                                    <td></td>
+                                                    <td>@Html.Raw(item.Description)</td>
                                                 }
-                                                <td><a href="/roommaster/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
-                                            </tr>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            <td><a href="/roomdetail/index/@item.ID">Cập nhật</a></td>
+                                            <td><a href="/roommaster/delete/@item.ID"><img src="~/Images/webmaster/icon/if_f-cross_256_282471.png" /></a></td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

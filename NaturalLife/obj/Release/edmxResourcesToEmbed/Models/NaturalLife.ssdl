@@ -1,5 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="natu0679_NaturalLifeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="NTL_About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeftTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="LeftDescription" Type="nvarchar(max)" />
+    <Property Name="RightTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="RightDescription" Type="nvarchar(max)" />
+    <Property Name="Icon1" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title1" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description1" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon2" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon3" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title3" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description3" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon4" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title4" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description4" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon5" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title5" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description5" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon6" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title6" Type="nvarchar" MaxLength="30" />
+    <Property Name="Desciption6" Type="nvarchar" MaxLength="200" />
+    <Property Name="BigTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="Slogan" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone01" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone02" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone03" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="NTL_Adventure">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="50" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="500" />
+    <Property Name="DetailActivity" Type="nvarchar" MaxLength="500" />
+    <Property Name="ServiceID" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="NTL_Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContentBlog" Type="nvarchar(max)" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="NTL_Booking">
     <Key>
       <PropertyRef Name="ID" />
@@ -30,6 +85,18 @@
     <Property Name="Booking" Type="nvarchar" MaxLength="30" />
     <Property Name="ServiceID" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <EntityType Name="NTL_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surename" Type="nvarchar" MaxLength="50" />
+    <Property Name="Familyname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
   <EntityType Name="NTL_Customer">
     <Key>
       <PropertyRef Name="ID" />
@@ -50,6 +117,8 @@
     <Property Name="StartDate" Type="date" />
     <Property Name="EndDate" Type="date" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Hide" Type="bit" />
+    <Property Name="Images" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="NTL_ExtraBooking">
     <Key>
@@ -67,6 +136,14 @@
     <Property Name="ServiceID" Type="nvarchar" MaxLength="250" />
     <Property Name="ActivityID" Type="nvarchar" MaxLength="250" />
   </EntityType>
+  <EntityType Name="NTL_Icon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="NTL_Inventory">
     <Key>
       <PropertyRef Name="ID" />
@@ -79,6 +156,18 @@
     <Property Name="SoldPrice" Type="int" />
     <Property Name="InOutInventory" Type="int" />
     <Property Name="Supplier" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NTL_Main">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content01" Type="nvarchar(max)" />
+    <Property Name="Image01" Type="nvarchar" MaxLength="100" />
+    <Property Name="Content02" Type="nvarchar(max)" />
+    <Property Name="Image02" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title01" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title02" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="NTL_Room">
     <Key>
@@ -93,6 +182,11 @@
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Images" Type="nvarchar" MaxLength="200" />
     <Property Name="RoomTypeID" Type="int" />
+    <Property Name="ImageCollection" Type="nvarchar(max)" />
+    <Property Name="Advantage" Type="nvarchar(max)" />
+    <Property Name="Disadvantage" Type="nvarchar(max)" />
+    <Property Name="AvatarIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="AvatarOut" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="NTL_RoomType">
     <Key>
@@ -102,18 +196,27 @@
     <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Images" Type="nvarchar" MaxLength="200" />
+    <Property Name="Icon01" Type="nvarchar" MaxLength="50" />
+    <Property Name="Icon02" Type="nvarchar" MaxLength="50" />
+    <Property Name="Icon03" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="NTL_Schedule">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="StartDate" Type="date" />
-    <Property Name="EndDate" Type="date" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Schedule" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="nvarchar" MaxLength="200" />
-    <Property Name="Price" Type="int" />
-    <Property Name="DiscountID" Type="int" />
-    <Property Name="Icon" Type="nvarchar" MaxLength="30" />
+    <Property Name="PriceDay" Type="int" />
+    <Property Name="PriceWeekend" Type="int" />
+    <Property Name="PriceHoliday" Type="int" />
+    <Property Name="AllInPirceDay" Type="int" />
+    <Property Name="AllInPirceWeekend" Type="int" />
+    <Property Name="AllInPirceHoliday" Type="int" />
+    <Property Name="Service" Type="nvarchar" MaxLength="200" />
+    <Property Name="AllInService" Type="nvarchar" MaxLength="200" />
+    <Property Name="TourType" Type="nvarchar" MaxLength="200" />
+    <Property Name="ServiceID" Type="nvarchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="NTL_Schedule&amp;Activity">
     <Key>
@@ -143,21 +246,54 @@
     <Property Name="ServiceType" Type="nvarchar" MaxLength="100" />
     <Property Name="Price" Type="int" />
     <Property Name="DiscountID" Type="int" />
+    <Property Name="ImageCollection" Type="nvarchar(max)" />
+    <Property Name="Advantage" Type="nvarchar(max)" />
+    <Property Name="Disadvantage" Type="nvarchar(max)" />
+    <Property Name="AvatarIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="AvatarOut" Type="nvarchar" MaxLength="50" />
+    <Property Name="PDFLink" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NTL_Setting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title01" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image01" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description01" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title02" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image02" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description02" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title03" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image03" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description03" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title04" Type="nvarchar" MaxLength="50" />
+    <Property Name="Image04" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description04" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="NTL_Slider">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="200" />
-    <Property Name="Title2" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title2" Type="nvarchar" MaxLength="100" />
     <Property Name="Slogan" Type="nvarchar" MaxLength="50" />
     <Property Name="Slogan2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Icon" Type="nvarchar" MaxLength="50" />
-    <Property Name="Icon2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Images" Type="nvarchar" MaxLength="200" />
-    <Property Name="SubTitle" Type="nvarchar" MaxLength="20" />
-    <Property Name="SubTitle2" Type="nvarchar" MaxLength="20" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="30" />
+    <Property Name="Icon2" Type="nvarchar" MaxLength="30" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="30" />
+    <Property Name="SubTitle2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Title3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Slogan3" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTitle3" Type="nvarchar" MaxLength="30" />
+    <Property Name="Icon3" Type="nvarchar" MaxLength="30" />
+    <Property Name="Image1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Image2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Image3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description1" Type="nvarchar(max)" />
+    <Property Name="Description2" Type="nvarchar(max)" />
+    <Property Name="Description3" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="NTL_Vehicle">
     <Key>
@@ -166,21 +302,45 @@
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="VehicleName" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="NTL_Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Video" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description01" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title01" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTitle01" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description02" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title02" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTitle02" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description03" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title03" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTitle03" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityContainer Name="natu0679_NaturalLifeModelStoreContainer">
+    <EntitySet Name="NTL_About" EntityType="Self.NTL_About" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Adventure" EntityType="Self.NTL_Adventure" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Blog" EntityType="Self.NTL_Blog" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Booking" EntityType="Self.NTL_Booking" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Booking&amp;Activity" EntityType="Self.NTL_Booking&amp;Activity" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Booking&amp;Service" EntityType="Self.NTL_Booking&amp;Service" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Contact" EntityType="Self.NTL_Contact" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Customer" EntityType="Self.NTL_Customer" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_DiscountProgram" EntityType="Self.NTL_DiscountProgram" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_ExtraBooking" EntityType="Self.NTL_ExtraBooking" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Icon" EntityType="Self.NTL_Icon" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Main" EntityType="Self.NTL_Main" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Room" EntityType="Self.NTL_Room" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_RoomType" EntityType="Self.NTL_RoomType" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Schedule" EntityType="Self.NTL_Schedule" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Schedule&amp;Activity" EntityType="Self.NTL_Schedule&amp;Activity" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Schedule&amp;Service" EntityType="Self.NTL_Schedule&amp;Service" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Setting" EntityType="Self.NTL_Setting" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
     <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
+    <EntitySet Name="NTL_Video" EntityType="Self.NTL_Video" Schema="natu0679_naturallifeadmin" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -1,20 +1,22 @@
-﻿@{
+﻿@model IQueryable<NaturalLife.Models.NTL_About>
+@{
     ViewBag.Title = "Contact";
 }
 <!-- main banner -->
 <section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="banner-contact">
     <div class="banner-text">
         <div class="center-text">
-            <div class="container">
-                <h1>Liên hệ với chúng tôi</h1>
-                <strong class="subtitle">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
+            <div class="container hidden-md hidden-lg">
+                <br />
+                <h1 class="text-center">Liên hệ với chúng tôi</h1>
+                <strong class="subtitle text-center">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
                 <!-- breadcrumb -->
-                <nav class="breadcrumbs">
+                @*<nav class="breadcrumbs">
                     <ul>
                         <li><a href="/home/index">Trang chủ</a></li>
-                        <li><span>liên hệ với chúng tôi</span></li>
+                        <li><span>Liên hệ với chúng tôi</span></li>
                     </ul>
-                </nav>
+                </nav>*@
             </div>
         </div>
     </div>
@@ -25,7 +27,7 @@
     <div class="content-block bg-white">
         <div class="container">
             <header class="content-heading">
-                <h2 class="main-heading">LIÊN LẠC</h2>
+                <h2 class="main-heading">LIÊN HỆ</h2>
                 <strong class="main-subtitle">Liên hệ với chúng tôi qua email, điện thoại hoặc thông qua biểu mẫu web của chúng tôi bên dưới.</strong>
                 <div class="seperator"></div>
             </header>
@@ -33,7 +35,7 @@
                 <div class="col-sm-4">
                     <span class="tel has-border">
                         <span class="icon-tel-big"></span>
-                        <a href="tel:123456">097  8577 1234</a>
+                        <a href="tel:123456">@Model.FirstOrDefault().Phone01</a>
                     </span>
                     <h3>Yêu cầu đặt phòng</h3>
                     <p>Nếu bạn có nhu cầu đặc phòng hãy liên hệ với chúng tôi qua HOTLINE</p>
@@ -41,7 +43,7 @@
                 <div class="col-sm-4">
                     <span class="tel has-border bg-blue">
                         <span class="icon-fax-big"></span>
-                        <a href="tel:123131313">097  8577 1234</a>
+                        <a href="tel:123131313">@Model.FirstOrDefault().Phone02</a>
                     </span>
                     <h3>Hỗ trợ</h3>
                     <p>Mọi thắc mắc vui lòng liên hệ với chứng tôi, chúng tôi sẽ hỗ trợ bạn.</p>
@@ -49,7 +51,7 @@
                 <div class="col-sm-4">
                     <span class="tel has-border">
                         <span class="icon-tel"></span>
-                        <a href="tel:123456789">097  8577 1234</a>
+                        <a href="tel:123456789">@Model.FirstOrDefault().Phone03</a>
                     </span>
                     <h3>Phương thức thanh toán</h3>
                     <p>Nếu bạn có gặp vấn đề gì về thanh toán hãy liên hệ với chúng tôi.</p>
@@ -58,7 +60,7 @@
             <div class="row">
                 <div class="col-md-6 wow fadeInLeft">
                     <!-- main contact form -->
-                    <form class="contact-form has-border" id="contact_form" action="#">
+                    <form class="contact-form has-border" id="contact_form" action="/home/send" method="post">
                         <fieldset>
                             <div class="form-group">
                                 <div class="col-sm-4">
@@ -86,7 +88,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-wrap">
-                                        <input type="email" class="form-control" id="con_email" name="con_email">
+                                        <input type="email" class="form-control" id="con_email" name="email">
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +98,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-wrap">
-                                        <input type="text" class="form-control" id="con_phone" name="con_phone">
+                                        <input type="text" class="form-control" id="con_phone" name="phone">
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +108,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-wrap">
-                                        <input type="text" class="form-control" id="con_country" name="con_country">
+                                        <input type="text" class="form-control" id="con_country" name="country">
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +118,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="input-wrap">
-                                        <textarea cols="30" rows="10" class="form-control" id="con_message" name="con_message"></textarea>
+                                        <textarea cols="30" rows="10" class="form-control" id="con_message" name="message"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -190,3 +192,93 @@
         </div>
     </article>
 </main>
+<script type="text/javascript">
+	function initMap() {
+			// Styles a map in night mode.
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 11.936230, lng: 108.445259},
+				zoom: 12,
+				styles: [
+					{elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+					{elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+					{elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+					{
+						featureType: 'administrative.locality',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#d59563'}]
+					},
+					{
+						featureType: 'poi',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#d59563'}]
+					},
+					{
+						featureType: 'poi.park',
+						elementType: 'geometry',
+						stylers: [{color: '#263c3f'}]
+					},
+					{
+						featureType: 'poi.park',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#6b9a76'}]
+					},
+					{
+						featureType: 'road',
+						elementType: 'geometry',
+						stylers: [{color: '#38414e'}]
+					},
+					{
+						featureType: 'road',
+						elementType: 'geometry.stroke',
+						stylers: [{color: '#212a37'}]
+					},
+					{
+						featureType: 'road',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#9ca5b3'}]
+					},
+					{
+						featureType: 'road.highway',
+						elementType: 'geometry',
+						stylers: [{color: '#746855'}]
+					},
+					{
+						featureType: 'road.highway',
+						elementType: 'geometry.stroke',
+						stylers: [{color: '#1f2835'}]
+					},
+					{
+						featureType: 'road.highway',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#f3d19c'}]
+					},
+					{
+						featureType: 'transit',
+						elementType: 'geometry',
+						stylers: [{color: '#2f3948'}]
+					},
+					{
+						featureType: 'transit.station',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#d59563'}]
+					},
+					{
+						featureType: 'water',
+						elementType: 'geometry',
+						stylers: [{color: '#17263c'}]
+					},
+					{
+						featureType: 'water',
+						elementType: 'labels.text.fill',
+						stylers: [{color: '#515c6d'}]
+					},
+					{
+						featureType: 'water',
+						elementType: 'labels.text.stroke',
+						stylers: [{color: '#17263c'}]
+					}
+				]
+			});
+		}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTijdOrawSLXkwdTOT1MKXE7Y0-pVcFI&amp;callback=initMap" async defer></script>

@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="section-body">
-                            <form action="/discount/add" method="post">
+                            <form action="/discount/add" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Tên Chương trình giảm giá</label>
@@ -42,6 +42,12 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Giá giảm (%)</label>
                                     <input style="width:20%" type="number" class="form-control" value="0" name="discountprice" step="any">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1000x800 HOẶC LỚN HƠN)</label>
+                                    <br />
+                                    <input type="file" name="avatar" accept="image/*" />
                                 </div>
 
                                 <div class="form-group">

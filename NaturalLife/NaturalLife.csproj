@@ -208,17 +208,23 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\NaturalLife\ActivityController.cs" />
     <Compile Include="Controllers\NaturalLife\BlogController.cs" />
+    <Compile Include="Controllers\NaturalLife\DiscountDetailController.cs" />
     <Compile Include="Controllers\NaturalLife\ErrorController.cs" />
     <Compile Include="Controllers\NaturalLife\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NaturalLife\RoomController.cs" />
     <Compile Include="Controllers\NaturalLife\ServiceController.cs" />
+    <Compile Include="Controllers\SliderDetailController.cs" />
+    <Compile Include="Controllers\WebMaster\BlogMasterController.cs" />
     <Compile Include="Controllers\WebMaster\BookingController.cs" />
+    <Compile Include="Controllers\WebMaster\ContactMasterController.cs" />
     <Compile Include="Controllers\WebMaster\DiscountController.cs" />
     <Compile Include="Controllers\WebMaster\HomepageController.cs" />
+    <Compile Include="Controllers\WebMaster\RoomDetailController.cs" />
     <Compile Include="Controllers\WebMaster\RoomMasterController.cs" />
     <Compile Include="Controllers\WebMaster\ServiceDetailController.cs" />
     <Compile Include="Controllers\WebMaster\ServiceMasterController.cs" />
+    <Compile Include="Controllers\WebMaster\SettingController.cs" />
     <Compile Include="Controllers\WebMaster\WebmasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +248,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NaturalLife.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NTL_About.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Adventure.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Blog.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NTL_Booking.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
@@ -249,6 +264,9 @@
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NTL_Booking_Service.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Contact.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NTL_Customer.cs">
@@ -260,7 +278,13 @@
     <Compile Include="Models\NTL_ExtraBooking.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NTL_Icon.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NTL_Inventory.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Main.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NTL_Room.cs">
@@ -281,10 +305,16 @@
     <Compile Include="Models\NTL_Service.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NTL_Setting.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NTL_Slider.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NTL_Vehicle.cs">
+      <DependentUpon>NaturalLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NTL_Video.cs">
       <DependentUpon>NaturalLife.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -960,6 +990,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\webmaster\icon\if_f-cross_256_282471.png" />
+    <Content Include="Images\webmaster\icon\if_ic_system_update_tv_48px_352158.png" />
     <Content Include="Images\webmaster\logo\logoa3.png" />
     <Content Include="Models\NaturalLife.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1089,14 +1120,36 @@
     <Content Include="Views\Discount\List.cshtml" />
     <Content Include="Views\Discount\Add.cshtml" />
     <Content Include="Views\Discount\Edit.cshtml" />
+    <Content Include="Views\Discount\Choose.cshtml" />
+    <Content Include="Views\RoomDetail\Index.cshtml" />
+    <Content Include="Views\Homepage\EditMain.cshtml" />
+    <Content Include="Views\BlogMaster\List.cshtml" />
+    <Content Include="Views\BlogMaster\Add.cshtml" />
+    <Content Include="Views\BlogMaster\Edit.cshtml" />
+    <Content Include="Views\ContactMaster\List.cshtml" />
+    <Content Include="Views\Setting\Edit.cshtml" />
+    <Content Include="Views\Setting\EditAbout.cshtml" />
+    <Content Include="Views\Setting\EditPhone.cshtml" />
+    <Content Include="Views\Discount\DeleteChoose.cshtml" />
+    <Content Include="Views\Home\Booking.cshtml" />
+    <Content Include="Views\Homepage\EditVideo.cshtml" />
+    <Content Include="Views\SliderDetail\Index.cshtml" />
+    <Content Include="Views\SliderDetail\Index2.cshtml" />
+    <Content Include="Views\SliderDetail\Index3.cshtml" />
+    <Content Include="Views\DiscountDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\NaturalLife\img\service\" />
+    <Folder Include="document\excel\" />
+    <Folder Include="Images\website\imageblog\" />
+    <Folder Include="Images\website\imagediscount\" />
     <Folder Include="Images\website\imagehome\" />
+    <Folder Include="Images\website\imagenav\" />
     <Folder Include="Images\website\imageroomtype\" />
     <Folder Include="Images\website\imageroom\" />
     <Folder Include="Images\website\imageservice\" />
+    <Folder Include="Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

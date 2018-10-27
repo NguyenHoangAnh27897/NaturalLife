@@ -1,20 +1,22 @@
-﻿@{
+﻿@model IQueryable<NaturalLife.Models.NTL_About>
+@{
     ViewBag.Title = "About";
 }
 <!-- main banner -->
 <section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="about-banner">
     <div class="banner-text">
         <div class="center-text">
-            <div class="container">
-                <h1>Câu chuyện</h1>
-                <strong class="subtitle">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
+            <div class="container hidden-md hidden-lg">
+                <br />
+                <h1 class="text-center">Câu chuyện</h1>
+                <strong class="subtitle text-center">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
                 <!-- breadcrumb -->
-                <nav class="breadcrumbs">
+                @*<nav class="breadcrumbs">
                     <ul>
                         <li><a href="/home/index">Trang chủ</a></li>
                         <li><span>Câu chuyện</span></li>
                     </ul>
-                </nav>
+                </nav>*@
             </div>
         </div>
     </div>
@@ -22,62 +24,22 @@
 <!-- main container -->
 <main id="main">
     <!-- content block with article -->
-    <div class="content-block bg-white content-center">
-        <div class="container">
-            <header class="content-heading">
-                <h2 class="main-heading">CUỘC PHIÊU LƯU</h2>
-                <strong class="main-subtitle">Nắm vững nghệ thuật phiêu lưu hoàn hảo trong trong tự nhiên.</strong>
-                <div class="seperator"></div>
-            </header>
-            <div class="row text-center">
-                <div class="col-sm-4 article">
-                    <div class="img-wrap1">
-                        <img width="120" src="~/Content/NaturalLife/icons/svg02.svg" alt="image description">
-                    </div>
-                    <div class="description">
-                        <h3>Du lịch &amp; Nghỉ dưỡng</h3>
-                        <p>TẤT CẢ CÁC HOẠT ĐỘNG ĐỀU BẮT NGUỒN TỪ MONG MUỐN ĐEM LẠI SỨC KHỎE, GIÁ TRỊ TINH THẦN VÀ HẠNH PHÚC GIA ĐÌNH !</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 article">
-                    <div class="img-wrap1">
-                        <img width="120" src="~/Content/NaturalLife/icons/svg01.svg" alt="image description">
-                    </div>
-                    <div class="description">
-                        <h3>Sứ mệnh &amp; Giá trị</h3>
-                        <p style="text-transform: uppercase;">Càng rời xa thiên nhiên, tâm tánh con người ngày càng trở nên hỗn loạn và xáo động. Sự hài hòa, thanh thoát của thiên nhiên sẽ giúp chúng ta xua tan những phiền não, âu lo, làm cho tâm hồn yên lắng trở lại.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 article">
-                    <div class="img-wrap1">
-                        <img width="120" src="~/Content/NaturalLife/icons/svg03.svg" alt="image description">
-                    </div>
-                    <div class="description">
-                        <h3>Du lịch bền vững</h3>
-                        <p style="text-transform: uppercase;">Natural Life Đà Lạt sẽ mang đến cho bạn những hoạt động ngoài trời rất tuyệt vời, lắng nghe tiếng thông thì thầm trong gió, hoặc tựa lưng vào gốc thông, ngồi bệt dưới bãi cỏ xanh rì gậm nhấm quyển sách mà bạn ưa thích.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- content block with article -->
     <div class="content-block bg-gray">
         <div class="container">
             <header class="content-heading">
-                <h2 class="main-heading">Câu chuyện của NATURAL LIFE</h2>
-                <strong class="main-subtitle">Một tác phẩm nghệ thuật là trên tất cả một cuộc phiêu lưu của tâm trí!</strong>
+                <h2 class="main-heading">@Model.FirstOrDefault().BigTitle</h2>
+                <strong class="main-subtitle">@Model.FirstOrDefault().SubTitle</strong>
                 <div class="seperator"></div>
             </header>
             <div class="row">
                 <div class="col-sm-6 description-text">
-                    <h3>Chúng tôi có</h3>
-                    <p>Những căn biệt thự của Natural Life Đà Lạt mang phong cách Châu âu, được trang trí nền nã, nhẹ nhàng, từ những mãnh gỗ rừng thiên nhiên tưởng chừng đã vứt bỏ, nhưng được tận dụng bố trí xinh xắn trên vách tường, làm đèn phòng ngủ thật lạ lẫm đến dễ thương. </p>
-                    <p>Natural Life Đà Lạt sẽ mang đến cho bạn những hoạt động ngoài trời rất tuyệt vời, bạn có thể dạo bộ quanh đồi thông rộng 35ha, ngắm nhìn núi rừng trùng điệp dưới áng mây trôi lững lờ, lắng nghe tiếng thông thì thầm trong gió, hoặc tựa lưng vào gốc thông, ngồi bệt dưới bãi cỏ xanh rì gậm nhấm quyển sách mà bạn ưa thích. </p>
+                    <h3>@Model.FirstOrDefault().LeftTitle</h3>
+                    <p>@Model.FirstOrDefault().LeftDescription</p>
+                   
                 </div>
                 <div class="col-sm-6 description-text">
-                    <h3>Khung cảnh</h3>
-                    <p>Đêm về, quanh chân đồi sáng rực hàng ngàn ngọn nến ẩn mình, lấp ló giữa những rặng thông xanh, được tỏa ra từ những vườn hoa thật lãng mạn, quyến rủ đến khó cưỡng.. </p>
-                    <p>Đặc biệt, các bạn sẽ được tham quan, ngắm nhìn nhiều ruộng bắp cải, súp lơ xanh rì có hình dạng của những đoá hồng xanh khổng lồ, và trải nghiệm cảm giác không Resort nào có, được 1 ngày làm nông dân, khi chính tay gặt hái những nông sản như khoai tây, bắp cải, súp lơ, xà lách xanh nõn và tự chế biến các món ăn thu hoạch từ vườn rau, với không gian bếp tiện nghi, sạch sẽ riêng biệt. Thích nhất là những quả dâu chín mọng thơm ngát chờ đón bàn tay của các bạn... </p>
+                    <h3>@Model.FirstOrDefault().RightTitle</h3>
+                    <p>@Model.FirstOrDefault().RightDescription</p>
                 </div>
             </div>
         </div>
@@ -88,107 +50,67 @@
             <div class="row db-3-col">
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="200ms">
                     <div class="ico-holder">
-                        <span class="icon-hiking"></span>
+                        <span class="@Model.FirstOrDefault().Icon1"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">TOUR</a></strong>
-                        <p>Hành trình hòa mình và khám phá Thiên Nhiên dành cho các cặp đôi, nhóm bạn, đoàn công ty. Tour mang đến không gian thiên nhiên để quý khách đắm mình tận hưởng.</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title1</a></strong>
+                        <p>@Model.FirstOrDefault().Description1</p>
                     </div>
                 </div>
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
                     <div class="ico-holder">
-                        <span class="icon-wildlife"></span>
+                        <span class="@Model.FirstOrDefault().Icon2"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">RESORT</a></strong>
-                        <p>Ngôi nhà hiện đại trang bị đầy đủ tiện nghi cho bạn và người thân. Nơi bạn có những giây phút thư giãn tốt nhất. Bạn có thể ngắm khung cảnh thiên nhiên hùng vĩ.</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title2</a></strong>
+                        <p>@Model.FirstOrDefault().Description2</p>
                     </div>
                 </div>
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="400ms">
                     <div class="ico-holder">
-                        <span class="icon-mountain-biking"></span>
+                        <span class="@Model.FirstOrDefault().Icon3"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">NHÀ HÀNG</a></strong>
-                        <p>Natural Life Đà Lạt sẽ mang đến cho bạn những hoạt động ngoài trời rất tuyệt vời, bạn có thể dạo bộ quanh đồi thông rộng 35ha, ngắm nhìn núi rừng trùng điệp dưới áng mây trôi lững lờ.</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title3</a></strong>
+                        <p>@Model.FirstOrDefault().Description3</p>
                     </div>
                 </div>
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms">
                     <div class="ico-holder">
-                        <span class="icon-scuba-diving"></span>
+                        <span class="@Model.FirstOrDefault().Icon4"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">CHO THUÊ DỊCH VỤ</a></strong>
-                        <p>Chúng tôi có nhiều dịch vụ hấp dẫn giúp các cặp đôi, nhóm bạn, đoàn công ty ưng ý nhất.</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title4</a></strong>
+                        <p>@Model.FirstOrDefault().Description4</p>
                     </div>
                 </div>
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="600ms">
                     <div class="ico-holder">
-                        <span class="icon-jeep"></span>
+                        <span class="@Model.FirstOrDefault().Icon5"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">HOẠT ĐỘNG GIẢI TRÍ</a></strong>
-                        <p>Các hoạt động vui chơi giải trí đa dạng phong phú dành cho các cặp đôi, nhóm bạn, đoàn công ty.</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title5</a></strong>
+                        <p>@Model.FirstOrDefault().Description5</p>
                     </div>
                 </div>
                 <div class="col-sm-4 ico-article wow fadeInUp" data-wow-duration="400ms" data-wow-delay="700ms">
                     <div class="ico-holder">
-                        <span class="icon-bungee"></span>
+                        <span class="@Model.FirstOrDefault().Icon6"></span>
                     </div>
                     <div class="description">
-                        <strong class="content-title"><a href="#">SỰ KIỆN ĐẶC BIỆT</a></strong>
-                        <p>Ngắm nhìn núi rừng trùng điệp dưới áng mây trôi lững lờ, lắng nghe tiếng thông thì thầm trong gió, hoặc tựa lưng vào gốc thông, ngồi bệt dưới bãi cỏ xanh rì gậm nhấm quyển sách mà bạn ưa thích.”</p>
+                        <strong class="content-title"><a href="#">@Model.FirstOrDefault().Title6</a></strong>
+                        <p>@Model.FirstOrDefault().Desciption6</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- content block with guide info -->
-    <section class="content-block guide-sub">
-        <div class="container">
-            <header class="content-heading">
-                <h2 class="main-heading">SỨC MẠNH CỦA CHÚNG TÔI</h2>
-                <span class="main-subtitle">Dịch vụ của chúng tôi là vũ khí bí mật đằng sau thành công của chúng tôi.</span>
-                <div class="seperator"></div>
-            </header>
-            <div class="row guide-info">
-                <div class="col-sm-6">
-                    <div class="description">
-                        <h3>Hỗ trợ cho tất cả tuyệt vời.</h3>
-                        <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                        <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-5 progress-holder">
-                    <div class="bar-holder">
-                        <strong class="title">SỰ TUYỆT VỜI</strong>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" id="progress1">
-                                <span class="value">85%</span>
-                            </div>
-                        </div>
-                        <strong class="title">DỊCH VỤ</strong>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" id="progress2">
-                                <span class="value">80%</span>
-                            </div>
-                        </div>
-                        <strong class="title">HOẠT ĐỘNG</strong>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" id="progress3">
-                                <span class="value">77%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
     <!-- step block -->
     <div class="step-block text-center parallax" data-stellar-background-ratio="0.3" id="about-step-block">
         <div class="container">
             <blockquote class="normal">
-                <q>“Chúng ta hãy đặt lịch và theo đuổi cuộc phiêu lưu cùng nhau.”</q>
+                <q>@Model.FirstOrDefault().Slogan</q>
             </blockquote>
         </div>
     </div>

@@ -288,7 +288,7 @@ namespace NaturalLife.Controllers.WebMaster
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddType(string typename, string editor, HttpPostedFileBase[] images)
+        public ActionResult AddType(string typename, string editor, HttpPostedFileBase[] images, string icon1, string icon2, string icon3)
         {
             if (Session["Authentication"] != null)
             {
@@ -323,6 +323,9 @@ namespace NaturalLife.Controllers.WebMaster
                     {
                         type.Images = Images;
                     }
+                    type.Icon01 = icon1;
+                    type.Icon02 = icon2;
+                    type.Icon03 = icon3;
                     db.NTL_RoomType.Add(type);
                     db.SaveChanges();
                     return RedirectToAction("ListType");
@@ -354,7 +357,7 @@ namespace NaturalLife.Controllers.WebMaster
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditType(string typename, string editor, HttpPostedFileBase[] images, string ID)
+        public ActionResult EditType(string typename, string editor, HttpPostedFileBase[] images, string ID, string icon1, string icon2, string icon3)
         {
             if (Session["Authentication"] != null)
             {
@@ -388,6 +391,9 @@ namespace NaturalLife.Controllers.WebMaster
                 {
                     type.Images = Images;
                 }
+                type.Icon01 = icon1;
+                type.Icon02 = icon2;
+                type.Icon03 = icon3;
                 db.Entry(type).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ListType");

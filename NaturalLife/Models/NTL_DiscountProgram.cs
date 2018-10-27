@@ -20,5 +20,7 @@ namespace NaturalLife.Models
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string Description { get; set; }
+        public Nullable<bool> Hide { get; set; }
+        public string Images { get; set; }
     }
 }

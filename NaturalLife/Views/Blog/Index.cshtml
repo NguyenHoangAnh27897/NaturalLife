@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList.Mvc;
+@using GridMvc.Html;
+@model PagedList.IPagedList<NaturalLife.Models.NTL_Blog>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,16 +10,17 @@
 <section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="blog-default">
     <div class="banner-text">
         <div class="center-text">
-            <div class="container">
-                <h1>BLOG DU LỊCH</h1>
-                <strong class="subtitle">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
+            <div class="container hidden-md hidden-lg">
+                <br />
+                <h1 class="text-center">BLOG DU LỊCH</h1>
+                <strong class="subtitle text-center">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
                 <!-- breadcrumb -->
-                <nav class="breadcrumbs">
+                @*<nav class="breadcrumbs">
                     <ul>
                         <li><a href="/home/index">Trang chủ</a></li>
                         <li><span>Blog</span></li>
                     </ul>
-                </nav>
+                </nav>*@
             </div>
         </div>
     </div>
@@ -26,328 +29,56 @@
 <main id="main">
     <div class="content-with-sidebar common-spacing content-left">
         <div class="container">
+            <header class="content-heading hidden-xs hidden-sm">
+                <h2 class="main-heading">BLOG</h2>
+                <strong class="main-subtitle">Các chủ đề phiêu lưu chi tiết và hiện đại nhất!</strong>
+                <div class="seperator"></div>
+            </header><br />
             <div id="two-columns" class="row">
                 <div id="content" class="col-sm-8 col-md-9">
                     <div class="blog-holder">
                         <!-- blog list -->
                         <div class="blog-list list-view">
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-04.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Không khí &amp; Resort tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Đăng bởi <a href="#">A3</a>
+                            @foreach (var item in Model)
+                            {
+                                <article class="article blog-article">
+                                    <div class="thumbnail">
+                                        <div class="img-wrap">
+                                            <a href="#"><img src="~/Images/website/imageblog/@item.Avatar" height="240" width="350" alt="image description"></a>
+                                        </div>
+                                        <div class="description">
+                                            <header class="heading">
+                                                <h3><a href="/blog/detail/@item.ID">@item.Title</a></h3>
+                                                <time class="info-day" datetime="2011-01-12">@item.CreatedDate.Value.ToString("dd/MM/yyyy")</time>
+                                            </header>
+                                           @if(item.ContentBlog.Length > 100)
+                                           {
+                                               Html.Raw(item.ContentBlog.Substring(0, 100));
+                                           }
+                                           else { Html.Raw(item.ContentBlog); }
+                                            <footer class="meta">
+                                                @Html.Raw(Model.FirstOrDefault().ContentBlog)
+                                                <div class="footer-sub">
+                                                    <div class="rate-info">
+                                                        Đăng bởi <a href="/blog/detail/@item.ID">@item.CreatedBy</a>
+                                                    </div>
                                                 </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
+                                            </footer>
+                                            <div class="link-view">
+                                                <a href="/blog/detail/@item.ID">ĐỌC BÀI VIẾT</a>
                                             </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-02.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-04.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-05.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-06.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-07.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="article blog-article">
-                                <div class="thumbnail">
-                                    <div class="img-wrap">
-                                        <a href="#"><img src="~/Content/NaturalLife/img/blog/img-08.jpg" height="240" width="350" alt="image description"></a>
-                                    </div>
-                                    <div class="description">
-                                        <header class="heading">
-                                            <h3><a href="#">Khí hậu &amp; Resort nghỉ dưỡng tại Đà Lạt</a></h3>
-                                            <time class="info-day" datetime="2011-01-12">Aug 11</time>
-                                        </header>
-                                        <p>Tưởng tượng đến việc bạn sẽ được tận hưởng không gian rộng rãi, thoáng mát cùng thiết bị, nội thất hiện đại, tổ chức tiệc nướng ngoài trời cực vui,… và nhiều hoạt động khác nữa đã thấy kích thích rồi đúng không nào.</p>
-                                        <footer class="meta">
-                                            <div class="star-rating">
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span><span class="icon-star"></span></span>
-                                                <span class='disable'><span class="icon-star"></span></span>
-                                            </div>
-                                            <div class="footer-sub">
-                                                <div class="rate-info">
-                                                    Post by <a href="#">A3</a>
-                                                </div>
-                                                <div class="comment">
-                                                    <a href="#">37 Comments</a>
-                                                </div>
-                                            </div>
-                                            <ul class="ico-action">
-                                                <li>
-                                                    <a href="#"><span class="icon-share"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span class="icon-favs"></span></a>
-                                                </li>
-                                            </ul>
-                                        </footer>
-                                        <div class="link-view">
-                                            <a href="/blog/detail">ĐỌC BÀI VIẾT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                                </article>
+                            }
+
+
                         </div>
                     </div>
                     <!-- pagination wrap -->
                     <nav class="pagination-wrap bg-gray">
-                        <div class="btn-prev">
-                            <a href="#" aria-label="Previous">
-                                <span class="icon-angle-right"></span>
-                            </a>
-                        </div>
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="active"><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>...</li>
-                            <li><a href="#">7</a></li>
-                        </ul>
-                        <div class="btn-next">
-                            <a href="#" aria-label="Previous">
-                                <span class="icon-angle-right"></span>
-                            </a>
-                        </div>
+                        <strong style="margin: 12px;"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</strong>
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                     </nav>
                 </div>
                 <!-- sidebar -->

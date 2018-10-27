@@ -15,6 +15,7 @@ namespace NaturalLife.Controllers
             try
             {
                 var rs = db.NTL_Slider.Where(s => s.ID == 1);
+                var home = db.NTL_Main.Where(s => s.ID == 1);
                 var rt = db.NTL_RoomType.ToList();
                 var sv = db.NTL_Service.ToList();
                 var disc = db.NTL_DiscountProgram.ToList();
@@ -23,6 +24,7 @@ namespace NaturalLife.Controllers
                 hp.Slider = rs;
                 hp.Service = sv;
                 hp.Discount = disc;
+                hp.Main = home;
                 List<Data.HomePage> lst = new List<Data.HomePage>();
                 lst.Add(hp);
                 return View(lst);
@@ -36,16 +38,44 @@ namespace NaturalLife.Controllers
 
         public ActionResult About()
         {
+            var rs = db.NTL_About.Where(s => s.ID == 1);
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(rs);
         }
 
         public ActionResult Contact()
         {
+            var rs = db.NTL_About.Where(s => s.ID == 1);
             ViewBag.Message = "Your contact page.";
 
+            return View(rs);
+        }
+
+        public ActionResult Booking()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Send(string fname, string lname, string email, string phone, string country, string message)
+        {
+            try
+            {
+                var rs = new NTL_Contact();
+                rs.Surename = lname;
+                rs.Familyname = fname;
+                rs.Email = email;
+                rs.Phone = phone;
+                rs.Address = country;
+                rs.Description = message;
+                db.NTL_Contact.Add(rs);
+                db.SaveChanges();
+                return RedirectToAction("Contact", "Home");
+            }
+            catch(Exception ex){
+                return RedirectToAction("FourOFour", "Error");
+            }
         }
 
         [HttpPost]

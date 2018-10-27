@@ -27,12 +27,12 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thêm Chương trình giảm giá</h4>
+                                <h4>Chỉnh sửa Chương trình giảm giá</h4>
                             </div>
                         </div>
 
                         <div class="section-body">
-                            <form action="/discount/edit" method="post">
+                            <form action="/discount/edit" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Tên Chương trình giảm giá</label>
@@ -44,6 +44,27 @@
                                     <label for="exampleFormControlInput4">Giá giảm (%)</label>
                                     <input style="width:20%" type="number" class="form-control" placeholder="" name="discountprice" step="any" value="@Model.FirstOrDefault().DiscountPrice">
                                 </div>
+
+                                @if (Model.FirstOrDefault().Images != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1000x800 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagediscount/@Model.FirstOrDefault().Images') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1000x800 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" />
+                                    </div>
+                                }
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Nội dung miêu tả</label>

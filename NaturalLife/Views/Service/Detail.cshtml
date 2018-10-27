@@ -1,8 +1,23 @@
-﻿@model IQueryable<NaturalLife.Models.NTL_Service>
+﻿@model IEnumerable<NaturalLife.Models.Data.ServiceDetail>
+@using NaturalLife.Models
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string[] arrStr;
+    string[] arrStrImage;
+    int day = 1;
+    string sodau = "";
+    string sosau = "";
+    int sdau = 0;
+    int ssau = 0;
+    int count = 0;
+    int skip = 0;
+    string href = "#collapse";
+    string id = "collapse";
+    int dem = 1;
+    string lich = "";
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var rs = db.NTL_Service.ToList();
 }
 
 <!-- main container -->
@@ -13,11 +28,11 @@
             <div class="height col-md-6">
                 <!-- top image slideshow -->
                 <div id="tour-slide">
-                    @if (Model.FirstOrDefault().Images != null)
+                    @if (Model.FirstOrDefault().Service.FirstOrDefault().Images != null)
                     {
-                        if (Model.FirstOrDefault().Images.Contains(","))
+                        if (Model.FirstOrDefault().Service.FirstOrDefault().Images.Contains(","))
                         {
-                            arrStr = Model.FirstOrDefault().Images.Split(',');
+                            arrStr = Model.FirstOrDefault().Service.FirstOrDefault().Images.Split(',');
                             foreach (var item in arrStr)
                             {
                                 <div class="slide">
@@ -32,7 +47,7 @@
                         {
                             <div class="slide">
                                 <div class="bg-stretch">
-                                    <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Images" alt="image descriprion" height="1104" width="966">
+                                    <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().Images" alt="image descriprion" height="1104" width="966">
                                 </div>
                             </div>
                         }
@@ -41,19 +56,20 @@
             </div>
             <div class="height col-md-6 text-col">
                 <div class="holder">
-                    <h1 class="small-size">@Model.FirstOrDefault().ServiceName</h1>
+                    <h1 class="small-size">@Model.FirstOrDefault().Service.FirstOrDefault().ServiceName</h1>
                     <div class="price">
-                        Giá <strong>2.795.000 VNĐ</strong>
+                        Giá <strong>@string.Format("{0:n0}", Model.FirstOrDefault().Service.FirstOrDefault().Price)</strong>
                     </div>
                     <div class="description">
-                        @Html.Raw(Model.FirstOrDefault().Description)
+                        @if (Model.FirstOrDefault().Service.FirstOrDefault().Description.Length > 500)
+                        {
+                            @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Description.Substring(0,500)) <a href="#description">... Xem thêm</a>
+                        }
+                        else
+                        {@Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Description)}
                     </div>
                     <ul class="reviews-info">
                         <li>
-                            <div class="info-left">
-                                <strong class="title">Đánh giá</strong>
-                                <span class="value">75 Đánh giá</span>
-                            </div>
                             <div class="info-right">
                                 <div class="star-rating">
                                     <span><span class="icon-star"></span></span>
@@ -68,7 +84,7 @@
                         <li>
                             <div class="info-left">
                                 <strong class="title">Kiểu tour</strong>
-                                <span class="value">@Model.FirstOrDefault().ServiceType</span>
+                                <span class="value">@Model.FirstOrDefault().Service.FirstOrDefault().ServiceType</span>
                             </div>
                             <div class="info-right">
                                 <ul class="ico-list">
@@ -130,7 +146,7 @@
                         </li>*@
                     </ul>
                     <div class="btn-holder">
-                        <a href="#" class="btn btn-lg btn-info">ĐĂNG KÝ NGAY</a>
+                        <a href="#" class="btn btn-lg btn-info" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook">ĐĂNG KÝ NGAY</a>
                     </div>
                     <ul class="social-networks social-share">
                         <li>
@@ -170,7 +186,7 @@
             </div>
         </div>
     </section>
-    <div class="tab-container">
+    <div class="tab-container" id="description">
         <nav class="nav-wrap" id="sticky-tab">
             <div class="container">
                 <!-- nav tabs -->
@@ -180,7 +196,7 @@
                     <li role="presentation"><a href="#tab03" aria-controls="tab03" role="tab" data-toggle="tab">Nhà nghỉ</a></li>
                     <!-- <li role="presentation"><a href="#tab04" aria-controls="tab04" role="tab" data-toggle="tab">Hỏi đáp &amp; Đánh giá</a></li> -->
                     <li role="presentation"><a href="#tab05" aria-controls="tab05" role="tab" data-toggle="tab">Bộ sưu tập</a></li>
-                    <li role="presentation"><a href="#tab06" aria-controls="tab06" role="tab" data-toggle="tab">Lịch trình &amp; Giá</a></li>
+                    @*<li role="presentation"><a href="#tab06" aria-controls="tab06" role="tab" data-toggle="tab">Lịch trình &amp; Giá</a></li>*@
                 </ul>
             </div>
         </nav>
@@ -192,16 +208,7 @@
                     <div class="col-md-6">
                         <strong class="header-box">Tất cả về cổ điển Đà Lạt</strong>
                         <div class="detail">
-                            <p>Bạn nghĩ như thế nào khi nói về một “mái ấm”. Đơn giản đó chỉ là nơi để bạn chui ra chui vào hay nó còn mang một ý nghĩa lớn lao nào đó? Với tôi thì “mái ấm “khác hoàn toàn với “nơi trú ẩn “ đơn thuần. </p>
-                            <p>Ví như chim có tổ, người có tông. Mái ấm gia đình là một hình ảnh rất thân thuộc, gắn bó và tràn đầy yêu thương. </p>
-                            <p>Là nơi chắp cánh cho những thế hệ tương lai bay cao, bay xa hơn trên bầu trời xã hội.</p>
-                            <p>Có thể bạn sẽ dễ dàng tìm cho mình một “nơi trú ẩn” nhưng không dễ để tìm cho mình một “mái ấm” với đúng ý nghĩa của nó.</p>
-                            <p>Còn khi lưu lạc ngoài hoang dã,thậm chí một nơi trú ẩn đúng nghĩa cũng không hề là dễ dàng với bạn. </p>
-                            <p>Bạn không thể tự xây dựng một ngôi nhà trong nhiều tháng với hoàn cảnh thiếu thốn như vậy. </p>
-                            <p>Cũng không thể chia sẻ một cái hang động tự nhiên nào đó với lũ dơi, côn trùng, bò sát hay thậm chí là các loài thú lớn hơn lâu dài.Bạn sẽ làm thế nào?</p>
-                            <p>Không có một nơi trú ẩn an toàn và tươm tất, có một bếp lửa ấm áp bập bùng cháy lúc thời tiết lạnh giá. </p>
-                            <p>Bạn sẽ thấy trống trải, yếu đuối và dễ dàng suy sụp. </p>
-                            <p>Không những thế bệnh tật và những mối họa không tên từ thiên nhiên sẽ mau chóng đến với bạn.</p>
+                            @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Description)
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -210,28 +217,14 @@
                             <div class="holder">
                                 <strong class="title">Những gì có trong chuyến tham quan này</strong>
                                 <span class="sub-title">Các vật phẩm được bao gồm trong giá tour.</span>
-                                <p>TẤT CẢ CÁC HOẠT ĐỘNG ĐỀU TỪ MỤC ĐÍCH ĐEM LẠI GIÁ TRỊ THAY ĐỔI BẢN THÂN MỘT CÁCH TỰ NHIÊN VÀ TỐT NHẤT !!. </p>
-                                <ul class="content-list tick-list">
-                                    <li>Tất cả bữa sáng, bữa trưa và bữa tối & ăn uống</li>
-                                    <li>Tất cả chỗ ở bao gồm cả nhà trà trên đường</li>
-                                    <li>Tất cả các phương tiện đi lại bao gồm taxi và xe khách</li>
-                                    <li>Các chuyến bay từ mọi miền tổ quốc nếu đặt dịch vụ trước trước</li>
-                                    <li>Hướng dẫn viên du lịch và đi bộ xuyên suốt toàn bộ hành trình</li>
-                                </ul>
+                                 @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Advantage)
                             </div>
                         </div>
                         <div class="text-box not-included">
                             <div class="holder">
                                 <strong class="title">Không có gì trong chuyến tham quan này</strong>
                                 <span class="sub-title">Các vật phẩm được bao gồm trong giá tour.</span>
-                                <p>TẤT CẢ CÁC HOẠT ĐỘNG ĐỀU TỪ MỤC ĐÍCH ĐEM LẠI GIÁ TRỊ THAY ĐỔI BẢN THÂN MỘT CÁCH TỰ NHIÊN VÀ TỐT NHẤT !!. </p>
-                                <ul class="content-list cross-list">
-                                    <li>Bảo hiểm du lịch và các trường hợp khẩn cấp khác</li>
-                                    <li>Lệ phí visa và lệ phí thanh toán bù trừ nhập cảnh</li>
-                                    <li>Phòng đơn</li>
-                                    <li>Rượu, beeers và đồ uống khác</li>
-                                    <li>Máy ảnh.</li>
-                                </ul>
+                                 @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Disadvantage)
                             </div>
                         </div>
                     </div>
@@ -240,338 +233,108 @@
             <!-- itinerary tab content -->
             <div role="tabpanel" class="tab-pane" id="tab02">
                 <div class="row">
-                    <div class="col-md-6">
-                        <ol class="detail-accordion">
-                            <li class="active">
-                                <a class="day_accordion" href="#">
-                                    <strong class="title">Ngày 1</strong>
-                                    <span>Khởi hành từ TPHCM</span>
-                                </a>
-                                <div class="slide slideDate">
-                                    <div class="slide-holder">
-                                        <p>Điểm danh , thông báo lịch trình ,giới thiệu leader. Leader hỗ trợ hành lý và đưa khách lên xe, Leader chăm sóc khách trên xe. </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="day_accordion" href="#">
-                                    <strong class="title">Ngày 2</strong>
-                                    <span>Đến Đà Lạt</span>
-                                </a>
-                                <div class="slide slideDate">
-                                    <div class="slide-holder">
-                                        <div class="demo-wrapper">
-                                            <ol class="subdetail-accordion accordion" id="accordion">
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                                        <strong class="deDay_title">06g00-06g30</strong>
-                                                        <span>Di chuyển đến Naturallife Dalat</span>
-                                                    </a>
-                                                    <div id="collapse1" class="slide collapse in">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Kiểm tra hỗ trợ hành lý , kiểm soát
-                                                                khách , giúp khách thêm thông tin về
-                                                                NATURALLIFE DALAT
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                                        <strong class="deDay_title">06g30-07g00</strong>
-                                                        <span>Hướng dẫn sử dụng và nhận các vật dụng cần thiết cho camping</span>
-                                                    </a>
-                                                    <div id="collapse2" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                leader sẽ hướng dẫn cách sử dụng
-                                                                vật dụng cho các thành viên , và giao
-                                                                thực phẩm cần thiết cho các thành
-                                                                viên.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                                        <strong class="deDay_title">07g00-08g30</strong>
-                                                        <span>Khách được phục vụ ăn sáng tại nhà hàng & Di chuyển đến khu vực chọn vị trí cắm trại</span>
-                                                    </a>
-                                                    <div id="collapse3" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                leader sẽ mời và phục vụ ăn sáng cho
-                                                                thành viên. Các thành viên đem tất cả các dịch vụ di chuyển đến điểm cắm trại.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                                        <strong class="deDay_title">08g30-10g30</strong>
-                                                        <span>Build camp</span>
-                                                    </a>
-                                                    <div id="collapse4" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Leader sẽ hỗ trợ và hướng dẫn lắp
-                                                                lều , để lều được lắp chuẩn có thể
-                                                                chóng mưa và sương.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                                                        <strong class="deDay_title">10g30 – 11g30</strong>
-                                                        <span>Campfire</span>
-                                                    </a>
-                                                    <div id="collapse5" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Các thành viên đi tìm củi và xây dựng
-                                                                đống lửa vững chắc , đốt lửa.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-                                                        <strong class="deDay_title">11g30-12g30 </strong>
-                                                        <span>Campfire Cooking</span>
-                                                    </a>
-                                                    <div id="collapse6" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Các thành viên sử dụng nguyên vật
-                                                                liệu , dựa theo điều kiện tại đó để
-                                                                nấu ăn .
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-                                                        <strong class="deDay_title">12g30-14g00</strong>
-                                                        <span>Dùng bữa trưa</span>
-                                                    </a>
-                                                    <div id="collapse7" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>Các thành viên cùng quây quần ăn bữa trưa. </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-                                                        <strong class="deDay_title">14g00-16g00</strong>
-                                                        <span>Wandering</span>
-                                                    </a>
-                                                    <div id="collapse8" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Với tấm bàn đồ trên tay , leader sẽ
-                                                                khợi ý cho các thành viên để khám
-                                                                phá những điều thú vị ở Natural life
-                                                                dalat
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-                                                        <strong class="deDay_title">16g00-17g30</strong>
-                                                        <span>Chuẩn bị cho : Barbecue in the forest</span>
-                                                    </a>
-                                                    <div id="collapse9" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>
-                                                                Các thành viên nhận nguyên vật liệu
-                                                                và chuẩn bị cho buổi tiệc từ nấu ăn
-                                                                cho đến trang trí xung quanh.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse10">
-                                                        <strong class="deDay_title">17g30-20g30</strong>
-                                                        <span>Barbecue in the forest </span>
-                                                    </a>
-                                                    <div id="collapse10" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p>Tận hưởng tiệc BBQ cùng bạn bè dưới ánh lửa và nhạc guitar lãng mạn.</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="panel">
-                                                    <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="#collapse11">
-                                                        <strong class="deDay_title">20g30-05g00 </strong>
-                                                        <span>Tự do và nghĩ ngơi </span>
-                                                    </a>
-                                                    <div id="collapse11" class="slide collapse">
-                                                        <hr>
-                                                        <div class="slide-hold">
-                                                            <p></p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="day_accordion" href="#">
-                                    <strong class="title">Ngày 3</strong>
-                                    <span>Kết thúc và hẹn gặp lại</span>
-                                </a>
-                                <div class="slide slideDate">
-                                    <div class="slide-holder">
-                                        <ol class="subdetail-accordion accordion2" id="accordion2">
+                    <div class="col-md-12">
+                        @if (Model.FirstOrDefault().Service.FirstOrDefault().PDFLink != "" || Model.FirstOrDefault().Service.FirstOrDefault().PDFLink != null)
+                        {
+                            @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().PDFLink);
+                        }
+                        else
+                        {
+                            <p>Chưa có hành trình cụ thể</p>
+                        }
+
+                        @*<ol class="detail-accordion">
+            @foreach (var item in Model.FirstOrDefault().Adventure)
+            {
+                sodau = item.Time.Substring(0, 2);
+                sosau = item.Time.Substring(6, 2);
+                sdau = int.Parse(sodau);
+                ssau = int.Parse(sosau);
+                if (sdau > ssau)
+                {
+                    count++;
+                }
+            }
+            @for (int i = 0; i < count + 1; i++)
+            {
+                <li>
+                    <a class="day_accordion" href="#" style="height:65px">
+                        <strong class="title">Ngày @day</strong>
+                    </a>
+                    <div class="slide slideDate">
+                        <div class="slide-holder">
+                            <div class="demo-wrapper">
+                                <ol class="subdetail-accordion accordion" id="accordion">
+                                    @foreach (var item in Model.FirstOrDefault().Adventure.Skip(skip))
+                                    {
+                                        sodau = item.Time.Substring(0, 2);
+                                        sosau = item.Time.Substring(6, 2);
+                                        sdau = int.Parse(sodau);
+                                        ssau = int.Parse(sosau);
+                                        if (sdau <= ssau)
+                                        {
+                                            href += dem.ToString();
+                                            id += dem.ToString();
                                             <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse12">
-                                                    <strong class="deDay_title">05g00-06g00</strong>
-                                                    <span>Enjoy the dawn with hot coffee.</span>
+                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="@href">
+                                                    <strong class="deDay_title">@item.Time</strong>
+                                                    <span>@item.Activity</span>
                                                 </a>
-                                                <div id="collapse12" class="slide collapse in">
+                                                <div id="@id" class="slide collapse">
                                                     <hr>
                                                     <div class="slide-hold">
                                                         <p>
-                                                            Các thành viên cùng thức dậy học
-                                                            pha cafe trong rừng và cùng thưởng
-                                                            thức với bức tranh bình minh tuyệt
-                                                            vời.
+                                                            @item.DetailActivity
                                                         </p>
                                                     </div>
                                                 </div>
                                             </li>
+                                            skip++;
+                                            dem++;
+                                        }
+                                        else if (sdau > ssau)
+                                        {
+                                            href += dem.ToString();
+                                            id += dem.ToString();
                                             <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse13">
-                                                    <strong class="deDay_title">06g00-07g00</strong>
-                                                    <span>Yoga buổi sáng </span>
+                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion" href="@href">
+                                                    <strong class="deDay_title">@item.Time</strong>
+                                                    <span>@item.Activity</span>
                                                 </a>
-                                                <div id="collapse13" class="slide collapse">
+                                                <div id="@id" class="slide collapse">
                                                     <hr>
                                                     <div class="slide-hold">
                                                         <p>
-                                                            Leader hướng dẫn các thành viên tập yoga đơn giản.
+                                                            @item.DetailActivity
                                                         </p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse14">
-                                                    <strong class="deDay_title">07g00-08g30</strong>
-                                                    <span>Ăn sáng.</span>
-                                                </a>
-                                                <div id="collapse14" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p></p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse15">
-                                                    <strong class="deDay_title">08g30-10g30</strong>
-                                                    <span>Dở trại và dọn dẹp vệ sinh.</span>
-                                                </a>
-                                                <div id="collapse15" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p>
-                                                            Các thành viên thu dọn , dỡ trại và làm vệ sinh đất trại.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse16">
-                                                    <strong class="deDay_title">10g30-11g00</strong>
-                                                    <span>Di chuyển xuống khu nhà hàng.</span>
-                                                </a>
-                                                <div id="collapse16" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p></p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse17">
-                                                    <strong class="deDay_title">11g00-12g00</strong>
-                                                    <span>Ăn trưa tại nhà hàng</span>
-                                                </a>
-                                                <div id="collapse17" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p></p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse18">
-                                                    <strong class="deDay_title">12g00-14g30</strong>
-                                                    <span>Di chuyển đến điểm Chợ Dalat.</span>
-                                                </a>
-                                                <div id="collapse18" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p>Tự do đi dạo và mua sắm</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="panel">
-                                                <a class="deDay_accordion" data-toggle="collapse" data-parent="#accordion2" href="#collapse19">
-                                                    <strong class="deDay_title">14g30-21g30</strong>
-                                                    <span>Di chuyển về TPHCM – Hẹn gặp lại</span>
-                                                </a>
-                                                <div id="collapse19" class="slide collapse">
-                                                    <hr>
-                                                    <div class="slide-hold">
-                                                        <p>
-                                                            Kết thúc chuyến hành trình , tiễn các gia đình từ family garden .
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
+                                            skip++;
+                                            dem++;
+                                            break;
+                                        }
+                                    }
+                                </ol>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                </li>
+                day++;
+            }
+
+        </ol>*@
+                    </div>
+                    @*<div class="col-md-6">
                         <article class="img-article article-light">
                             <div class="img-wrap">
-                                <img src="~/Content/NaturalLife/img/generic/img-08.jpg" height="319" width="570" alt="image description">
+                                <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().Avatar" height="319" width="570" alt="image description">
                             </div>
                             <div class="text-block">
-                                <h3><a href="#">Thành viên nghỉ ngơi</a></h3>
-                                <p>Xem xét đóng gói túi của bạn với các yếu tố cần thiết hàng ngày.</p>
+                                <h3><a href="#">@Model.FirstOrDefault().Service.FirstOrDefault().ServiceName</a></h3>
                             </div>
                         </article>
-                        <!-- <article class="img-article article-light">
-                            <div class="img-wrap">
-                                <img src="img/generic/img-09.jpg" height="319" width="570" alt="image description">
-                            </div>
-                            <div class="text-block">
-                                <h3><a href="#">Couple enjoying the spectacular view</a></h3>
-                                <p>Consider packing your bag with folloing daily essentials.</p>
-                            </div>
-                        </article> -->
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <!-- accomodation tab content -->
@@ -580,16 +343,7 @@
                     <div class="col-md-6">
                         <strong class="header-box">VILLA</strong>
                         <div class="detail">
-                            <p>Bạn nghĩ như thế nào khi nói về một “mái ấm”. Đơn giản đó chỉ là nơi để bạn chui ra chui vào hay nó còn mang một ý nghĩa lớn lao nào đó? Với tôi thì “mái ấm “khác hoàn toàn với “nơi trú ẩn “ đơn thuần. </p>
-                            <p>Ví như chim có tổ, người có tông. Mái ấm gia đình là một hình ảnh rất thân thuộc, gắn bó và tràn đầy yêu thương. </p>
-                            <p>Là nơi chắp cánh cho những thế hệ tương lai bay cao, bay xa hơn trên bầu trời xã hội.</p>
-                            <p>Có thể bạn sẽ dễ dàng tìm cho mình một “nơi trú ẩn” nhưng không dễ để tìm cho mình một “mái ấm” với đúng ý nghĩa của nó.</p>
-                            <p>Còn khi lưu lạc ngoài hoang dã,thậm chí một nơi trú ẩn đúng nghĩa cũng không hề là dễ dàng với bạn. </p>
-                            <p>Bạn không thể tự xây dựng một ngôi nhà trong nhiều tháng với hoàn cảnh thiếu thốn như vậy. </p>
-                            <p>Cũng không thể chia sẻ một cái hang động tự nhiên nào đó với lũ dơi, côn trùng, bò sát hay thậm chí là các loài thú lớn hơn lâu dài.Bạn sẽ làm thế nào?</p>
-                            <p>Không có một nơi trú ẩn an toàn và tươm tất, có một bếp lửa ấm áp bập bùng cháy lúc thời tiết lạnh giá. </p>
-                            <p>Bạn sẽ thấy trống trải, yếu đuối và dễ dàng suy sụp. </p>
-                            <p>Không những thế bệnh tật và những mối họa không tên từ thiên nhiên sẽ mau chóng đến với bạn.</p>
+                           @Html.Raw(Model.FirstOrDefault().Service.FirstOrDefault().Description)
                         </div>
                     </div>
                     <div class="col-md-6 accomodation-block">
@@ -599,359 +353,67 @@
                                 <strong class="title">Phòng chung bao gồm trong giá</strong>
                                 <span class="sub-title">Các vật phẩm được bao gồm trong giá tour.</span>
                                 <div class="img-holder">
-                                    <img src="~/Content/NaturalLife/img/generic/img-10.jpg" height="467" width="700" alt="image description">
+                                    <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().AvatarIn" height="467" width="700" alt="image description">
                                 </div>
                             </div>
                         </div>
                         <div class="text-box not-included">
                             <div class="holder">
                                 <strong class="title">Phòng riêng không được bao gồm trong giá</strong>
-                                <span class="sub-title">Các vật phẩm được bao gồm trong giá tour.</span>
+                                <span class="sub-title">Các vật phẩm không được bao gồm trong giá tour.</span>
                                 <div class="img-holder">
-                                    <img src="~/Content/NaturalLife/img/generic/img-11.jpg" height="467" width="700" alt="image description">
+                                    <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().AvatarOut" height="467" width="700" alt="image description">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- faq and review tab content -->
-            <!-- <div role="tabpanel" class="tab-pane" id="tab04">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="question-select">
-                            <select id="tabSelect" class="question">
-                                <option value="#innerTab1">What kind of footwear is suitable?</option>
-                                <option value="#innerTab2">What kind of bag is suitable?</option>
-                                <option value="#innerTab3">What kind of clothes are suitable?</option>
-                            </select>
-                            <ul class="nav nav-tabs" id="questionTab">
-                                <li class="active"><a href="#innerTab1" data-toggle="tab">What kind of footwear wearing is suitable?</a></li>
-                                <li><a href="#innerTab2" data-toggle="tab">What kind of bag is suitable?</a></li>
-                                <li><a href="#innerTab3" data-toggle="tab">What kind of clothes wearing is suitable?</a></li>
-                            </ul>
-                        </div>
-                        <div class="tab-wrapper">
-                            <div role="tabpanel" class="tab-pane active" id="innerTab1">
-                                <div class="detail">
-                                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-                                    <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. </p>
-                                    <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. </p>
-                                    <p>Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam.</p>
-                                    <p>Ulins aliquam massa nisl quis neque. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. </p>
-                                    <p>Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam.</p>
-                                    <p>Ulins aliquam massa nisl quis neque. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. </p>
-                                    <p>Suspendisse gin orci enim.</p>
-                                    <ul class="img-list">
-                                        <li>
-                                            <img src="img/generic/img-12.jpg" height="52" width="101" alt="image description">
-                                        </li>
-                                        <li>
-                                            <img src="img/generic/img-13.jpg" height="97" width="114" alt="image description">
-                                        </li>
-                                        <li>
-                                            <img src="img/generic/img-14.jpg" height="104" width="124" alt="image description">
-                                        </li>
-                                    </ul>
-                                    <div class="reviews-slot v-middle">
-                                        <div class="thumb">
-                                            <a href="#"><img src="img/thumbs/img-04.jpg" height="50" width="50" alt="image description"></a>
-                                        </div>
-                                        <div class="text">
-                                            <strong class="name"><a href="#">Jessica Lambert - Customer Relations</a></strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="innerTab2">
-                                <div class="detail">
-                                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-                                    <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. </p>
-                                    <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. </p>
-                                    <div class="reviews-slot v-middle">
-                                        <div class="thumb">
-                                            <a href="#"><img src="img/thumbs/img-04.jpg" height="50" width="50" alt="image description"></a>
-                                        </div>
-                                        <div class="text">
-                                            <strong class="name"><a href="#">Jessica Lambert - Customer Relations</a></strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="innerTab3">
-                                <div class="detail">
-                                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-                                    <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. </p>
-                                    <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p>
-                                    <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. </p>
-                                    <p>Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam.</p>
-                                    <p>Ulins aliquam massa nisl quis neque. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. </p>
-                                    <p>Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam.</p>
-                                    <p>Ulins aliquam massa nisl quis neque. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. </p>
-                                    <p>Suspendisse gin orci enim.</p>
-                                    <ul class="img-list">
-                                        <li>
-                                            <img src="img/generic/img-12.jpg" height="52" width="101" alt="image description">
-                                        </li>
-                                        <li>
-                                            <img src="img/generic/img-13.jpg" height="97" width="114" alt="image description">
-                                        </li>
-                                        <li>
-                                            <img src="img/generic/img-14.jpg" height="104" width="124" alt="image description">
-                                        </li>
-                                    </ul>
-                                    <div class="reviews-slot v-middle">
-                                        <div class="thumb">
-                                            <a href="#"><img src="img/thumbs/img-04.jpg" height="50" width="50" alt="image description"></a>
-                                        </div>
-                                        <div class="text">
-                                            <strong class="name"><a href="#">Jessica Lambert - Customer Relations</a></strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="header-box">
-                            <a href="#" class="link-right">Writing A Review</a>
-                            <span class="rate-left">
-                                <strong class="title">Overall Rating</strong>
-                                <span class="star-rating">
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span><span class="icon-star"></span></span>
-                                    <span class="disable"><span class="icon-star"></span></span>
-                                </span>
-                                <span class="value">4.7/5</span>
-                            </span>
-                        </div>
-                        <div class="comments reviews-body">
-                            <div class="comment-holder">
-                                <div class="comment-slot">
-                                    <div class="thumb">
-                                        <a href="#"><img src="img/thumbs/img-05.jpg" height="50" width="50" alt="image description"></a>
-                                    </div>
-                                    <div class="text">
-                                        <header class="comment-head">
-                                            <div class="left">
-                                                <strong class="name">
-                                                    <a href="#">Cleona Torez - Spain</a>
-                                                </strong>
-                                                <div class="meta">Reviewed on 14/1/2016</div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="star-rating">
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span class="disable"><span class="icon-star"></span></span>
-                                                </div>
-                                                <span class="value">4.7/5</span>
-                                            </div>
-                                        </header>
-                                        <div class="des">
-                                            <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                            <div class="link-holder">
-                                                <a href="#">Read Full Review</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-slot">
-                                    <div class="thumb">
-                                        <a href="#"><img src="img/thumbs/img-06.jpg" height="50" width="50" alt="image description"></a>
-                                    </div>
-                                    <div class="text">
-                                        <header class="comment-head">
-                                            <div class="left">
-                                                <strong class="name">
-                                                    <a href="#">Cleona Torez - Spain</a>
-                                                </strong>
-                                                <div class="meta">Reviewed on 14/1/2016</div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="star-rating">
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span class="disable"><span class="icon-star"></span></span>
-                                                </div>
-                                                <span class="value">4.7/5</span>
-                                            </div>
-                                        </header>
-                                        <div class="des">
-                                            <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                            <div class="link-holder">
-                                                <a href="#">Read Full Review</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-slot">
-                                    <div class="thumb">
-                                        <a href="#"><img src="img/thumbs/img-07.jpg" height="50" width="50" alt="image description"></a>
-                                    </div>
-                                    <div class="text">
-                                        <header class="comment-head">
-                                            <div class="left">
-                                                <strong class="name">
-                                                    <a href="#">Cleona Torez - Spain</a>
-                                                </strong>
-                                                <div class="meta">Reviewed on 14/1/2016</div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="star-rating">
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span><span class="icon-star"></span></span>
-                                                    <span class="disable"><span class="icon-star"></span></span>
-                                                </div>
-                                                <span class="value">4.7/5</span>
-                                            </div>
-                                        </header>
-                                        <div class="des">
-                                            <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. </p>
-                                            <div class="link-holder">
-                                                <a href="#">Read Full Review</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="link-more text-center">
-                                <a href="#">Show More Reviews - 75 Reviews</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+           
             <!-- gallery tab content -->
             <div role="tabpanel" class="tab-pane" id="tab05">
                 <ul class="row gallery-list has-center">
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-10-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-10.jpg" height="750" width="450" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-11-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-11.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-12-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-12.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-13-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-13.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-14-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-14.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-15-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-15.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-16-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-16.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-17-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-17.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="col-sm-6">
-                        <a class="fancybox" data-fancybox-group="group" href="~/Content/NaturalLife/img/gallery/img-18-2.jpg" title="Caption Goes Here">
-                            <span class="img-holder">
-                                <img src="~/Content/NaturalLife/img/gallery/img-18.jpg" height="240" width="370" alt="image description">
-                            </span>
-                            <span class="caption">
-                                <span class="centered">
-                                    <strong class="title">Hình ảnh Family Tour</strong>
-                                    <span class="sub-text">Natural Life</span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
+                    @if (Model.FirstOrDefault().Service.FirstOrDefault().ImageCollection != null)
+                    {
+                        if (Model.FirstOrDefault().Service.FirstOrDefault().ImageCollection.Contains(","))
+                        {
+                            arrStrImage = Model.FirstOrDefault().Service.FirstOrDefault().ImageCollection.Split(',');
+                            foreach (var item in arrStrImage)
+                            {
+                                <li class="col-sm-6">
+                                    <a class="fancybox" data-fancybox-group="group" href="~/Images/website/imageservice/@item" title="@Model.FirstOrDefault().Service.FirstOrDefault().ServiceName">
+                                        <span class="img-holder">
+                                            <img src="~/Images/website/imageservice/@item" style="height:250px" width="450" alt="image description">
+                                        </span>
+                                        <span class="caption">
+                                            <span class="centered">
+                                                <strong class="title">Hình ảnh @Model.FirstOrDefault().Service.FirstOrDefault().ServiceName</strong>
+                                                <span class="sub-text">Natural Life</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+
+                        }
+                        else
+                        {
+                            <li class="col-sm-6">
+                                <a class="fancybox" data-fancybox-group="group" href="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().ImageCollection" title="@Model.FirstOrDefault().Service.FirstOrDefault().ServiceName">
+                                    <span class="img-holder">
+                                        <img src="~/Images/website/imageservice/@Model.FirstOrDefault().Service.FirstOrDefault().ImageCollection" style="height:250px" width="450" alt="image description">
+                                    </span>
+                                    <span class="caption">
+                                        <span class="centered">
+                                            <strong class="title">Hình ảnh @Model.FirstOrDefault().Service.FirstOrDefault().ServiceName</strong>
+                                            <span class="sub-text">Natural Life</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        }
+
+                    }
                 </ul>
             </div>
             <!-- dates and prices tab content -->
@@ -962,32 +424,39 @@
                             <thead>
                                 <tr>
                                     <th>
+                                        <strong class="date-text">Loại</strong>
+                                    </th>
+                                    <th>
                                         <strong class="date-text">Ngày khởi hành</strong>
-                                        <span class="sub-text">Ngày xác nhận</span>
                                     </th>
                                     <th>
                                         <strong class="date-text">Trạng thái chuyến đi</strong>
-                                        <span class="sub-text">Trạng thái chuyến đi</span>
                                     </th>
                                     <th>
-                                        <strong class="date-text">Giá </strong>
-                                        <span class="sub-text">Bao gồm tất cả dịch vụ</span>
+                                        <strong class="date-text">Giá trong ngàu</strong>
                                     </th>
                                     <th>
-                                        <strong class="date-text">Giá </strong>
-                                        <span class="sub-text">Chưa bao gồm dịch vụ</span>
+                                        <strong class="date-text">Giá cuối tuần</strong>
                                     </th>
+                                    <th>
+                                        <strong class="date-text">Giá ngày lễ</strong>
+                                    </th>
+
                                     <th>
                                         &nbsp;
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model.FirstOrDefault().Schedule)
+                                        {
                                 <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">2.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.170.000 VNĐ</div></div></td>
+                                    <td><div class="cell"><div class="middle">@item.TourType</div></div></td>
+                                    <td><div class="cell"><div class="middle">@lich</div></div></td>
+                                    <td><div class="cell"><div class="middle">@item.Status</div></div></td>
+                                    <td><div class="cell"><div class="middle">@string.Format("{0:n0}", item.PriceDay)</div></div></td>
+                                    <td><div class="cell"><div class="middle">@string.Format("{0:n0}", item.PriceWeekend)</div></div></td>
+                                    <td><div class="cell"><div class="middle">@string.Format("{0:n0}", item.PriceHoliday)</div></div></td>
                                     <td>
                                         <div class="cell">
                                             <div class="middle">
@@ -996,128 +465,10 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Đã đặt trước & bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">2.679.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">1.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.470.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn</div></div></td>
-                                    <td><div class="cell"><div class="middle">2.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Đã đặt trước & bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">4.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">$2,879</div></div></td>
-                                    <td><div class="cell"><div class="middle">$3,970</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">2.679.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">1.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Đã đặt trước & bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">4.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">5.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.270.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div class="cell"><div class="middle">Thứ Sáu 18 tháng 10 - CN 04 tháng 11</div></div></td>
-                                    <td><div class="cell"><div class="middle">Có sẵn & được bảo đảm</div></div></td>
-                                    <td><div class="cell"><div class="middle">2.779.000 VNĐ</div></div></td>
-                                    <td><div class="cell"><div class="middle">3.970.000 VNĐ</div></div></td>
-                                    <td>
-                                        <div class="cell">
-                                            <div class="middle">
-                                                <a href="#" class="btn btn-default">ĐĂNG KÝ NGAY</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                }
+
                             </tbody>
                         </table>
-                    </div>
-                    <div class="load-more text-center text-uppercase">
-                        <a href="#">XEM THÊM NGÀY &amp; GIÁ</a>
                     </div>
                 </div>
             </div>
@@ -1126,172 +477,57 @@
     <!-- recent block -->
     <aside class="recent-block recent-gray recent-wide-thumbnail">
         <div class="container">
-            <h2 class="text-center text-uppercase">TOUR XEM GẦN ĐÂY</h2>
+            <h2 class="text-center text-uppercase">CÁC DỊCH VỤ KHÁC</h2>
             <div class="row">
-                <article class="col-sm-6 col-md-3 article">
-                    <div class="thumbnail">
-                        <h3 class="no-space"><a href="#">TOUR CẮM TRẠI</a></h3>
-                        <strong class="info-title">TOUR CẮM TRẠI</strong>
-                        <div class="img-wrap">
-                            <img src="~/Content/NaturalLife/img/listing/img-31.jpg" height="210" width="250" alt="image description">
-                        </div>
-                        <footer>
-                            <div class="sub-info">
-                                <span>5 Days</span>
-                                <span>2.990.000 VNĐ</span>
+                @foreach (var item in rs)
+                {
+                    if (item.ID != Model.FirstOrDefault().Service.FirstOrDefault().ID)
+                    {
+                        <article class="col-sm-6 col-md-3 article">
+                            <div class="thumbnail">
+                                <h3 class="no-space"><a href="#">@item.ServiceName</a></h3>
+                                <strong class="info-title">@item.ServiceName</strong>
+                                <div class="img-wrap">
+                                    <img src="~/Images/website/imageservice/@item.Avatar" height="210" width="250" alt="image description">
+                                </div>
+                                <footer>
+                                    <div class="sub-info">
+                                        <span>@string.Format("{0:n0}", item.Price)</span>
+                                    </div>
+                                    <ul class="ico-list">
+                                        <li class="pop-opener">
+                                            <a href="#">
+                                                <span class="icon-hiking"></span>
+                                                <span class="popup">
+                                                    Hiking
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="pop-opener">
+                                            <a href="#">
+                                                <span class="icon-mountain"></span>
+                                                <span class="popup">
+                                                    Mountain
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="pop-opener">
+                                            <a href="#">
+                                                <span class="icon-level5"></span>
+                                                <span class="popup">
+                                                    Level 5
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </footer>
                             </div>
-                            <ul class="ico-list">
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-hiking"></span>
-                                        <span class="popup">
-                                            Hiking
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-mountain"></span>
-                                        <span class="popup">
-                                            Mountain
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-level5"></span>
-                                        <span class="popup">
-                                            Level 5
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </article>
-                <article class="col-sm-6 col-md-3 article">
-                    <div class="thumbnail">
-                        <h3 class="no-space"><a href="#">TOUR CÔNG TÁC</a></h3>
-                        <strong class="info-title">TOUR CÔNG TÁC</strong>
-                        <div class="img-wrap">
-                            <img src="~/Content/NaturalLife/img/listing/img-32.jpg" height="210" width="250" alt="image description">
-                        </div>
-                        <footer>
-                            <div class="sub-info">
-                                <span>5 Days</span>
-                                <span>2.990.000 VNĐ</span>
-                            </div>
-                            <ul class="ico-list">
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-hiking"></span>
-                                        <span class="popup">
-                                            Hiking
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-mountain"></span>
-                                        <span class="popup">
-                                            Mountain
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-level5"></span>
-                                        <span class="popup">
-                                            Level 5
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </article>
-                <article class="col-sm-6 col-md-3 article">
-                    <div class="thumbnail">
-                        <h3 class="no-space"><a href="#">TOUR ĐẶC BIỆT</a></h3>
-                        <strong class="info-title">TOUR ĐẶC BIỆT</strong>
-                        <div class="img-wrap">
-                            <img src="~/Content/NaturalLife/img/listing/img-33.jpg" height="210" width="250" alt="image description">
-                        </div>
-                        <footer>
-                            <div class="sub-info">
-                                <span>5 Days</span>
-                                <span>2.990.000 VNĐ</span>
-                            </div>
-                            <ul class="ico-list">
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-hiking"></span>
-                                        <span class="popup">
-                                            Hiking
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-mountain"></span>
-                                        <span class="popup">
-                                            Mountain
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-level5"></span>
-                                        <span class="popup">
-                                            Level 5
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </article>
-                <article class="col-sm-6 col-md-3 article">
-                    <div class="thumbnail">
-                        <h3 class="no-space"><a href="#">ÔNG BÀ TÔI</a></h3>
-                        <strong class="info-title">ÔNG BÀ TÔI</strong>
-                        <div class="img-wrap">
-                            <img src="~/Content/NaturalLife/img/listing/img-34.jpg" height="210" width="250" alt="image description">
-                        </div>
-                        <footer>
-                            <div class="sub-info">
-                                <span>5 Days</span>
-                                <span>2.990.000 VNĐ</span>
-                            </div>
-                            <ul class="ico-list">
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-hiking"></span>
-                                        <span class="popup">
-                                            Hiking
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-mountain"></span>
-                                        <span class="popup">
-                                            Mountain
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="pop-opener">
-                                    <a href="#">
-                                        <span class="icon-level5"></span>
-                                        <span class="popup">
-                                            Level 5
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </article>
+                        </article>
+                    }
+
+                }
+
+
             </div>
         </div>
     </aside>

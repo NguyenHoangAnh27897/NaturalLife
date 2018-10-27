@@ -18,5 +18,8 @@ namespace NaturalLife.Models
         public string RoomType { get; set; }
         public string Description { get; set; }
         public string Images { get; set; }
+        public string Icon01 { get; set; }
+        public string Icon02 { get; set; }
+        public string Icon03 { get; set; }
     }
 }

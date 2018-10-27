@@ -66,6 +66,11 @@
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="RoomTypeID" Type="Int32" />
+    <Property Name="ImageCollection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Advantage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Disadvantage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AvatarIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AvatarOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_RoomType">
     <Key>
@@ -75,18 +80,9 @@
     <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="NTL_Schedule">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="DiscountID" Type="Int32" />
-    <Property Name="Icon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Icon01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Icon02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Icon03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_Schedule_Activity">
     <Key>
@@ -116,21 +112,12 @@
     <Property Name="ServiceType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Int32" />
     <Property Name="DiscountID" Type="Int32" />
-  </EntityType>
-  <EntityType Name="NTL_Slider">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Title2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Slogan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Slogan2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Icon2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="SubTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="SubTitle2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ImageCollection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Advantage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Disadvantage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AvatarIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AvatarOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PDFLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_Vehicle">
     <Key>
@@ -147,14 +134,22 @@
     <EntitySet Name="NTL_Inventory" EntityType="Self.NTL_Inventory" />
     <EntitySet Name="NTL_Room" EntityType="Self.NTL_Room" />
     <EntitySet Name="NTL_RoomType" EntityType="Self.NTL_RoomType" />
-    <EntitySet Name="NTL_Schedule" EntityType="Self.NTL_Schedule" />
     <EntitySet Name="NTL_Schedule_Activity" EntityType="Self.NTL_Schedule_Activity" />
     <EntitySet Name="NTL_Schedule_Service" EntityType="Self.NTL_Schedule_Service" />
     <EntitySet Name="NTL_Service" EntityType="Self.NTL_Service" />
-    <EntitySet Name="NTL_Slider" EntityType="Self.NTL_Slider" />
     <EntitySet Name="NTL_Vehicle" EntityType="Self.NTL_Vehicle" />
     <EntitySet Name="NTL_DiscountProgram" EntityType="natu0679_NaturalLifeModel.NTL_DiscountProgram" />
     <EntitySet Name="NTL_ExtraBooking" EntityType="natu0679_NaturalLifeModel.NTL_ExtraBooking" />
+    <EntitySet Name="NTL_Adventure" EntityType="natu0679_NaturalLifeModel.NTL_Adventure" />
+    <EntitySet Name="NTL_Main" EntityType="natu0679_NaturalLifeModel.NTL_Main" />
+    <EntitySet Name="NTL_Blog" EntityType="natu0679_NaturalLifeModel.NTL_Blog" />
+    <EntitySet Name="NTL_Contact" EntityType="natu0679_NaturalLifeModel.NTL_Contact" />
+    <EntitySet Name="NTL_About" EntityType="natu0679_NaturalLifeModel.NTL_About" />
+    <EntitySet Name="NTL_Setting" EntityType="natu0679_NaturalLifeModel.NTL_Setting" />
+    <EntitySet Name="NTL_Slider" EntityType="natu0679_NaturalLifeModel.NTL_Slider" />
+    <EntitySet Name="NTL_Schedule" EntityType="natu0679_NaturalLifeModel.NTL_Schedule" />
+    <EntitySet Name="NTL_Video" EntityType="natu0679_NaturalLifeModel.NTL_Video" />
+    <EntitySet Name="NTL_Icon" EntityType="natu0679_NaturalLifeModel.NTL_Icon" />
   </EntityContainer>
   <EntityType Name="NTL_DiscountProgram">
     <Key>
@@ -166,6 +161,8 @@
     <Property Name="StartDate" Type="DateTime" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+    <Property Name="Images" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NTL_ExtraBooking">
     <Key>
@@ -182,5 +179,168 @@
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <Property Name="ServiceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="ActivityID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Adventure">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Activity" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DetailActivity" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Main">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content01" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image01" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Content02" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image02" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Title01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Title02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContentBlog" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Familyname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LeftTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LeftDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RightTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RightDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Icon1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Icon2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Icon3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Icon4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Icon5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Icon6" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title6" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Desciption6" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BigTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Slogan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone01" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone02" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone03" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Setting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description01" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description02" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description03" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title04" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image04" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description04" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Slider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Title2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Slogan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Slogan2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Icon2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Title3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Slogan3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Icon3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Image1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Schedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Schedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PriceDay" Type="Int32" />
+    <Property Name="PriceWeekend" Type="Int32" />
+    <Property Name="PriceHoliday" Type="Int32" />
+    <Property Name="AllInPirceDay" Type="Int32" />
+    <Property Name="AllInPirceWeekend" Type="Int32" />
+    <Property Name="AllInPirceHoliday" Type="Int32" />
+    <Property Name="Service" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AllInService" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TourType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Video" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description01" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle01" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description02" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle02" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description03" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle03" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NTL_Icon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

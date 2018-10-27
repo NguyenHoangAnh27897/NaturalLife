@@ -1,8 +1,10 @@
 ﻿@model IQueryable<NaturalLife.Models.NTL_Slider>
+@using NaturalLife.Models
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
-    string[] arrStr;
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var ic = db.NTL_Icon.ToList();
 }
 
 <div class="main-wrapper">
@@ -28,95 +30,177 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Chỉnh sửa trang chủ</h4>
+                                <h4>Chỉnh sửa Slider trang chủ</h4>
                             </div>
                         </div>
 
                         <div class="section-body">
                             <form action="/homepage/edit" method="post" enctype="multipart/form-data">
-                                @if (Model.FirstOrDefault().Images != null)
+                                @if (Model.FirstOrDefault().Image1 != null)
                                 {
-                                    if (Model.FirstOrDefault().Images.Contains(","))
-                                    {
-                                        arrStr = Model.FirstOrDefault().Images.Split(',');
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN) (TỐI ĐA 3 HÌNH)</label>
-                                            <br />
-                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
-                                            <div class="row">
-                                                @foreach (var img in arrStr)
-                                                {
-
-                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagehome/@img') center center no-repeat / cover;">
-                                                    </div>
-                                                }
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 1 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="image1" accept="image/*" multiple="multiple" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagehome/@Model.FirstOrDefault().Image1') center center no-repeat / cover;">
                                             </div>
                                         </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
-                                            <br />
-                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
-                                            <div class="row">
-                                                <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageroom/@Model.FirstOrDefault().Images') center center no-repeat / cover;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
+                                    </div>
                                 }
                                 else
                                 {
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">Thay đổi hình slider (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 1 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
                                         <br />
-                                        <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                        <input type="file" name="image1" accept="image/*" multiple="multiple" />
+                                    </div>
+                                }
+
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 1 (VUI LÒNG NHẬP DƯỚI 50 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="50" placeholder="" name="title" value="@Model.FirstOrDefault().Title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 2 (VUI LÒNG NHẬP DƯỚI 30 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="30" placeholder="" name="subtitle" value="@Model.FirstOrDefault().SubTitle">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="15" placeholder="" name="slogan" value="@Model.FirstOrDefault().Slogan">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Icon thứ nhất</label>
+                                    <select name='icon1' class='form-control' style="width:25%" id="icon1">
+                                        @foreach (var item in ic)
+                                        {
+                                            <option value="@item.Value">@item.Name</option>
+                                        }
+
+                                    </select>
+                                    <br />
+                                    <span class="icon-cart-add" style="font-size:50px" id="span1"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea class="form-control" placeholder="" name="editor1">@Model.FirstOrDefault().Description1</textarea>
+                                </div>
+
+                                <hr style="background-color: #ced4da;" />
+
+                                @if (Model.FirstOrDefault().Image2 != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 2 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="image2" accept="image/*" multiple="multiple" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagehome/@Model.FirstOrDefault().Image2') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 2 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="image2" accept="image/*" multiple="multiple" />
                                     </div>
                                 }
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="title" value="@Model.FirstOrDefault().Title">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 1 (VUI LÒNG NHẬP DƯỚI 50 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="50" placeholder="" name="title2" value="@Model.FirstOrDefault().Title2">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ nhất dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="subtitle" value="@Model.FirstOrDefault().SubTitle">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="slogan" value="@Model.FirstOrDefault().Slogan">
-                                </div>
-
-                                <hr style="background-color: #ced4da;" />
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 1 (VUI LÒNG NHẬP DƯỚI 45 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="title2" value="@Model.FirstOrDefault().Title2">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 2 (VUI LÒNG NHẬP DƯỚI 10 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="subtitle2" value="@Model.FirstOrDefault().SubTitle2">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ hai dòng 2 (VUI LÒNG NHẬP DƯỚI 30 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="30" placeholder="" name="subtitle2" value="@Model.FirstOrDefault().SubTitle2">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
-                                    <input type="text" class="form-control" placeholder="" name="slogan2" value="@Model.FirstOrDefault().Slogan2">
+                                    <input type="text" class="form-control" maxlength="15" placeholder="" name="slogan2" value="@Model.FirstOrDefault().Slogan2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Icon thứ hai</label>
+                                    <select name='icon2' class='form-control' style="width:25%" id="icon2">
+                                        @foreach (var item in ic)
+                                        {
+                                            <option value="@item.Value">@item.Name</option>
+                                        }
+
+                                    </select>
+                                    <br />
+                                    <span class="icon-cart-add" style="font-size:50px" id="span2"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea class="form-control" placeholder="" name="editor2">@Model.FirstOrDefault().Description2</textarea>
                                 </div>
 
                                 <hr style="background-color: #ced4da;" />
 
+                                @if (Model.FirstOrDefault().Image3 != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 3 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="image3" accept="image/*" multiple="multiple" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imagehome/@Model.FirstOrDefault().Image3') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Thay đổi hình slider 3 (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x720 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="image3" accept="image/*" multiple="multiple" />
+                                    </div>
+                                }
+
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Icon 1</label>
-                                    <input type="text" class="form-control" placeholder="" name="icon" value="@Model.FirstOrDefault().Icon">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ ba dòng 1 (VUI LÒNG NHẬP DƯỚI 50 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="50" placeholder="" name="title3" value="@Model.FirstOrDefault().Title3">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Icon 2</label>
-                                    <input type="text" class="form-control" placeholder="" name="icon2" value="@Model.FirstOrDefault().Icon2">
+                                    <label for="exampleFormControlInput4">Tiêu đề thứ ba dòng 2 (VUI LÒNG NHẬP DƯỚI 30 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="30" placeholder="" name="subtitle3" value="@Model.FirstOrDefault().SubTitle3">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Câu giới thiệu (VUI LÒNG NHẬP DƯỚI 15 KÍ TỰ)</label>
+                                    <input type="text" class="form-control" maxlength="15" placeholder="" name="slogan3" value="@Model.FirstOrDefault().Slogan3">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Icon thứ ba</label>
+                                    <select name='icon3' class='form-control' style="width:25%" id="icon3">
+                                        @foreach (var item in ic)
+                                        {
+                                            <option value="@item.Value">@item.Name</option>
+                                        }
+
+                                    </select>
+                                    <br />
+                                    <span class="icon-cart-add" style="font-size:50px" id="span3"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
+                                    <textarea class="form-control" placeholder="" name="editor3">@Model.FirstOrDefault().Description3</textarea>
                                 </div>
 
                                 <input class="btn btn-primaryt" type="submit" value="Lưu" />
@@ -131,6 +215,13 @@
         </div>
     </div>
 </div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor2');
+    CKEDITOR.replace('editor3');
+</script>
 <script>
     $(function () {
         $("input[type='submit']").click(function () {
@@ -140,5 +231,24 @@
             }
         });
     })
+
+    var selectedScheme1 = 'icon-cart-add';
+
+    $('#icon1').change(function () {
+        $('#span1').removeClass(selectedScheme1).addClass($(this).val());
+        selectedScheme1 = $(this).val();
+    });
+    var selectedScheme2 = 'icon-cart-add';
+
+    $('#icon2').change(function () {
+        $('#span2').removeClass(selectedScheme2).addClass($(this).val());
+        selectedScheme2 = $(this).val();
+    });
+    var selectedScheme3 = 'icon-cart-add';
+
+    $('#icon3').change(function () {
+        $('#span3').removeClass(selectedScheme3).addClass($(this).val());
+        selectedScheme3 = $(this).val();
+    });
 </script>
 

@@ -21,8 +21,17 @@ namespace NaturalLife.Models
         public string Slogan2 { get; set; }
         public string Icon { get; set; }
         public string Icon2 { get; set; }
-        public string Images { get; set; }
         public string SubTitle { get; set; }
         public string SubTitle2 { get; set; }
+        public string Title3 { get; set; }
+        public string Slogan3 { get; set; }
+        public string SubTitle3 { get; set; }
+        public string Icon3 { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public string Description1 { get; set; }
+        public string Description2 { get; set; }
+        public string Description3 { get; set; }
     }
 }

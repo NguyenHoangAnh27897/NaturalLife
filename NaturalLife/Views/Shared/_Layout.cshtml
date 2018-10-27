@@ -1,10 +1,16 @@
-﻿<!DOCTYPE html>
+﻿
+@using  NaturalLife.Models
+@{ 
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var Model = db.NTL_Setting.Where(s => s.ID == 1);
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natural Life Dalat</title>
+    <title>Natural Life Đà Lạt</title>
     <!-- favion -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/Content/NaturalLife/img/favicon.png">
     <!-- link to font awesome -->
@@ -26,6 +32,9 @@
     <link media="all" rel="stylesheet" href="~/Content/NaturalLife/css/main.css">
     <!-- link to revolution css  -->
     <link rel="stylesheet" type="text/css" href="~/Content/NaturalLife/js/vendors/revolution/css/settings.css">
+    <!-- jquery library -->
+    <script src="~/Content/NaturalLife/js/vendors/jquery/jquery-2.1.4.min.js"></script>
+    <!-- angularjs -->
     <script src="~/Content/NaturalLife/js/angularjs.min.js" charset="utf-8"></script>
     <script src="~/Content/NaturalLife/js/app.js"></script>
 </head>
@@ -80,44 +89,44 @@
                                                     <div class="col-sm-6 col-md-3">
                                                         <div class="col">
                                                             <div class="img-wrap">
-                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-01.jpg" height="228" width="350" alt="image description"></a>
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image01" style="height:215px" width="350" alt="image description"></a>
                                                             </div>
                                                             <div class="des">
-                                                                <strong class="title"><a href="/activity/detail">Đi bộ đường dài/Cắm trại</a></strong>
-                                                                <p>Trong quá khứ, chuyến đi thường là một cuộc săn lùng lớn, nhưng ngày nay, safari thường đề cập đến các chuyến đi quan sát và chụp ảnh động vật hoang dã — hoặc đi bộ đường dài và ngắm cảnh.</p>
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title01</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description01</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-3">
                                                         <div class="col">
                                                             <div class="img-wrap">
-                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-02.jpg" height="215" width="370" alt="image description"></a>
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image02" style="height:215px" width="370" alt="image description"></a>
                                                             </div>
                                                             <div class="des">
-                                                                <strong class="title"><a href="/activity/detail">Khám phá rửng thiêng</a></strong>
-                                                                <p>Một khách du lịch ba lô tốt sẽ giảm thiểu tác động của chúng đối với môi trường, bao gồm cả những con đường mòn đã được thiết lập, thảm thực vật không gây xáo trộn và mang rác ra ngoài.</p>
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title02</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description02</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-3">
                                                         <div class="col">
                                                             <div class="img-wrap">
-                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-03.jpg" height="215" width="370" alt="image description"></a>
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image03" style="height:215px" width="370" alt="image description"></a>
                                                             </div>
                                                             <div class="des">
-                                                                <strong class="title"><a href="/activity/detail">Khám phá TP Đà lạt</a></strong>
-                                                                <p>Các loại tour du lịch thành phố đô thị được coi là đây là một tour du lịch đầy đủ, một phần, hoặc lâu hơn của một di tích lịch sử, hoặc văn hóa hoặc nghệ thuật tại một hoặc nhiều điểm đến du lịch.</p>
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title03</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description03</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-3">
                                                         <div class="col">
                                                             <div class="img-wrap">
-                                                                <a href="/activity/detail"><img src="~/Content/NaturalLife/img/generic/img-04.jpg" height="215" width="370" alt="image description"></a>
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image04" style="height:215px" width="370" alt="image description"></a>
                                                             </div>
                                                             <div class="des">
-                                                                <strong class="title"><a href="/activity/detail">Gia đình vui vẻ</a></strong>
-                                                                <p>Khi bạn đứng trước một cánh đồng rộng lớn, đứng nơi cảnh núi non hùng vĩ, bạn sẽ có một cảm giác thoải mái tự do tự tại, mọi muộn phiền biến đâu mất. Bởi thế nên khi muốn đi du lịch “đổi gió”, giải toả stress, người ta thường chọn những điểm đến tự nhiên hơn là những khu vui chơi nhân tạo đầy đồ công nghệ.</p>
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title04</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description04</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,7 +181,8 @@
                 </div>
                 <!-- form book -->
                 <div id="formBook" class="collapse">
-                    <form class="" action="/home/booking" method="post">
+                    <form name="formBook" action="/home/booking" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="book-text">
                             <div class="caption text-center">
                                 <h2>NATURAL LIFE</h2>
@@ -183,16 +193,27 @@
                                 </span>
                             </div>
                             <div class="center-text">
-                                <div class="trip-form banner-trip-form trip-iop">
+                                <div class="trip-form banner-trip-form trip-iop" ng-controller="serviceController">
+                                    <figure class="text-box" style="position: sticky; top: 0; z-index: 100; background-color: hsla(0, 0%, 0%, 0.72);">
+                                        <figcaption><strong>Ghi chú: <span class="text-discount">*&nbsp;Bắt buộc</span></strong></figcaption>
+                                    </figure>
+                                    <br />
                                     <fieldset>
-                                        <div class="holder" ng-controller="room">
-                                            <label for="room">Phòng nghỉ dưỡng</label></label>
+                                        <div class="holder">
+                                            <label for="room">Phòng nghỉ dưỡng&nbsp;<span class="text-discount">*</span></label>
                                             <div class="select-holder">
                                                 <!-- dropdown -->
                                                 <div class="dropdown">
-                                                    <div class="input-group text text-room trip trip-banner">
-                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="Phòng" min="6" name="room">
+                                                    <div class="input-group tooltip_mes text date text-room trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" ng-model="selectedprop.value"
+                                                               ng-readonly="!selectedprop.per"
+                                                               placeholder="{{selectedprop.per ? 'Nhập loại phòng' : 'Phòng'}}" minlength="3" maxlength="25" ng-minlength="3" ng-maxlength="25"
+                                                               ng-pattern="regex" name="room" required>
                                                         <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$touched && formBook.room.$invalid">Vui lòng chọn hoặc nhập loại phòng.</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.pattern">Vui lòng không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.maxlength">Vui lòng nhập tối đa 25 ký tự!</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.minlength">Vui lòng ít nhất 6 ký tự!</span>
                                                     </div>
                                                     <ul class="dropdown-menu">
                                                         <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
@@ -206,55 +227,52 @@
                                             </div>
                                         </div>
                                         <div class="holder">
-                                            <label>Họ và tên</label>
+                                            <label>Họ và tên&nbsp;<span class="text-discount">*</span></label>
                                             <div class="select-holder">
-                                                <div class="input-group text text-bg">
-                                                    <input class="form-control" type="text" placeholder="Họ và tên" min="6" name="fullname">
+                                                <div class="input-group tooltip_mes text text-bg">
+                                                    <input class="form-control" type="text" ng-model="fullname" placeholder="Họ và tên"
+                                                           ng-minlength="6" ng-maxlength="30" minlength="6" maxlength="30" ng-pattern="regex" name="fullname" required>
                                                     <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$touched && formBook.fullname.$invalid">Vui lòng nhập họ tên.</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.maxlength">Vui lòng nhập tối đa 30 ký tự!</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.minlength">Vui lòng nhập tối thiểu 6 ký tự!</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="holder">
-                                            <label>Số điện thoại</label>
+                                            <label>Số điện thoại&nbsp;<span class="text-discount">*</span></label>
                                             <div class="select-holder">
-                                                <div class="input-group text text-phone-bg">
-                                                    <input class="form-control" type="tel" name="phone" placeholder="Số diện thoại" min="9" maxlength="14" required>
+                                                <div class="input-group tooltip_mes text text-phone-bg">
+                                                    <input class="form-control" type="tel" name="phone" ng-model="phone" placeholder="Số điện thoại"
+                                                           ng-minlength="9" ng-maxlength="14" min="9" max="14" ng-pattern="regexPhone" required>
                                                     <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$touched && formBook.phone.$invalid">Vui lòng nhập số điện thoại.</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.pattern">Số điện thoại sai định dạng.(VD: 097...)</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.maxlength">Vui lòng nhập đúng số điện thoại</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.minlength">Số điện thoại không đúng</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="holder" ng-controller="adult">
-                                            <label for="adult">Người lớn</label>
+                                        <div class="holder">
+                                            <label for="adult">Người lớn&nbsp;<span class="text-discount">*</span></label>
                                             <div class="select-holder">
                                                 <!-- dropdown -->
                                                 <div class="dropdown">
-                                                    <div class="input-group text text-bg trip trip-banner">
-                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="Người Lớn" min="6" name="adult">
+                                                    <div class="input-group tooltip_mes date text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{ (selectedAdult.value == undefined) ? '1 người lớn' : selectedAdult.value }}"
+                                                               ng-readonly="!selectedAdult.per" placeholder="{{selectedAdult.per ? 'Nhập số người lớn' : 'người lớn'}}"
+                                                               ng-minlength="1" ng-maxlength="14" ng-pattern="regex"
+                                                               minlength="1" maxlength="14" name="adult" required>
                                                         <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$touched && formBook.adult.$invalid">Vui lòng nhập số người lớn tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.maxlength">Vui lòng nhập tối đa 14 ký tự</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.minlength">Vui lòng nhập tối thiểu 1 ký tự</span>
                                                     </div>
                                                     <ul class="dropdown-menu">
-                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
-                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
-                                                                {{prop.label | uppercase}}
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <!-- end -->
-                                            </div>
-                                        </div>
-                                        <div class="holder" ng-controller="children">
-                                            <label for="children">Trẻ em</label>
-                                            <div class="select-holder">
-                                                <!-- dropdown -->
-                                                <div class="dropdown">
-                                                    <div class="input-group text text-bg trip trip-banner">
-                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{selectedprop.label | uppercase}}" placeholder="trẻ em" min="6" name="child">
-                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
-                                                    </div>
-                                                    <ul class="dropdown-menu">
-                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
-                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
+                                                        <li ng-repeat="prop in Adult" ng-class="{selected: prop == selectedAdult}">
+                                                            <a href="javascript:void(0);" ng-click="setAdult(prop)">
                                                                 {{prop.label | uppercase}}
                                                             </a>
                                                         </li>
@@ -264,109 +282,140 @@
                                             </div>
                                         </div>
                                         <div class="holder">
-                                            <label for="vehicle">Phương tiện</label>
+                                            <label for="children">Trẻ em&nbsp;<span class="text-discount">*</span></label>
                                             <div class="select-holder">
-                                                <select class="trip trip-banner jcf-hidden" id="vehicle" name="vehicle">
-                                                    <option value="">Phương tiện</option>
-                                                    <option value="XE KHÁCH TỰ TÚC">XE KHÁCH TỰ TÚC</option>
-                                                    <option value="MÁY BAY TỰ TÚC">MÁY BAY TỰ TÚC</option>
-                                                    <option value="LIÊN HỆ CÔNG TY">LIÊN HỆ CÔNG TY</option>
-                                                </select>
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group tooltip_mes date text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{ (selectedChild.value == undefined) ? '1 trẻ em' : selectedChild.value }}"
+                                                               ng-readonly="!selectedChild.per" placeholder="{{selectedChild.per ? 'Nhập số trẻ em' : 'trẻ em'}}" minlength="6" maxlength="15"
+                                                               ng-minlength="1" ng-maxlength="12" ng-pattern="regex"
+                                                               name="child" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$touched && formBook.child.$invalid">Vui lòng nhập số trẻ em tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.maxlength">Vui lòng nhập tối đa 12 ký tự</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.minlength">Vui lòng nhập tối thiểu 1 ký tự</span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in Child" ng-class="{selected: prop == selectedChild}">
+                                                            <a href="javascript:void(0);" ng-click="setChild(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
                                             </div>
                                         </div>
-                                        <div class="holder">
-                                            <label>Ngày tham gia</label>
-                                            <div class="select-holder">
-                                                <div id="datepicker4" class="input-group date picker-solid-bg" data-date-format="yyyy-mm-dd"> <input class="form-control" type="text" name="startdate"> <span class="input-group-addon"><i class="icon-arrow-down"></i></span></div>
+                                        <ng-container ng-controller="startdate">
+                                            <div class="holder">
+                                                <label>Ngày đến&nbsp;<span class="text-discount">*</span></label>
+                                                <div class="select-holder">
+                                                    <div class="input-group tooltip_mes date picker-solid-bg">
+                                                        <input class="form-control" type="date" name="startdate" ng-model="startdate" ng-change="changeStart()"
+                                                               min="{{today  | date: 'MM/d/y'}}" ng-pattern="regex" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.startdate.$touched && formBook.startdate.$invalid">- Vui lòng chọn ngày tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.startdate.$error.date">Ngày không đúng định dạng!(VD: 10/20/2018)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="holder">
-                                            <label>Ngày kết thúc</label>
-                                            <div class="select-holder">
-                                                <div id="datepicker5" class="input-group date picker-solid-bg" data-date-format="yyyy-mm-dd"> <input class="form-control" type="text" placeholder="Ngày kết thúc" name="enddate"> <span class="input-group-addon"><i class="icon-arrow-down"></i></span></div>
+                                            <div class="holder">
+                                                <label>Ngày về</label>
+                                                <div class="select-holder">
+                                                    <div class="input-group date picker-solid-bg tooltip_mes">
+                                                        <input class="form-control" type="date" placeholder="Ngày kết thúc" name="enddate" ng-change="changeEnd()"
+                                                               min="{{today | date: 'MM/d/y'}}" ng-model="enddate" ng-pattern="regex">
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.enddate.$error.date">Ngày không đúng định dạng!(VD: 10/20/2018)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <ng-conainter ng-controller="serviceController">
+                                            <div class="holder">
+                                                <label for="time">Thời gian nghỉ&nbsp;<span class="text-discount"></span></label>
+                                                <div class="input-group text tooltip_mes" style="width: 100%;">
+                                                    <input class="form-control label-input-time" type="text" ng-model="timeMain"
+                                                           readonly disabled placeholder="Không nhập vào mục này" maxlength="25"
+                                                           ng-maxlength="25" ng-pattern="regexDay" name="time" required>
+                                                    <span class="popuptext show" ng-show="formBook.time.$touched && formBook.time.$invalid">Không nhập vào mục này.</span>
+                                                    <span class="popuptext show" ng-show="formBook.time.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <span class="popuptext show" ng-show="formBook.time.$error.maxlength">{{ timeMain }} (Ngày về > Ngày đi)</span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
                                             <!-- Dịch vụ tại khu -->
-                                            <ng-container ng-repeat="item in items">
+                                            <ng-container ng-repeat="item in service">
                                                 <div class="holder mr-b" ng-if="!$last">
-                                                    <label for="service" ng-if="$first">Dịch vụ tại khu</label>
+                                                    <label for="service" ng-if="$first">Dịch vụ có sẵn&nbsp;<span class="text-discount">*</span></label>
                                                     <div class="select-holder">
                                                         <label>
-                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                            <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-disabled="item.readonly" ng-required="item.checked"><span>{{ item.name }}</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'middle' : ''">
                                                     <div class="select-holder">
                                                         <label>
-                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                            <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-disabled="item.readonly" ng-required="item.checked"><span>{{ item.name }}</span>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </ng-container>
                                             <!-- Mục khác -->
                                             <div class="holder mr-b" ng-show="!isSelected">
-                                                <div class="select-holder">
+                                                <div class="select-holder tooltip_mes">
                                                     <label>
-                                                        <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                        <input type="checkbox" ng-model="isSelected" name="service" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
                                                     </label>
+                                                    <span class="popuptext show" ng-show="formBook.service.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
                                                 </div>
                                             </div>
                                             <!-- textarea -->
                                             <div class="holder special-holder mr-b" ng-class="isSelected ? 'middle' : ''" ng-show="isSelected">
                                                 <div class="select-holder">
-                                                    <div class="form-group text text-bg">
+                                                    <div class="form-group tooltip_mes text">
                                                         <label>
-                                                            <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                            <input type="checkbox" ng-model="isSelected" name="service" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
                                                         </label>
-                                                        <textarea placeholder="Nhập ..." min="6" maxlength="3000" name="comment" class="form-control" id="comment"></textarea>
+                                                        <span ng-show="formBook.service.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <textarea placeholder="Nhập ..." minlength="6" maxlength="1000" ng-minlength="6" ng-maxlength="1000" name="comment"
+                                                                  class="form-control" ng-model="comment" id="comment" ng-pattern="/[^\/\:\<\>\+\-\?\!\~\=\-\_\;]$/" ng-disabled="!isSelected" ng-required="isSelected"></textarea>
+                                                        <span class="popuptext show" ng-show="formBook.comment.$touched && formBook.comment.$invalid">Vui lòng nhập vào trường thông tin này</span>
+                                                        <span class="popuptext show" ng-show="formBook.comment.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.comment.$error.maxlength">Vui lòng nhập tối đa 1000 ký tự!</span>
+                                                        <span class="popuptext show" ng-show="formBook.comment.$error.minlength">Vui lòng nhập ít nhất 6 ký tự!</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
-                                            @*<div class="holder special-holder" ng-controller="checkModel">
-                                        <label for="activity">Hoạt động</label>
-                                        <div class="select-holder">
-                                            <select multiple placeholder="Hoạt động" id="activity" ng-model="multiAction" class="trip trip-banner jcf-hidden" name="activity" data-jcf='{"wrapNative": false, "wrapNativeOnMobile": false, "useCustomScroll": false, "multipleCompactStyle": true}'>
-                                                <option value="" disabled>Hoạt động</option>
-                                                <option value="Hoạt động 1">Hoạt động 1</option>
-                                                <option value="Hoạt động 2">Hoạt động 2</option>
-                                                <option value="Hoạt động 3">Hoạt động 3</option>
-                                                <option value="Hoạt động 4">Hoạt động 4</option>
-                                                <option value="Hoạt động 5">Hoạt động 5</option>
-                                                <option value="#0">Hoạt động khác</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div ng-bind="multiAction">{{ multiAction | myFormat }}</div>*@
-                                            <!-- end -->
-                                        </ng-conainter>
-                                        <ng-container ng-controller="activityController">
                                             <!-- Hoạt động -->
-                                            <ng-container ng-repeat="item in items">
+                                            <ng-container ng-repeat="item in activty">
                                                 <div class="holder mr-b" ng-if="!$last">
                                                     <label for="service" ng-if="$first">Hoạt động</label>
-                                                    <div class="select-holder">
+                                                    <div class="select-holder tooltip_mes">
                                                         <label>
-                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                            <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-required="item.checked"><span>{{ item.name }}</span>
                                                         </label>
+                                                        <span class="popuptext show" ng-show="formBook[item.id].$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
                                                     </div>
                                                 </div>
                                                 <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'top' : ''">
-                                                    <div class="select-holder">
+                                                    <div class="select-holder tooltip_mes">
                                                         <label>
-                                                            <input type="checkbox" name="{{ item.id }}" value="{{ item.name }}"><span>{{ item.name }}</span>
+                                                            <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-required="item.checked"><span>{{ item.name }}</span>
                                                         </label>
+                                                        <span class="popuptext show" ng-show="formBook[item.id].$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
                                                     </div>
                                                 </div>
                                             </ng-container>
                                             <!-- Mục khác -->
                                             <div class="holder mr-b" ng-show="!isSelected">
-                                                <div class="select-holder">
+                                                <div class="select-holder tooltip_mes">
                                                     <label>
-                                                        <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                        <input type="checkbox" ng-model="isSelected" name="call" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
                                                     </label>
+                                                    <span class="popuptext show" ng-show="formBook.call.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
                                                 </div>
                                             </div>
                                             <!-- textarea -->
@@ -374,18 +423,25 @@
                                                 <div class="select-holder">
                                                     <div class="form-group text text-bg">
                                                         <label>
-                                                            <input type="checkbox" ng-model="isSelected" name="" value=""><span>Mục khác</span>
+                                                            <input type="checkbox" ng-model="isSelected" name="" value="" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
                                                         </label>
                                                         <label>
-                                                            Liên hệ: <a href="tel:09092331" class="text-danger">+84 909 12 04 08</a>
+                                                            Liên hệ: <a href="tel:0909120408" class="text-danger">+84 909 12 04 08</a>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
-                                        </ng-container>
                                         <div class="holder mr-b" ng-class="!isSelected ? 'middle' : ''">
-                                            <input class="btn btn-trip" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook" type="submit" value="ĐĂNG KÝ">
+                                            <input class="btn btn-trip" type="submit"
+                                                   ng-disabled="formBook.room.$invalid
+                                                   || formBook.fullname.$invalid
+                                                   || formBook.comment.$invalid
+                                                   || formBook.phone.$invalid
+                                                   || formBook.adult.$invalid
+                                                   || formBook.child.$invalid
+                                                   || formBook.startdate.$invalid
+                                                   || formBook.vehicle.$invalid" value="ĐĂNG KÝ">
                                         </div>
                                     </fieldset>
                                 </div>
@@ -427,12 +483,12 @@
                     <nav class="col-sm-4 col-lg-3 footer-nav">
                         <h3>Địa điểm</h3>
                         <ul class="slide">
-                            <li><a href="#">Dalat</a></li>
+                            <li><a href="#">Đà Lạt</a></li>
                             <li><a href="#">Nha Trang</a></li>
                             <li><a href="#">Cam Ranh</a></li>
-                            <li><a href="#">Phu Quoc</a></li>
-                            <li><a href="#">Phan Thiet</a></li>
-                            <li><a href="#">Ho Chi Minh</a></li>
+                            <li><a href="#">Phú Quốc</a></li>
+                            <li><a href="#">Phan Thiết</a></li>
+                            <li><a href="#">Hồ Chí Minh</a></li>
                         </ul>
                     </nav>
                     <nav class="col-sm-4 col-lg-3 footer-nav">
@@ -515,11 +571,9 @@
         </footer>
     </div>
     <!-- scroll to top -->
-    <div class="scroll-holder text-center">
+    <div class="scroll-holder text-center" ng-style="{ visibility: isoverFlowForm ? 'hidden' : 'visible' }">
         <a href="javascript:" id="scroll-to-top"><i class="icon-arrow-down"></i></a>
     </div>
-    <!-- jquery library -->
-    <script src="~/Content/NaturalLife/js/vendors/jquery/jquery-2.1.4.min.js"></script>
     <!-- external scripts -->
     <script src="~/Content/NaturalLife/js/vendors/bootstrap/javascripts/bootstrap.min.js"></script>
     <script src="~/Content/NaturalLife/js/vendors/jquery-placeholder/jquery.placeholder.min.js"></script>
@@ -546,8 +600,8 @@
     <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
     <!-- rs5.0 core files -->
-    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.tools.min838f.js?rev=5.0"></script>
-    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.revolution.min838f.js?rev=5.0"></script>
+    @*<script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.tools.min838f.js?rev=5.0"></script>
+    <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/jquery.themepunch.revolution.min838f.js?rev=5.0"></script>*@
     <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script type="text/javascript" src="~/Content/NaturalLife/js/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>

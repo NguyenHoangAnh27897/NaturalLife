@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "DeleteChoose";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<div class="main-wrapper">
+    <div class="container">
+
+        <!-- Start breadcrumb section  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/webmaster/index">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bỏ chọn dịch vụ hoặc phòng</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="col-lg-12" id="choose">
+            <div class="row">
+                <h5 class="mb col-lg-2" style="color:white;max-width:10%">Bỏ Chọn: </h5>
+                <select class="form-control col-lg-4" id="opt" name="opt" style="width:15%; margin-left:10px">
+                    <option value="service" selected>Dịch vụ</option>
+                    <option value="room">Phòng</option>
+                </select>
+            </div>
+        </div>
+        <br />
+
+        <!-- Start form -->
+        <div class="form-area">
+            <div class="row">
+
+                <div class="col-lg-12" id="service">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Dịch vụ giảm giá</h4>
+                            </div>
+                        </div>
+
+                        <div class="single-table">
+                            <div class="section-head">
+                                <div class="title">
+                                    <div class="row">
+                                        <h4 class="col-lg-6">Bỏ chọn dịch vụ giảm giá</h4>
+                                        <button class="btn btn-primary col-lg-1" style="margin-left:445px" id="sendService">Xác nhận</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover progress-table text-white text-center" border="0" style="border-width:0px;border-style:None;border-collapse:collapse;" id="product">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Tên dịch vụ</th>
+                                                <th>Giá</th>
+                                                <th>Chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.FirstOrDefault().service)
+                                            {
+                                                <tr>
+                                                    <td>@item.ID</td>
+                                                    <td>@item.ServiceName</td>
+                                                    <td>@string.Format("{0:n0}", item.Price)</td>
+                                                    <td><input type="checkbox" data-id="@item.ID" /></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12" id="room" style="display:none">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Phòng giảm giá</h4>
+                            </div>
+                        </div>
+
+                        <div class="single-table">
+                            <div class="section-head">
+                                <div class="title">
+                                    <div class="row">
+                                        <h4 class="col-lg-6">Bỏ chọn phòng giảm giá</h4>
+                                        <button class="btn btn-primary col-lg-1" style="margin-left:445px" id="sendRoom">Xác nhận</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover progress-table text-white text-center" border="0" style="border-width:0px;border-style:None;border-collapse:collapse;" id="product">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Tên phòng</th>
+                                                <th>Giá</th>
+                                                <th>Chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.FirstOrDefault().room)
+                                            {
+                                                <tr>
+                                                    <td>@item.ID</td>
+                                                    <td>@item.RoomName</td>
+                                                    <td>@string.Format("{0:n0}", item.Price)</td>
+                                                    <td><input type="checkbox" data-id="@item.ID" /></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
+<script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
+<script>
+    $("#opt").on("change", function () {
+        $("#" + $(this).val()).show().siblings().hide();
+        $("#head").show();
+        $("#choose").show();
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $('#sendService').click('click', function () {
+            var product = [];
+            $('input[type=checkbox]').each(function () {
+                if ($(this).is(':checked')) {
+                    product.push($(this).data("id"));
+                }
+            });
+            $.ajax({
+                url: "/Discount/DeleteService",
+                type: "POST",
+                data: { serviceid: product},
+                dataType: "json",
+                traditional: true,
+                success: function () {
+                    window.location.href = "/Discount/List"
+                }, error: function (error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#sendRoom').click('click', function () {
+            var product = [];
+            $('input[type=checkbox]').each(function () {
+                if ($(this).is(':checked')) {
+                    product.push($(this).data("id"));
+                }
+            });
+            $.ajax({
+                url: "/Discount/DeleteRoom",
+                type: "POST",
+                data: { roomid: product},
+                dataType: "json",
+                traditional: true,
+                success: function () {
+                    window.location.href = "/Discount/List"
+                }, error: function (error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        });
+    });
+</script>
+

@@ -1,0 +1,598 @@
+﻿@using NaturalLife.Models
+@{
+    Layout = null;
+    NaturalLifeEntities db = new NaturalLifeEntities();
+    var Model = db.NTL_Setting.Where(s => s.ID == 1);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Life Đà Lạt</title>
+    <!-- favion -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/NaturalLife/img/favicon.png">
+    <!-- link to font awesome -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/font-awesome/css/font-awesome.css">
+    <!-- link to material icon font -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/material-design-icons/material-icons.css">
+    <!-- link to custom icomoon fonts -->
+    <link rel="stylesheet" type="text/css" href="~/Content/NaturalLife/css/fonts/icomoon/icomoon.css">
+    <!-- link to wow js animation -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/animate/animate.css">
+    <!-- include bootstrap css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/css/bootstrap.css">
+    <!-- include owl css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/owl-carousel/owl.carousel.css">
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/js/vendors/owl-carousel/owl.theme.css">
+    <!-- fancybox -->
+    <link href="~/Content/NaturalLife/js/vendors/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <!-- include main css -->
+    <link media="all" rel="stylesheet" href="~/Content/NaturalLife/css/main.css">
+    <!-- link to revolution css  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/NaturalLife/js/vendors/revolution/css/settings.css">
+    <!-- jquery library -->
+    <script src="~/Content/NaturalLife/js/vendors/jquery/jquery-2.1.4.min.js"></script>
+    <!-- angularjs -->
+    <script src="~/Content/NaturalLife/js/angularjs.min.js" charset="utf-8"></script>
+    <script src="~/Content/NaturalLife/js/app.js"></script>
+</head>
+<body ng-app="app" style="overflow: hidden;">
+    <div class="preloader" id="pageLoad">
+        <div class="holder">
+            <div class="coffee_cup"></div>
+        </div>
+    </div>
+
+    <!-- main wrapper -->
+    <div id="wrapper">
+        <div class="page-wrapper">
+            <!-- main header -->
+            <header id="header" class="white-header">
+                <div class="container-fluid">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="/home/index">
+                            <img class="normal" src="~/Content/NaturalLife/img/logos/Naturallife.png" alt="Natural Life">
+                            <img class="gray-logo" src="~/Content/NaturalLife/img/logos/Naturallife.png" alt="Natural Life">
+                        </a>
+                    </div>
+                    <!-- main navigation -->
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle nav-opener" data-toggle="collapse" data-target="#nav">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- main menu items and drop for mobile -->
+                        <div class="collapse navbar-collapse" id="nav">
+                            <!-- main navbar -->
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="/home/index">Trang chủ <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/home/about">Natural Life<b class="icon-angle-down"></b></a>
+                                </li>
+                                <li><a href="/service/index">Dịch vụ</a></li>
+                                <li class="dropdown has-mega-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hoạt động <b class="icon-angle-down"></b></a>
+                                    <div class="dropdown-menu">
+                                        <div class="drop-wrap">
+                                            <div class="drop-holder">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image01" style="height:215px" width="350" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title01</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description01</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image02" style="height:215px" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title02</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description02</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image03" style="height:215px" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title03</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description03</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="col">
+                                                            <div class="img-wrap">
+                                                                <a href="/activity/detail"><img src="~/Images/website/imagenav/@Model.FirstOrDefault().Image04" style="height:215px" width="370" alt="image description"></a>
+                                                            </div>
+                                                            <div class="des">
+                                                                <strong class="title"><a href="/activity/detail">@Model.FirstOrDefault().Title04</a></strong>
+                                                                <p>@Model.FirstOrDefault().Description04</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="/blog/index">Blog <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="dropdown has-mega-dropdown mega-md">
+                                    <a href="/home/contact">Liên hệ <b class="icon-angle-down"></b></a>
+                                </li>
+                                <li class="visible-xs visible-sm">
+                                    <a href="#">
+                                        <span class="icon icon-user"></span>
+                                        <span class="text">Đăng nhập</span>
+                                    </a>
+                                </li>
+                                @*v-divider*@
+                                <li class="hidden-xs hidden-sm">
+                                    <a href="#">
+                                        <span class="icon icon-user"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown hidden-xs hidden-sm last-dropdown">
+                                    <a href="#"><span class="text">EN</span> <span class="icon-angle-down"></span></a>
+                                    <div class="dropdown-menu dropdown-sm">
+                                        <div class="drop-wrap lang-wrap">
+                                            <div class="lang-row">
+                                                <div class="lang-col">
+                                                    <a href="#">
+                                                        <span class="text">Tiếng Anh</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="lang-row">
+                                                <div class="lang-col">
+                                                    <a href="#">
+                                                        <span class="text">Tiếng Việt</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="visible-md visible-lg nav-visible"><a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" data-toggle="collapse" data-target="#formBook"><span class="icon icon-search"></span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <!-- form book -->
+                <div id="formBook" class="collapse in">
+                    <form name="formBook" action="/home/booking" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="book-text">
+                            <div class="caption text-center">
+                                <h2>NATURAL LIFE</h2>
+                                <span class="book-wrap">
+                                    <a href="javascript:void(0);" ng-click="isoverFlowForm = !isoverFlowForm" class="book-opener close" data-toggle="collapse" data-target="#formBook">
+                                        <span class="icon-cross"></span>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="center-text">
+                                <div class="trip-form banner-trip-form trip-iop" ng-controller="serviceController">
+                                    <figure class="text-box" style="position: sticky; top: 0; z-index: 100; background-color: hsla(0, 0%, 0%, 0.72);">
+                                        <figcaption><strong>Ghi chú: <span class="text-discount">*&nbsp;Bắt buộc</span></strong></figcaption>
+                                    </figure>
+                                    <br />
+                                    <fieldset>
+                                        <div class="holder">
+                                            <label for="room">Phòng nghỉ dưỡng&nbsp;<span class="text-discount">*</span></label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group tooltip_mes text date text-room trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" ng-model="selectedprop.value"
+                                                               ng-readonly="!selectedprop.per"
+                                                               placeholder="{{selectedprop.per ? 'Nhập loại phòng' : 'Phòng'}}" minlength="3" maxlength="25" ng-minlength="3" ng-maxlength="25"
+                                                               ng-pattern="regex" name="room" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$touched && formBook.room.$invalid">Vui lòng chọn hoặc nhập loại phòng.</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.pattern">Vui lòng không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.maxlength">Vui lòng nhập tối đa 25 ký tự!</span>
+                                                        <span class="popuptext show" ng-show="formBook.room.$error.minlength">Vui lòng ít nhất 6 ký tự!</span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in props" ng-class="{selected: prop == selectedprop}">
+                                                            <a href="javascript:void(0);" ng-click="setSelected(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Họ và tên&nbsp;<span class="text-discount">*</span></label>
+                                            <div class="select-holder">
+                                                <div class="input-group tooltip_mes text text-bg">
+                                                    <input class="form-control" type="text" ng-model="fullname" placeholder="Họ và tên"
+                                                           ng-minlength="6" ng-maxlength="30" minlength="6" maxlength="30" ng-pattern="regex" name="fullname" required>
+                                                    <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$touched && formBook.fullname.$invalid">Vui lòng nhập họ tên.</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.maxlength">Vui lòng nhập tối đa 30 ký tự!</span>
+                                                    <span class="popuptext show" ng-show="formBook.fullname.$error.minlength">Vui lòng nhập tối thiểu 6 ký tự!</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label>Số điện thoại&nbsp;<span class="text-discount">*</span></label>
+                                            <div class="select-holder">
+                                                <div class="input-group tooltip_mes text text-phone-bg">
+                                                    <input class="form-control" type="tel" name="phone" ng-model="phone" placeholder="Số điện thoại"
+                                                           ng-minlength="9" ng-maxlength="14" min="9" max="14" ng-pattern="regexPhone" required>
+                                                    <span class="input-group-addon"><i class="icon-person"></i></span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$touched && formBook.phone.$invalid">Vui lòng nhập số điện thoại.</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.pattern">Số điện thoại sai định dạng.(VD: 097...)</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.maxlength">Vui lòng nhập đúng số điện thoại</span>
+                                                    <span class="popuptext show" ng-show="formBook.phone.$error.minlength">Số điện thoại không đúng</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label for="adult">Người lớn&nbsp;<span class="text-discount">*</span></label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group tooltip_mes date text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{ (selectedAdult.value == undefined) ? '1 người lớn' : selectedAdult.value }}"
+                                                               ng-readonly="!selectedAdult.per" placeholder="{{selectedAdult.per ? 'Nhập số người lớn' : 'người lớn'}}"
+                                                               ng-minlength="1" ng-maxlength="14" ng-pattern="regex"
+                                                               minlength="1" maxlength="14" name="adult" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$touched && formBook.adult.$invalid">Vui lòng nhập số người lớn tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.maxlength">Vui lòng nhập tối đa 14 ký tự</span>
+                                                        <span class="popuptext show" ng-show="formBook.adult.$error.minlength">Vui lòng nhập tối thiểu 1 ký tự</span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in Adult" ng-class="{selected: prop == selectedAdult}">
+                                                            <a href="javascript:void(0);" ng-click="setAdult(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <label for="children">Trẻ em&nbsp;<span class="text-discount">*</span></label>
+                                            <div class="select-holder">
+                                                <!-- dropdown -->
+                                                <div class="dropdown">
+                                                    <div class="input-group tooltip_mes date text text-bg trip trip-banner">
+                                                        <input class="form-control" type="text" data-toggle="dropdown" value="{{ (selectedChild.value == undefined) ? '1 trẻ em' : selectedChild.value }}"
+                                                               ng-readonly="!selectedChild.per" placeholder="{{selectedChild.per ? 'Nhập số trẻ em' : 'trẻ em'}}" minlength="6" maxlength="15"
+                                                               ng-minlength="1" ng-maxlength="12" ng-pattern="regex"
+                                                               name="child" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$touched && formBook.child.$invalid">Vui lòng nhập số trẻ em tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.maxlength">Vui lòng nhập tối đa 12 ký tự</span>
+                                                        <span class="popuptext show" ng-show="formBook.child.$error.minlength">Vui lòng nhập tối thiểu 1 ký tự</span>
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-repeat="prop in Child" ng-class="{selected: prop == selectedChild}">
+                                                            <a href="javascript:void(0);" ng-click="setChild(prop)">
+                                                                {{prop.label | uppercase}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                        </div>
+                                        <ng-container ng-controller="startdate">
+                                            <div class="holder">
+                                                <label>Ngày đến&nbsp;<span class="text-discount">*</span></label>
+                                                <div class="select-holder">
+                                                    <div class="input-group tooltip_mes date picker-solid-bg">
+                                                        <input class="form-control" type="date" name="startdate" ng-model="startdate" ng-change="changeStart()"
+                                                               min="{{today  | date: 'MM/d/y'}}" ng-pattern="regex" required>
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.startdate.$touched && formBook.startdate.$invalid">- Vui lòng chọn ngày tham gia.</span>
+                                                        <span class="popuptext show" ng-show="formBook.startdate.$error.date">Ngày không đúng định dạng!(VD: 10/20/2018)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="holder">
+                                                <label>Ngày về</label>
+                                                <div class="select-holder">
+                                                    <div class="input-group date picker-solid-bg tooltip_mes">
+                                                        <input class="form-control" type="date" placeholder="Ngày kết thúc" name="enddate" ng-change="changeEnd()"
+                                                               min="{{today | date: 'MM/d/y'}}" ng-model="enddate" ng-pattern="regex">
+                                                        <span class="input-group-addon"><i class="icon-arrow-down"></i></span>
+                                                        <span class="popuptext show" ng-show="formBook.enddate.$error.date">Ngày không đúng định dạng!(VD: 10/20/2018)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="holder">
+                                                <label for="time">Thời gian nghỉ&nbsp;<span class="text-discount"></span></label>
+                                                <div class="input-group text tooltip_mes" style="width: 100%;">
+                                                    <input class="form-control label-input-time" type="text" ng-model="timeMain"
+                                                           readonly disabled placeholder="Không nhập vào mục này" maxlength="25"
+                                                           ng-maxlength="25" ng-pattern="regexDay" name="time" required>
+                                                    <span class="popuptext show" ng-show="formBook.time.$touched && formBook.time.$invalid">Không nhập vào mục này.</span>
+                                                    <span class="popuptext show" ng-show="formBook.time.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <span class="popuptext show" ng-show="formBook.time.$error.maxlength">{{ timeMain }} (Ngày về > Ngày đi)</span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <!-- Dịch vụ tại khu -->
+                                        <ng-container ng-repeat="item in service">
+                                            <div class="holder mr-b" ng-if="!$last">
+                                                <label for="service" ng-if="$first">Dịch vụ có sẵn&nbsp;<span class="text-discount">*</span></label>
+                                                <div class="select-holder">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-disabled="item.readonly" ng-required="item.checked"><span>{{ item.name }}</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'middle' : ''">
+                                                <div class="select-holder">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-disabled="item.readonly" ng-required="item.checked"><span>{{ item.name }}</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <!-- Mục khác -->
+                                        <div class="holder mr-b" ng-show="!isSelected">
+                                            <div class="select-holder tooltip_mes">
+                                                <label>
+                                                    <input type="checkbox" ng-model="isSelected" name="service" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
+                                                </label>
+                                                <span class="popuptext show" ng-show="formBook.service.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                            </div>
+                                        </div>
+                                        <!-- textarea -->
+                                        <div class="holder special-holder mr-b" ng-class="isSelected ? 'middle' : ''" ng-show="isSelected">
+                                            <div class="select-holder">
+                                                <div class="form-group tooltip_mes text">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="isSelected" name="service" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
+                                                    </label>
+                                                    <span ng-show="formBook.service.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <textarea placeholder="Nhập ..." minlength="6" maxlength="1000" ng-minlength="6" ng-maxlength="1000" name="comment"
+                                                              class="form-control" ng-model="comment" id="comment" ng-pattern="/[^\/\:\<\>\+\-\?\!\~\=\-\_\;]$/" ng-disabled="!isSelected" ng-required="isSelected"></textarea>
+                                                    <span class="popuptext show" ng-show="formBook.comment.$touched && formBook.comment.$invalid">Vui lòng nhập vào trường thông tin này</span>
+                                                    <span class="popuptext show" ng-show="formBook.comment.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                    <span class="popuptext show" ng-show="formBook.comment.$error.maxlength">Vui lòng nhập tối đa 1000 ký tự!</span>
+                                                    <span class="popuptext show" ng-show="formBook.comment.$error.minlength">Vui lòng nhập ít nhất 6 ký tự!</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <!-- Hoạt động -->
+                                        <ng-container ng-repeat="item in activty">
+                                            <div class="holder mr-b" ng-if="!$last">
+                                                <label for="service" ng-if="$first">Hoạt động</label>
+                                                <div class="select-holder tooltip_mes">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-required="item.checked"><span>{{ item.name }}</span>
+                                                    </label>
+                                                    <span class="popuptext show" ng-show="formBook[item.id].$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                </div>
+                                            </div>
+                                            <div class="holder mr-b" ng-if="$last" ng-class="isSelected ? 'top' : ''">
+                                                <div class="select-holder tooltip_mes">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="item.checked" name="{{ item.id }}" value="{{ item.name }}" ng-pattern="regex" ng-required="item.checked"><span>{{ item.name }}</span>
+                                                    </label>
+                                                    <span class="popuptext show" ng-show="formBook[item.id].$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <!-- Mục khác -->
+                                        <div class="holder mr-b" ng-show="!isSelected">
+                                            <div class="select-holder tooltip_mes">
+                                                <label>
+                                                    <input type="checkbox" ng-model="isSelected" name="call" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
+                                                </label>
+                                                <span class="popuptext show" ng-show="formBook.call.$error.pattern">Vui lòng nhập không nhập ký tự đặc biệt!</span>
+                                            </div>
+                                        </div>
+                                        <!-- textarea -->
+                                        <div class="holder" ng-class="isSelected ? 'top' : ''" ng-show="isSelected">
+                                            <div class="select-holder">
+                                                <div class="form-group text text-bg">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="isSelected" name="" value="" ng-pattern="regex" ng-required="isSelected"><span>Mục khác</span>
+                                                    </label>
+                                                    <label>
+                                                        Liên hệ: <a href="tel:0909120408" class="text-danger">+84 909 12 04 08</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="holder mr-b" ng-class="!isSelected ? 'middle' : ''">
+                                            <input class="btn btn-trip" type="submit"
+                                                   ng-disabled="formBook.room.$invalid
+                                                   || formBook.fullname.$invalid
+                                                   || formBook.comment.$invalid
+                                                   || formBook.phone.$invalid
+                                                   || formBook.adult.$invalid
+                                                   || formBook.child.$invalid
+                                                   || formBook.startdate.$invalid
+                                                   || formBook.vehicle.$invalid" value="ĐĂNG KÝ">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </header>
+        </div>
+        <!-- main footer -->
+        <footer id="footer">
+            <div class="container">
+                <!-- newsletter form -->
+                <form action="" id="signup" method="post" class="newsletter-form">
+                    <fieldset>
+                        <div class="input-holder">
+                            <input type="email" class="form-control" placeholder="Địa chỉ Email" name="subscriber_email" id="subscriber_email">
+                            <input type="submit" value="GỬI">
+                        </div>
+                        <span class="info" id="subscribe_message">Để nhận tin tức, cập nhật và các gói du lịch qua email.</span>
+                    </fieldset>
+                </form>
+                <!-- footer links -->
+                <div class="row footer-holder">
+                    <nav class="col-sm-4 col-lg-3 footer-nav active">
+                        <h3>Natural Life Dalat</h3>
+                        <ul class="slide">
+                            <li><a href="#">Giá trị của chúng tôi</a></li>
+                            <li><a href="#">Trách nhiệm</a></li>
+                            <li><a href="#">Nhiệm vụ của chúng tôi</a></li>
+                            <li><a href="#">Cơ hội</a></li>
+                            <li><a href="#">Mối quan tâm về an toàn</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-3 footer-nav">
+                        <h3>Địa điểm</h3>
+                        <ul class="slide">
+                            <li><a href="#">Dalat</a></li>
+                            <li><a href="#">Nha Trang</a></li>
+                            <li><a href="#">Cam Ranh</a></li>
+                            <li><a href="#">Phu Quoc</a></li>
+                            <li><a href="#">Phan Thiet</a></li>
+                            <li><a href="#">Ho Chi Minh</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-3 footer-nav">
+                        <h3>Các câu hỏi về Natural Life</h3>
+                        <ul class="slide">
+                            <li><a href="#">Tại sao bạn nên chọn Natural Life?</a></li>
+                            <li><a href="#">Hỏi chuyên gia</a></li>
+                            <li><a href="#">Chúng tôi giúp khi ...</a></li>
+                            <li><a href="#">Những vấn đề cá nhân</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="col-sm-4 col-lg-3 footer-nav last">
+                        <h3>Liên hệ với Natural Life</h3>
+                        <ul class="slide address-block">
+                            <li class="wrap-text"><span class="icon-tel"></span> <a href="tel:0909120408">+84 909 12 04 08</a></li>
+                            <li class="wrap-text"><span class="icon-email"></span> <a href="mailto:info@entrada.com">info@naturallifevn.com</a></li>
+                            <li><span class="icon-home"></span> <address>Tiểu khu 151, Đường Ngô Gia Tự, Phường 12, Thành phố Đà Lạt, Tỉnh Lâm Đồng, Việt Nam.</address></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- social wrap -->
+                <ul class="social-wrap">
+                    <li class="facebook">
+                        <a href="#">
+                            <span class="icon-facebook"></span>
+                            <strong class="txt">Like Us</strong>
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a href="#">
+                            <span class="icon-twitter"></span>
+                            <strong class="txt">Follow On</strong>
+                        </a>
+                    </li>
+                    <li class="youtube">
+                        <a href="#">
+                            @*<span class="icon-youtube"></span>*@
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                            <strong class="txt">Share At</strong>
+                        </a>
+                    </li>
+                    <li class="instagram">
+                        <a href="#">
+                            @*<span class="fa-instagram"></span>*@
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <strong class="txt">Share At</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- copyright -->
+                            <strong class="copyright"><i class="fa fa-copyright"></i> Copyright 2018 - Natural Life Dalat</strong>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="payment-option">
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/visa.png" alt="visa">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/mastercard.png" height="20" width="33" alt="master card">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/paypal.png" height="20" width="72" alt="paypal">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/maestro.png" height="20" width="33" alt="maestro">
+                                </li>
+                                <li>
+                                    <img src="~/Content/NaturalLife/img/footer/bank-transfer.png" height="20" width="55" alt="bank transfer">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- scroll to top -->
+    <div class="scroll-holder text-center">
+        <a href="javascript:" id="scroll-to-top"><i class="icon-arrow-down"></i></a>
+    </div>
+    <!-- external scripts -->
+    <script src="~/Content/NaturalLife/js/vendors/bootstrap/javascripts/bootstrap.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/match-height/jquery.matchHeight.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/wow/wow.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/stellar/jquery.stellar.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/validate/jquery.validate.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/waypoint/waypoints.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jQuery-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/fancybox/jquery.fancybox.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jcf/js/jcf.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/jcf/js/jcf.select.js"></script>
+    <script src="~/Content/NaturalLife/js/mailchimp.js"></script>
+    <!-- <script src="js/vendors/retina/retina.min.js"></script> -->
+    <script src="~/Content/NaturalLife/js/vendors/sticky-kit/sticky-kit.js"></script>
+    <script src="~/Content/NaturalLife/js/sticky-kit-init.js"></script>
+    <script src="~/Content/NaturalLife/js/vendors/bootstrap-datetimepicker-master/dist/js/bootstrap-datepicker.js"></script>
+    <!-- custom jquery script -->
+    <script src="~/Content/NaturalLife/js/jquery.main.js"></script>
+</body>
+
+</html>

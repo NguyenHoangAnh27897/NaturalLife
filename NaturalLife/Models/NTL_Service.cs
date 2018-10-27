@@ -22,5 +22,11 @@ namespace NaturalLife.Models
         public string ServiceType { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> DiscountID { get; set; }
+        public string ImageCollection { get; set; }
+        public string Advantage { get; set; }
+        public string Disadvantage { get; set; }
+        public string AvatarIn { get; set; }
+        public string AvatarOut { get; set; }
+        public string PDFLink { get; set; }
     }
 }

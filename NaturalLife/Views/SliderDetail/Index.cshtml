@@ -1,0 +1,54 @@
+﻿@model IQueryable<NaturalLife.Models.NTL_Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- main banner -->
+<section class="banner banner-inner parallax" data-stellar-background-ratio="0.5" id="blog-single">
+    <div class="banner-text">
+        <div class="center-text">
+            <div class="container text-center hidden-md hidden-lg">
+                <h1>@Model.FirstOrDefault().Title</h1>
+                <strong class="subtitle">@Model.FirstOrDefault().SubTitle</strong>
+                <!-- breadcrumb -->
+                @*<nav class="breadcrumbs">
+                        <ul>
+                            <li><a href="/home/index">Trang chủ</a></li>
+                            <li><span>Blog</span></li>
+                        </ul>
+                    </nav>*@
+            </div>
+        </div>
+    </div>
+</section>
+<!-- main container -->
+<main id="main">
+    <div class="content-with-sidebar common-spacing content-left">
+        <div class="container">
+            <div id="two-columns" class="row">
+                <div id="content" class="col-sm-8 col-md-9">
+                    <div class="blog-holder no-pagination">
+                        <!-- blog single -->
+                        <article class="blog-single">
+                            <div class="img-wrap">
+                                <img src="~/Images/website/imagehome/@Model.FirstOrDefault().Image1" height="480" width="870" alt="image description">
+                            </div>
+                            <div class="description">
+                                <h1 class="content-main-heading">@Model.FirstOrDefault().Title</h1>
+                                @Model.FirstOrDefault().SubTitle
+                                <br />
+                                <div>
+                                    @Html.Raw(Model.First().Description1)
+                                </div>
+                      
+                            </div>
+                        </article>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</main>
+

@@ -23,5 +23,10 @@ namespace NaturalLife.Models
         public string Description { get; set; }
         public string Images { get; set; }
         public Nullable<int> RoomTypeID { get; set; }
+        public string ImageCollection { get; set; }
+        public string Advantage { get; set; }
+        public string Disadvantage { get; set; }
+        public string AvatarIn { get; set; }
+        public string AvatarOut { get; set; }
     }
 }

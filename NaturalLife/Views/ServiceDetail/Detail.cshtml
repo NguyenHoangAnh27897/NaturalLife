@@ -1,7 +1,8 @@
-﻿
+﻿@model IQueryable<NaturalLife.Models.NTL_Service>
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    string[] arrStr;
 }
 
 <div class="main-wrapper">
@@ -24,8 +25,10 @@
             <div class="row">
                 <h5 class="mb col-lg-2" style="color:white;max-width:10%">Chi tiêt: </h5>
                 <select class="form-control col-lg-4" id="opt" name="opt" style="width:15%; margin-left:10px">
-                    <option value="info" selected>Thông tin chi tiết</option>
-                    <option value="schedule">Lịch trình</option>
+                    <option value="info" selected>Tổng quan &amp; Nhà nghỉ</option>
+                    <option value="schedule">Hành trình</option>
+                    <option value="collection">Bộ sưu tập</option>
+                    @*<option value="price">Lịch trình &amp; Giá</option>*@
                 </select>
             </div>
         </div>  
@@ -39,39 +42,129 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thông tin dịch vụ</h4>
+                                <h4>Tổng quan &amp; Nhà nghỉ</h4>
                             </div>
                         </div>
 
                         <div class="section-body">
-                            <form action="/roommaster/add" method="post" enctype="multipart/form-data">
+                            <form action="/servicedetail/addinfo" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tên phòng</label>
-                                    <input type="text" class="form-control" placeholder="" name="roomname">
+                                    <label for="exampleFormControlInput4">Những gì có trong chuyến tham quan này</label>
+                                    <textarea name="advan">@Model.FirstOrDefault().Advantage</textarea>
+                                    <input type="hidden" name="ID" value="@Model.FirstOrDefault().ID" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Giá</label>
-                                    <input class="form-control input-numeral" placeholder="" name="Price" style="width:25%">
+                                    <label for="exampleFormControlInput4">Không có gì trong chuyến tham quan này</label>
+                                    <textarea name="disvan">@Model.FirstOrDefault().Disadvantage</textarea>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Hình ảnh đại diện (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 800x600 HOẶC LỚN HƠN)</label>
-                                    <br />
-                                    <input type="file" name="avatar" accept="image/*" />
-                                </div>
+                                <hr style="background-color: #ced4da;" />
 
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 1920x763 HOẶC LỚN HƠN)</label>
-                                    <br />
-                                    <input type="file" name="images" accept="image/*" multiple="multiple" />
-                                </div>
+                                @if (Model.FirstOrDefault().AvatarIn != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Phòng chung bao gồm trong giá (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatarin" accept="image/*" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageservice/@Model.FirstOrDefault().AvatarIn') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Phòng chung bao gồm trong giá (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatarin" accept="image/*" />
+                                    </div>
+                                }
 
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput4">Nội dung miêu tả</label>
-                                    <textarea name="editor"></textarea>
-                                </div>
+                                @if (Model.FirstOrDefault().AvatarOut != null)
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Phòng riêng không được bao gồm trong giá (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatarout" accept="image/*" />
+                                        <div class="row">
+                                            <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageservice/@Model.FirstOrDefault().AvatarOut') center center no-repeat / cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Phòng riêng không được bao gồm trong giá (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="avatarout" accept="image/*" />
+                                    </div>
+                                }
+
+                                <button class="btn btn-primaryt">Lưu</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12" id="collection" style="display:none">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Bộ sưu tập</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/servicedetail/addcollection" method="post" enctype="multipart/form-data">
+
+                                @if (Model.FirstOrDefault().ImageCollection != null)
+                                {
+                                    if (Model.FirstOrDefault().ImageCollection.Contains(","))
+                                    {
+                                        arrStr = Model.FirstOrDefault().ImageCollection.Split(',');
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <input name="ID" type="hidden" value="@Model.FirstOrDefault().ID" />
+                                            <div class="row">
+                                                @foreach (var img in arrStr)
+                                                {
+
+                                                    <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageservice/@img') center center no-repeat / cover;">
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                            <br />
+                                            <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                            <input name="ID" type="hidden" value="@Model.FirstOrDefault().ID" />
+                                            <div class="row">
+                                                <div class="col-sm-3 bg-slider" style="background: url('../../Images/website/imageservice/@Model.FirstOrDefault().ImageCollection') center center no-repeat / cover;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Những hình ảnh hiển thị (VUI LÒNG THÊM HÌNH VỚI KÍCH CỠ 600x400 HOẶC LỚN HƠN)</label>
+                                        <br />
+                                        <input type="file" name="images" accept="image/*" multiple="multiple" />
+                                        <input name="ID" type="hidden" value="@Model.FirstOrDefault().ID" />
+                                    </div>
+                                }
 
                                 <button class="btn btn-primaryt">Lưu</button>
                             </form>
@@ -84,16 +177,18 @@
                     <div class="single-form">
                         <div class="section-head">
                             <div class="title">
-                                <h4>Thông tin dịch vụ</h4>
+                                <h4>Hành trình</h4>
                             </div>
                         </div>
 
                         <div class="section-body">
-                            <form action="/roommaster/add" method="post" enctype="multipart/form-data">
+                            <form action="/servicedetail/AddPDF" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput4">Tên phòng</label>
-                                    <input type="text" class="form-control" placeholder="" name="roomname">
+                                    <label for="exampleFormControlInput4">Nhúng đường dẫn vào đây</label>
+                                    <br />
+                                    <input name="pdffile" class="form-control" value="@Model.FirstOrDefault().PDFLink" />
+                                    <input name="ID" type="hidden" value="@Model.FirstOrDefault().ID" />
                                 </div>
 
                                 <button class="btn btn-primaryt">Lưu</button>
@@ -103,6 +198,30 @@
                     </div>
                 </div>
 
+                <div class="col-lg-12" id="price" style="display:none">
+                    <div class="single-form">
+                        <div class="section-head">
+                            <div class="title">
+                                <h4>Lịch trình &amp; Giá</h4>
+                            </div>
+                        </div>
+
+                        <div class="section-body">
+                            <form action="/servicedetail/UploadExcelPrice" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput4">Upload FILE EXCEL Lịch trình và Giá</label>
+                                    <br />
+                                    <input type="file" id="FileExcel" name="FileExcel" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                                    <input name="ID" type="hidden" value="@Model.FirstOrDefault().ID" />
+                                </div>
+
+                                <button class="btn btn-primaryt">Lưu</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -111,7 +230,8 @@
 <script src="~/Content/Webmaster/js/ckeditor/ckeditor.js"></script>
 <script src="~/Content/Webmaster/js/ckeditor/samples/js/sample.js"></script>
 <script>
-    CKEDITOR.replace('editor');
+    CKEDITOR.replace('advan');
+    CKEDITOR.replace('disvan');
 </script>
 <script>
     $("#opt").on("change", function () {

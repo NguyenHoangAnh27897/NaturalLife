@@ -32,9 +32,10 @@ namespace NaturalLife.Controllers.WebMaster
         {
             if (Username.Equals("admin"))
             {
-                if (Password.Equals("1234"))
+                if (Password.Equals("naturallifevn"))
                 {
                     Session["Authentication"] = "true";
+                    Session.Timeout = 600;
                     return RedirectToAction("Index", "Webmaster");
                 }
                 else

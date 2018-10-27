@@ -1,85 +1,128 @@
 var app = angular.module("app", []);
 
 app.controller("serviceController", ['$scope', function ($scope) {
-    $scope.items = [
+    $scope.regex = /[^\/\:\<\>\+\-\?\!\~\=\-\_\;]$/;
+    $scope.regexPhone = /^(?:0|\(?\+84\)?\s?|[1-79]\s?)[1-79](?:[\.\-\s]?\d)\d{4,}$/;
+    $scope.service = [
         {
-            name: 'Đốt lò sưởi sáng và tối',
+            name: 'Ăn sáng',
+            checked: false,
+            readonly: false,
             id: 'option1'
         },
         {
-            name: 'Dùng cà phê, trà, bánh',
+            name: 'Trà sáng',
+            checked: false,
+            readonly: false,
             id: 'option2'
         },
         {
-            name: 'Ăn sáng',
+            name: 'Sọt củi',
+            checked: false,
+            readonly: false,
             id: 'option3'
-        },
-        {
-            name: 'Ăn trưa',
-            id: 'option4'
-        },
-        {
-            name: 'Ăn tối',
-            id: 'option5'
-        },
-        {
-            name: 'Bữa phụ',
-            id: 'option6'
-        },
-        {
-            name: 'Tiệc nướng',
-            id: 'option7'
-        },
-        {
-            name: 'Cắm trại',
-            id: 'option8'
-        },
-        {
-            name: 'Dịch vụ chăm trẻ',
-            id: 'option9'
         }
     ];
-},
-]);
 
-app.controller("activityController", ['$scope', function ($scope) {
-    $scope.items = [
-        {
-            name: 'Yoga',
-            id: 'act1'
-        },
-        {
-            name: 'Spa',
-            id: 'act2'
-        },
-        {
-            name: 'Bicycle Riding',
-            id: 'act3'
-        },
-        {
-            name: 'Karaoke',
-            id: 'act4'
-        },
-        {
-            name: 'Dancing',
-            id: 'act5'
+    $scope.setSelected = function (prop) {
+        $scope.selectedprop = prop;
+        if (prop.value == "BIỆT THỰ") {
+            $scope.service = $scope.service.map(e => {
+                return {
+                    name: e.name,
+                    checked: true,
+                    readonly: false,
+                    id: e.id
+                }
+            });
+        } else if (prop.value == "BUNGALOW") {
+            $scope.service = $scope.service.map(e => {
+                if (e.name != 'Sọt củi') {
+                    return {
+                        name: e.name,
+                        checked: true,
+                        readonly: false,
+                        id: e.id
+                    }
+                }
+                return {
+                    name: e.name,
+                    checked: false,
+                    readonly: true,
+                    id: e.id
+                }
+                
+            });
+        } else {
+            $scope.service = $scope.service.map(e => {
+                return {
+                    name: e.name,
+                    checked: false,
+                    readonly: false,
+                    id: e.id
+                }
+            });
         }
-    ];
-},
-]);
+};
 
-app.controller("room", ['$scope',
-  function ($scope) {
-      $scope.setSelected = function (prop) {
-          $scope.selectedprop = prop;
-      };
-      $scope.props = [
-        { label: "LỀU" },
-        { label: "KHÁCH SẠN" },
-        { label: "BUNGALOW" },
-        { label: "BIỆT THỰ" }
-      ];
-  },
+$scope.props = [
+  { label: "LỀU", value: "LỀU", per: false},
+  { label: "KHÁCH SẠN", value: "KHÁCH SẠN", per: false},
+  { label: "BUNGALOW", value: "BUNGALOW", per: false},
+  { label: "BIỆT THỰ", value: "BIỆT THỰ", per: false},
+  { label: "KHÁC", value: "", per: true }
+];
+
+$scope.setAdult = function (prop) {
+    $scope.selectedAdult = prop;
+    document.querySelector('input[name=adult]').value = prop.value;
+};
+$scope.Adult = [
+  { label: "1 Người lớn", value: "1 Người lớn", per: false },
+  { label: "2 Người lớn", value: "2 Người lớn", per: false },
+  { label: "3 Người lớn", value: "3 Người lớn", per: false },
+  { label: "Khác", value: "", per: true }
+];
+
+$scope.setChild = function (prop) {
+    $scope.selectedChild = prop;
+    document.querySelector('input[name=child]').value = prop.value;
+};
+$scope.Child = [
+  { label: "1 Trẻ em", value: "1 Trẻ em", per: false },
+  { label: "2 Trẻ em", value: "2 Trẻ em", per: false },
+  { label: "3 Trẻ em", value: "3 Trẻ em", per: false },
+  { label: "Khác", value: "", per: true }
+];
+
+$scope.activty = [
+{
+    name: 'Yoga',
+    checked: false,
+    id: 'act1'
+},
+{
+    name: 'Spa',
+    checked: false,
+    id: 'act2'
+},
+{
+    name: 'Bicycle Riding',
+    checked: false,
+    id: 'act3'
+},
+{
+    name: 'Karaoke',
+    checked: false,
+    id: 'act4'
+},
+{
+    name: 'Dancing',
+    checked: false,
+    id: 'act5'
+}
+];
+},
 ]);
 // room page
 app.controller("utilities", ['$scope',
@@ -97,35 +140,38 @@ app.controller("utilities", ['$scope',
   },
 ]);
 
-app.controller("adult", ['$scope',
+app.controller("startdate", ['$scope',
   function ($scope) {
-      $scope.setSelected = function (prop) {
-          $scope.selectedprop = prop;
+      $scope.regex = /^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$/;
+      $scope.regexDay = /[^\/\:\<\>\+\-\?\!\~\=\-\_\;]$/;
+      $scope.startdate = new Date(Date.now());
+      $scope.today = new Date(Date.now());
+      $scope.timeMain;
+      $scope.changeStart = function () {
+          $scope.timeMain = $scope.compare();
       };
-      $scope.props = [
-        { label: "1 Người lớn" },
-        { label: "2 Người lớn" },
-        { label: "3 Người lớn" },
-        { label: "4 Người lớn" },
-        { label: "5 Người lớn" },
-        { label: "6 Người lớn" }
-      ];
-  },
-]);
-
-app.controller("children", ['$scope',
-  function ($scope) {
-      $scope.setSelected = function (prop) {
-          $scope.selectedprop = prop;
+      $scope.changeEnd = function () {
+          $scope.timeMain = $scope.compare();
       };
-      $scope.props = [
-        { label: "1 Trẻ em" },
-        { label: "2 Trẻ em" },
-        { label: "3 Trẻ em" },
-        { label: "4 Trẻ em" },
-        { label: "5 Trẻ em" },
-        { label: "6 Trẻ em" }
-      ];
+      $scope.compare = function () {
+          let result,
+              a = document.querySelector('input[name="startdate"]').value,
+              b = document.querySelector('input[name="enddate"]').value;
+          if ((a && b) != "") {
+              let c = new Date(a),
+                  d = new Date(b),
+                  oneDay = 24 * 60 * 60 * 1000,
+                  check = ((d.getTime() - c.getTime()) / (oneDay)),
+                  diffDays = (check >= 0) ? Math.ceil(check) : -1;
+              if (diffDays == 0) {
+                  return "Đi/về trong ngày";
+              } else if (diffDays > 0) {
+                  return `${diffDays} Ngày`;
+              } else {
+                  return `Ngày không hợp lệ vui lòng chọn lại ngày đi và về`;
+              }
+          }
+      }
   },
 ]);
 

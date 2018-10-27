@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+﻿@charset 'UTF-8';
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -3520,12 +3520,14 @@ input[type='submit'].btn-block,input[type='reset'].btn-block,input[type='button'
 }
 
 .fade {
+	display: none;
 	opacity: 0;
 	-webkit-transition: opacity .15s linear;
 	-o-transition: opacity .15s linear;
 	transition: opacity .15s linear;
 }
 .fade.in {
+	display: inline-block;
 	opacity: 1;
 }
 
@@ -4663,7 +4665,7 @@ tbody.collapse.in {
 	display: inline-block;
 }
 .breadcrumb > li + li:before {
-	content: '/ ';
+	content: '/Â ';
 	padding: 0 5px;
 	color: #ccc;
 }

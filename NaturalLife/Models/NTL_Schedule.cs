@@ -14,12 +14,18 @@ namespace NaturalLife.Models
     
     public partial class NTL_Schedule
     {
-        public string ID { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public int ID { get; set; }
+        public string Schedule { get; set; }
         public string Status { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> DiscountID { get; set; }
-        public string Icon { get; set; }
+        public Nullable<int> PriceDay { get; set; }
+        public Nullable<int> PriceWeekend { get; set; }
+        public Nullable<int> PriceHoliday { get; set; }
+        public Nullable<int> AllInPirceDay { get; set; }
+        public Nullable<int> AllInPirceWeekend { get; set; }
+        public Nullable<int> AllInPirceHoliday { get; set; }
+        public string Service { get; set; }
+        public string AllInService { get; set; }
+        public string TourType { get; set; }
+        public string ServiceID { get; set; }
     }
 }
